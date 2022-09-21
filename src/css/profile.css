@@ -1,0 +1,145 @@
+/* ===================================================== */
+/* Grid template */
+
+.layout-profile {
+  grid-area: main;
+  margin-top: 0;
+  padding: 1.5vw;
+  display: grid;
+  background-color: #FCF9F4;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr 0.3fr 1.5fr;
+  row-gap: 3vw;
+  grid-template-areas:
+    "."
+    "profile-photo"
+    "edit";
+  text-align: center;
+}
+
+/* ===================================================== */
+/* Responsive design */
+
+@media screen and (max-width:800px) {
+  .edit-container {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+     "edit-left" 
+     "edit-right"
+     "button";
+    grid-gap: 10px;
+    padding: 10px;
+    text-align: left;
+  }
+}
+
+/* ===================================================== */
+/* Profile Photo */
+
+.profile-photo-container {
+grid-area: profile-photo;
+display: flex;
+justify-content: center;
+}
+
+.profile-photo-container img {
+width: 20%;
+position: fixed;
+}
+
+/* ===================================================== */
+/* Edit */
+
+.edit-container {
+margin: 0 4%;
+grid-area: edit;
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-areas: 
+"edit-left edit-right"
+"button    button";
+background-color: rgba(210, 203, 193, 0.4);
+border-radius: 20px;
+}
+
+.edit-container button {
+border: none;
+background: transparent;
+text-decoration: 1px solid underline;
+}
+
+.buttonBox {
+display: flex;
+width: 100%;
+grid-area: button;
+justify-content: center;
+}
+
+/* ===================================================== */
+/* Left: Edit profile  */
+
+.edit-left-container {
+margin-top: 20%;
+grid-area: edit-left;
+/* display: flex; */
+width: 100%;
+align-items: center;
+
+}
+
+
+/* ===================================================== */
+/* Right: Edit profile */
+
+.edit-right-container {
+margin-top: 20%;
+grid-area: edit-right;
+/* display: flex; */
+width: 100%;
+align-items:center;
+}
+
+#contactSelect {
+width: 45%;
+height: 3rem;
+background: transparent;
+border: none;
+border-bottom: 1px solid #000000;
+text-align: center;
+}
+
+/* ===================================================== */
+
+.layout-profile input {
+width: 75%;
+height: 3rem;
+background: transparent;
+border: none;
+border-bottom: 1px solid #000000;
+}
+
+
+.selector-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-left: 20%;
+  margin-right: 20%;;
+  margin-bottom: 15px;
+  font-size: medium;
+}
+
+.selector-container svg {
+  width: 25px;
+  height: 25px;
+  color:#707070;
+  position: relative;
+  margin-top: 15px;
+}
+
+.selector-container select:focus {
+  background: transparent;
+  outline: none;
+}

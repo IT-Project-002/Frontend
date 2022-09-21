@@ -1,0 +1,78 @@
+/* ===================================================== */
+/* Error message */
+.instructions {
+  font-size: 0.75rem;
+  margin-top: 0;
+  position: relative;
+  color: firebrick;
+  font-weight: bold;
+}
+
+/* ===================================================== */
+/* Input styles */
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;;
+  margin-bottom: 15px;
+  font-size: medium;
+}
+
+.input-container input[type=email],input[type=password],input[type=text],input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.input-container input[type=email]:focus,input[type=password]:focus,input[type=text]:focus {
+  background: transparent;
+  outline: none;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow:200px 200px 100px #fcf8f4 inset; 
+  box-shadow:200px 200px 100px #fcf8f4 inset; 
+  border-radius: none;
+}
+
+/* ===================================================== */
+/* Input icon */
+
+.input-container svg {
+  width: 25px;
+  height: 25px;
+  color:#707070;
+  position: relative;
+  margin-top: 15px;
+}
+
+/* ===================================================== */
+/* Textarea (bio) */
+
+textarea {
+  font-family: "Ariel";
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  text-align: left;
+  resize: none;
+}
+
+textarea:focus {
+  background: transparent;
+  outline: none;
+}

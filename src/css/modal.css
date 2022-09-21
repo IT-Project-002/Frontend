@@ -1,0 +1,64 @@
+.main-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ===================================================== */
+/* model Window */
+.modal-container {
+    position: fixed;
+    width: 50vw;
+    height: 50vh;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    background-color: #FDF6E6;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+        'image text';
+    grid-gap: 0px;
+}
+
+.text-container {
+    grid-area: text;
+    text-align: center;
+}
+
+.text-container ul {
+    list-style-type: none;
+}
+
+.image-container {
+    grid-area: image;
+    background-image: url(../image/pages/modalPlants.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.button-close {
+    right: 10px;
+    top: 0px;
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    border-radius: 50px;
+}
+
+/* .modal-close {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    right: 10px;
+    top: 0px;
+    border: transparent;
+    border-radius: 50px;
+    background-color: black;
+    z-index: 100;
+} */

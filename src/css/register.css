@@ -1,0 +1,84 @@
+/* ===================================================== */
+/* Grid template */
+
+.layout-register {
+  grid-area: main;
+  margin: 10vh 2vw;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    "a b";
+  grid-gap: 0px;
+  padding: 10px;
+  text-align: left;
+}
+
+/* ===================================================== */
+/* Responsive design */
+
+@media screen and (max-width:800px) {
+  .layout-register {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "a"
+      "b";
+    grid-gap: 10px;
+    padding: 10px;
+    text-align: left;
+  }
+}
+
+/* ===================================================== */
+/* Left section: Register */
+
+.register-container {
+  grid-area: a;
+  text-align: center;
+}
+
+/* ===================================================== */
+/* Right section: Bubble */
+
+.bubble-container {
+  grid-area: b;
+}
+
+.avatar1 {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.avatar2 {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.avatar1:hover {
+  /* outline: 3px solid black; */
+  border-radius: 50%;
+  /* 向外阴影x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+  box-shadow: 0 0 10px 10px rgb(244, 244, 247);
+}
+
+.avatar2:hover {
+  /* outline: 3px solid black; */
+  border-radius: 50%;
+  box-shadow: 0 0 10px 10px rgb(244, 244, 247);
+}
+
+/* .bubble-container img {
+  max-width: 100px;
+} */
+
+/* Button */
+.button {
+  background-color: transparent;
+  border: 0ch;
+  text-decoration: underline;
+}

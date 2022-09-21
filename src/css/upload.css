@@ -1,0 +1,132 @@
+/* ===================================================== */
+/* Grid template */
+
+.layout-upload {
+    grid-area: main;
+    margin-top: 14vh;
+    padding: 1.5vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-areas:
+      "preview upload fill-in";
+    grid-gap: 2rem;
+}
+
+/* ===================================================== */
+/* Responsive design */
+
+@media screen and (max-width:800px) {
+    .layout-upload {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "upload" 
+        "fill-in" 
+        "preview";
+      grid-gap: 10px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .preview-container img {
+        max-width: 70%;
+        margin: 4%;
+        border-radius: 20px;
+        box-shadow: 0px 1px 6px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .selector-container {
+        width: 70%;
+        margin-left:10%;
+        margin-bottom: 5%;
+    }
+  }
+  
+/* ===================================================== */
+/* Left section: Preview images */
+
+.preview-container {
+    grid-area: preview;
+    height: 70%;
+    text-align: center;
+}
+
+.preview-container img {
+    max-width: 70%;
+    margin: 4%;
+    border-radius: 20px;
+    box-shadow: 0px 1px 6px 5px rgba(0, 0, 0, 0.2);
+}
+
+.delete-button {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 20px;
+    border: transparent;
+    border-radius: 50%;
+    background-color: #D2CBC1;
+    z-index: 100;
+}
+
+/* ===================================================== */
+/* Middle section: Upload image */
+
+.upload-container {
+    grid-area: upload;
+    text-align: center;
+}
+
+.upload-container img {
+    max-width: 60%;
+
+}
+
+.upload-container svg {
+    width: 250px;
+    height: 250px;
+    color: white;
+    background-color: #D2CBC1;
+    border-radius: 40px;
+}
+
+.upload-container svg:hover {
+    width: 250px;
+    height: 250px;
+    color: white;
+    background-color: black;
+    border-radius: 40px;
+}
+
+.upload-input {
+    display: none;
+}
+
+/* ===================================================== */
+/* Right section: Fill in information */
+
+.fillin-container {
+    grid-area: fill-in;
+    display: grid;
+    text-align: center;
+}
+
+.fillin-container input:focus {
+    outline:none;
+}
+
+.fillin-input-container input {
+    width: 95%;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    text-align: left;
+    font-size: large;
+}
+
+.selector-container {
+    width: 100%;
+    margin-bottom: 5%;
+}

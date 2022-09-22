@@ -24,7 +24,7 @@ export default function Market() {
   const avatar = data["Avatar"];
 
   useEffect(() => {
-    fetch("http://localhost:9000/user/market", {
+    fetch("/users/market", {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -37,7 +37,7 @@ export default function Market() {
         console.log(res);
         if (res.status === 401) {
           sessionStorage.removeItem("access_token");
-          window.location.href = "http://localhost:3000/user/login";
+          window.location.href = window.location.origin +"/user/login";
         } else {
           return res.json();
         }

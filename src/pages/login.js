@@ -5,6 +5,9 @@ import "../css/form.css";
 import d1 from "../image/pages/loginDrawer.png";
 import {AiFillEyeInvisible, AiFillEye, AiTwotoneMail} from "react-icons/ai";
 
+const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
+export const validateEmailInput = (str="") => EMAIL_REG.test(str);
+
 function Login(){
   // const nav = useNavigate();
   const userRef = useRef();
@@ -57,53 +60,43 @@ function Login(){
 
   if(token && token!=='' &&token!==undefined){
      return  <Navigate replace to="/user/market" />;
-  } else{
-      return(
-        <div className="layout-login" id='login-page'>
-          <div className="login-container">
-            <h1>Welcome</h1>
-            <form>
-              <div className='input-container'>
-                <i><AiTwotoneMail/></i>
-                <input
-                type="email"
-                className="input-field"
-                ref={userRef}
-                placeholder="Email"
-                value={email}
-                onChange = {(e) => setEmail(e.target.value)}
-                required
-                />
-              </div>
-              <div className='input-container'>
-                <label className='login-icon'>
-                  {!isShown ? <AiFillEye onClick={togglePassword}/> :<AiFillEyeInvisible onClick={togglePassword}/>}
-                </label>
-                <input
-                  type={isShown ? "text" : "password"}
-                  className="input-field"
-                  placeholder="Password"
-                  value={password}
-                  onChange = {(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div>
-                <button onClick={handleSubmit}> Log in </button>
-              </div>
-              <div>
-                <button><a href="/user/register">Haven't Sign up?</a></button>
-              </div>
-            </form>
-          </div>
-          <div className="today-container">
-            <h2>“Creativity takes courage.”</h2>
-            <p>- Henri Matisse</p>
-            <img src={d1} alt="d1"></img>
-          </div>
+  } 
+  else{
+    return(
+      <div className="layout-login" id='login-page'>
+        <div className="login-container">
+          <h1>Welcome</h1>
+          <form onSubmit={handleSubmit}>
+            <div className='input-container'>
+              <AiTwotoneMail/>
+              <input type="email" ref={userRef} placeholder="Email" value={email}
+                onChange = {(e) => setEmail(e.target.value)} required/>
+            </div>
+            {email && !validateEmailInput(email) ? <p className="instructions">Email not valid</p>:null}
+            <div className='input-container'>
+              <label className='login-icon'>
+                {!isShown ? <AiFillEye onClick={togglePassword}/> :<AiFillEyeInvisible onClick={togglePassword}/>}
+              </label>
+              <input type={isShown ? "text" : "password"} placeholder="Password" value={password} 
+                onChange = {(e) => setPassword(e.target.value)} required/>
+            </div>
+            <div>
+              <button>Log in</button>
+            </div>
+            <div>
+              <button><a href="/user/register">Haven't Sign up?</a></button>
+            </div>
+          </form>
         </div>
-      )
-    }
+
+        <div className="today-container">
+          <h2>“Creativity takes courage.”</h2>
+          <p>- Henri Matisse</p>
+          <img src={d1} alt="d1"></img>
+        </div>
+      </div>
+    )
+  }
   }
 
 export default Login;

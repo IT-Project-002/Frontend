@@ -27,13 +27,13 @@ export default function Navbar() {
   };
 
    function logMeOut() {
-      fetch('http://localhost:9000/user/logout',{
+      fetch('/users/logout',{
           method: 'POST',
           mode: 'cors',
        })
         .then((response) => {
            sessionStorage.removeItem("access_token")
-           window.location.href ='http://localhost:3000/user/login' ;
+           window.location.href = window.location.origin + '/user/login';
         }).catch((error) => {
           if (error.response) {
             console.log(error.response)

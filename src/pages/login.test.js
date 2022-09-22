@@ -1,6 +1,5 @@
 import {validateEmailInput} from "./login";
 
-
 describe("Login email format",()=>{
     test("validateEmailInput function should pass on correct input",()=> {
         const text = "text@gmail.com";
@@ -18,7 +17,7 @@ describe("Login email format",()=>{
     })
 
     test("validateEmailInput function should fail when missing letters before @",()=> {
-        const text = "@gmail.";
+        const text = "@gmail.com";
         expect(validateEmailInput(text)).toBe(false);
     })
 

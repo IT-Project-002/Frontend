@@ -16,47 +16,26 @@ import male3 from "../image/avatar/male3.png";
 const NAME_REG = new RegExp(/^[A-Z0-9][A-z0-9-_]{3,14}$/i);
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 const PWD_REG = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/i);
+export const validName= (str="") => NAME_REG.test(str);
+export const validEmail = (str="") => EMAIL_REG.test(str);
+export const validPwd = (str="") => PWD_REG.test(str);
+export const validMatch = (str1="",str2="") => str1===str2;
 
 function Registration() {
   const userRef = useRef();
   // const errRef = useRef();
   const history = useNavigate();
   const [username, setName] = useState("");
-  const [validName, setvalidName] = useState("");
-
   const [email, setEmail] = useState("");
-  const [validEmail, setValidEmail] = useState("");
-
   const [password, setPassword] = useState("");
-  const [validPwd, setvalidPwd] = useState("");
-
   const [matchPwd, setMatchPwd] = useState("");
-  const [validMatch, setValidMatch] = useState("");
-  
   const [bio, setBio] = useState("");
-
   const [avatar, setAvatar] = useState("")
 
   // setting a focus on username input when the component loads
   useEffect(() => {
     userRef.current.focus();
   }, [])
-
-  // Username validation
-  useEffect(() => {
-    setvalidName(NAME_REG.test(username))
-  }, [username])
-
-  // Email validation
-  useEffect(() => {
-    setValidEmail(EMAIL_REG.test(email))
-  }, [email])
-
-  // Pwd validation
-  useEffect(() => {
-    setvalidPwd(PWD_REG.test(password))
-    setValidMatch(password === matchPwd);
-  }, [password, matchPwd])
 
   // Avatar selection
   const handleClick = event => {
@@ -102,6 +81,7 @@ function Registration() {
         <h1>New to this site?</h1>
         <h1>Let's get you started!</h1>
         <form  method='post' onSubmit = {handleSubmit}>
+          {/* Username */}
           <div className='input-container'>
             <i><PersonIcon/></i>
             <input
@@ -113,10 +93,13 @@ function Registration() {
               required
             />  
           </div>
-          <p id="uidnote" className={username && !validName ? "instructions" : "offscreen"}>
+            {username && !validName(username) ? 
+            <p id="uidnote" className="instructions">
                 3 to 14 characters.<br />
                 Letters, numbers, underscores, hyphens allowed.
-            </p>
+            </p>:null}
+
+          {/* Email */}
           <div className='input-container'>
             <i><EmailIcon/></i>
             <input
@@ -127,9 +110,12 @@ function Registration() {
               required
             />
           </div>
-          <p id="emailnote" className={ email && !validEmail ? "instructions" : "offscreen"}>
+          {email && !validEmail(email) ? 
+            <p id="uidnote" className="instructions">
               Valid email prefixes: example@mail.com
-            </p>
+            </p>:null}
+
+          {/* Password */}
           <div className='input-container'>
             <i><LockIcon/></i>
             <input
@@ -140,10 +126,13 @@ function Registration() {
               required
             /> 
           </div>
-          <p id="pwdnote" className={ password && !validPwd ? "instructions" : "offscreen"}>
+          {password && !validPwd(password) ? 
+            <p id="uidnote" className="instructions">
               8 to 24 characters.<br />
-              Must include uppercase, lowercase letters and a number.<br />            
-            </p> 
+              Must include uppercase, lowercase letters and a number.<br />     
+            </p>:null}
+          
+          {/* Confirm Password */}
           <div className='input-container'>
             <i><LockIcon/></i>
             <input
@@ -154,9 +143,12 @@ function Registration() {
               required             
             />
           </div>
-          <p id="pwdnote" className={ matchPwd && !validMatch ? "instructions" : "offscreen"}>
-              Passwords did not match 
-            </p> 
+          {password && !validMatch(password,matchPwd) ? 
+            <p id="uidnote" className="instructions">
+              Passwords did not match     
+            </p>:null}
+          
+          {/* Bio */}
           <div className='input-container'>
             <i><BorderColorIcon/></i>
             <textarea 
@@ -166,7 +158,7 @@ function Registration() {
                 onChange={(e) => setBio(e.target.value)}
             />
           </div>
-          <button className="button" type='submit'>  Sign Up  </button>
+          <button className="button" type='submit'>Sign Up</button>
         </form>
         <button><a href="/user/login">Already has an account?</a></button>
       </div>

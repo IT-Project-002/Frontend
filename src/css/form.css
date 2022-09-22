@@ -21,7 +21,7 @@
   font-size: medium;
 }
 
-.input-container input[type=email],input[type=password],input[type=text],input[type=number] {
+.input-container input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;

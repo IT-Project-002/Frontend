@@ -16,7 +16,7 @@
 /* ===================================================== */
 /* Responsive design */
 
-@media screen and (max-width:800px) {
+@media screen and (max-width:1200px) {
   .layout-login {
     display: grid;
     grid-template-columns: 1fr;
@@ -26,6 +26,11 @@
     grid-gap: 10px;
     padding: 10px;
     text-align: left;
+  }
+
+  .today-container img {
+    max-width: 70%;
+    height: auto;
   }
 }
 
@@ -48,5 +53,6 @@
 }
 
 .today-container img {
-  max-width: 65%;
+  max-width: 70%;
+  height: auto;
 }

@@ -7,34 +7,17 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-areas:
-    "a b";
+    "register avator-selection";
   grid-gap: 0px;
   padding: 10px;
   text-align: left;
 }
 
 /* ===================================================== */
-/* Responsive design */
-
-@media screen and (max-width:800px) {
-  .layout-register {
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "a"
-      "b";
-    grid-gap: 10px;
-    padding: 10px;
-    text-align: left;
-  }
-}
-
-/* ===================================================== */
 /* Left section: Register */
 
 .register-container {
-  grid-area: a;
+  grid-area: register;
   text-align: center;
 }
 
@@ -42,9 +25,11 @@
 /* Right section: Bubble */
 
 .bubble-container {
-  grid-area: b;
+  grid-area: avator-selection;
+  text-align: center;
 }
 
+/* Avatar size */
 .avatar1 {
   width: 250px;
   height: 250px;
@@ -72,13 +57,72 @@
   box-shadow: 0 0 10px 10px rgb(244, 244, 247);
 }
 
-/* .bubble-container img {
-  max-width: 100px;
-} */
 
 /* Button */
 .button {
   background-color: transparent;
   border: 0ch;
   text-decoration: underline;
+}
+
+/* ===================================================== */
+/* Responsive design */
+@media screen and (max-width:1400px) {
+  /* Avatar size */
+  .avatar1 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+  .avatar2 {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width:1100px) {
+  /* Avatar size */
+  .avatar1 {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+  .avatar2 {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width:897px) {
+  .layout-register {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "register"
+      "avator-selection";
+    grid-gap: 10px;
+    padding: 10px;
+    text-align: left;
+  }
+
+  /* Avatar size */
+  .avatar1 {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+  .avatar2 {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 5px;
+  }
 }

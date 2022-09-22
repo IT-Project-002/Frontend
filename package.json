@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:9000/",
+  "proxy": "https://handicraft-002.herokuapp.com/ ",
   "dependencies": {
     "@emotion/css": "^11.10.0",
     "@emotion/react": "^11.10.4",

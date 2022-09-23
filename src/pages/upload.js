@@ -72,7 +72,6 @@ export default function Upload() {
     const handleSubmit = (e) => {
         // prevent page being refresh
         e.preventDefault();
-        console.log(formRef.current)
         const data = new FormData(formRef.current);
         data.append("tags", JSON.stringify(tags))
         const filesArray= selectedImages.map((file) => {

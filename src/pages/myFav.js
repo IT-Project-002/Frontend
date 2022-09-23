@@ -15,37 +15,37 @@ export default function MyFav() {
         <div className = "items">
         <div className="singleImg">
           <FavoriteBorderIcon className="heart"/>
-          <img className = "ItemImg" src={item1} alt="item3" ></img>
+          <div className="ImgBox"><img className = "ItemImg" src={item1} alt="item3" ></img></div>
           <h2>Embroidery Artist Katerina Marchenko</h2>
         </div>
         <div className="singleImg">
           <FavoriteBorderIcon className="heart"/>
-          <img className = "ItemImg" src={item2} alt="item4" ></img>
+          <div className="ImgBox"><img className = "ItemImg" src={item2} alt="item4" ></img></div>
           <h2>Bébé mobile Crèche mobile Crèche neutre Lit bébé mobile Cloud</h2>
         </div>
         <div className="singleImg">
           <FavoriteBorderIcon className="heart"/>
-          <img className = "ItemImg" src={item3} alt="item5" ></img>
+          <div className="ImgBox"><img className = "ItemImg" src={item3} alt="item5" ></img></div>
           <h2>Spring in Coming in my mug</h2>
         </div>
         <div className="singleImg">
           <FavoriteBorderIcon className="heart"/>
-          <img className = "ItemImg" src={item4} alt="item6" ></img>
+          <div className="ImgBox"><img className = "ItemImg" src={item4} alt="item6" ></img></div>
           <h2>Painting: Clouds</h2>
         </div>
         <div className="singleImg">
           <FavoriteBorderIcon className="heart"/>
-          <img className = "ItemImg" src={item1} alt="item6" ></img>
+          <div className="ImgBox"><img className = "ItemImg" src={item1} alt="item6" ></img></div>
           <h2>Painting: Clouds</h2>
         </div>
         <div className="singleImg">
           <FavoriteBorderIcon className="heart"/>
-          <img className = "ItemImg" src={item2} alt="item6" ></img>
+          <div className="ImgBox"><img className = "ItemImg" src={item2} alt="item6" ></img></div>
           <h2>Painting: Clouds</h2>
         </div>
         <div className="singleImg">
           <FavoriteBorderIcon className="heart"/>
-          <img className = "ItemImg" src={item3} alt="item6" ></img>
+          <div className="ImgBox"><img className = "ItemImg" src={item3} alt="item6" ></img></div>
           <h2>Painting: Clouds</h2>
         </div>
       </div>

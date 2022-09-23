@@ -62,7 +62,6 @@
 .singleImg .ItemImg {
     z-index: 2;
     width: 100%;
-    height: auto;
 }
 
 
@@ -70,6 +69,13 @@
     z-index: 2;
     font-weight: 300;
     text-align: center;
+}
+
+.singleImg .ImgBox {
+    z-index: 2;
+    height: 55%;
+    overflow: hidden;
+    border-radius: 20px;
 }
 
 /**** heart ***/
@@ -82,15 +88,21 @@
 }
 
 .singleImg svg {
+    width: 35px;
+    height: 35px;
     background-color: white;
-    border-radius: 15px;
-    padding: 2px;
+    border-radius: 20px;
+    padding: 3px;
 }
 
 /*******/
 @media screen and (max-width:1300px){
     .layout-like .singleImg {
         width: 18%;
+    }
+
+    .singleImg .ImgBox {
+        height: 47%;
     }
 }
 
@@ -101,6 +113,10 @@
 
     .heart {
         width: 40px;
+    }
+
+    .singleImg .ImgBox {
+        height: 45%;
     }
 }
 
@@ -129,6 +145,10 @@
     .layout-like .singleImg {
         margin: 1.5rem;
     }
+
+    .singleImg .ImgBox {
+        height: 42%;
+    }
 }
 
 @media screen and (max-width:700px){
@@ -155,6 +175,10 @@
 
     .layout-like h1{
         margin-left: 25%;
+    }
+
+    .singleImg .ImgBox {
+        height: 70%;
     }
     
 }

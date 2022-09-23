@@ -1,22 +1,11 @@
 import "../css/upload.css";
 import Select from "react-select";
 import React, {useState, useRef} from "react";
-import AWS, { ConnectContactLens } from 'aws-sdk'
+import CameraAltRoundedIcon from '@mui/icons-material/CameraAltRounded';
 
-const S3_BUCKET ='it-project-002';
-const REGION ='ap-southeast-2';
-
-AWS.config.update({
-    accessKeyId: 'AKIA3V2C4OGZ2UVFEEHG',
-    secretAccessKey: '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'
-})
-
-const s3 = new AWS.S3({
-    params: { Bucket: S3_BUCKET},
-    region: REGION,
-})
 
 export default function Upload() {
+    const access_token = sessionStorage.getItem("access_token")
     const options = [
         { value: "textiles", label: "Textiles" }, 
         { value: "ceramics", label: "Ceramics" },
@@ -81,10 +70,11 @@ export default function Upload() {
             data.append(i, filesArray[i]);
         }
         console.log(filesArray)
-        fetch('http://localhost:9000/user/upload',{
+        fetch('http://localhost:9000/users/upload',{
             headers : {
                 // 'Content-Type':'application/json',
                 'Access-Control-Allow-Origin': '*',
+                Authorization: "Bearer " + access_token,
             },
             method: 'POST',
             mode: 'cors',
@@ -96,21 +86,16 @@ export default function Upload() {
     }
 
     return (
-        <div className="main">
-            {/* <div className="preview-container">
-                <img src={sample} alt="sample"></img>
-                <img src={sample} alt="sample"></img>
-                <img src={sample} alt="sample"></img>
-            </div> */}
-            {/* Image uploader*/}
+        <div className="layout-upload">
+
             <div className="upload-container">
                 <label>
-                    <input className= "upload-input" type="file"  name="itemImages" multiple accept="image/*" onChange={onSelectFile}/>
+                    <CameraAltRoundedIcon className="upload-icon"/>
+                    <input className= "upload-input" type="file" name="itemImages" multiple accept="image/*" onChange={onSelectFile}/>
                 </label>
-                <p>Upload more photos</p>
-            </div>
-            
-            {/* Image preview*/}
+                <p>Maximum 3 photos</p>
+            </div>   
+
             <div className="preview-container">
                 {selectedImages &&
                     selectedImages.map((image, index) => {
@@ -123,41 +108,59 @@ export default function Upload() {
                     })
                 }
             </div>
+
             <div className="fillin-container">
                 <form method='post' onSubmit = {handleSubmit} enctype="multipart/form-data" ref={formRef}>
-                    <h2>Name your cute work?</h2>
-                    <input name="itemName" type="text"
+                    <div className="fillin-input-container">
+                        <h2>Name your cute work?</h2>
+                        <input 
+                        name="itemName"
+                        type="text"
                         value={itemName}
                         onChange={(e) => setItemName(e.target.value)}
                         required
-                    />
-                    <h2>Price your work?</h2>
-                    <input name="price" type="number"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        required
-                    />                    
+                        />
+                    </div>
+                    <div className="fillin-input-container">
+                        <h2>Price your work?</h2>
+                        <input type="number"
+                            name="price"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="fillin-input-container">
                     <h2>Can you precisely describe your work?</h2>
-                    <input name="describtion" type="text"
-                        value={describtion}
-                        onChange={(e) => setDescribtion(e.target.value)}
-                        required
-                    />
-                    {/* tag selection */}
-                    <h2>Tag your work with its category.</h2>
-                    <Select name="tag" className="tag"
-                        isMulti
-                        placeholder="Tell us what you interested in…"
-                        options={options}
-                        onChange={(item) => setTags(item)}
-                        isClearable={true}
-                        isSearchable={true}
-                        isDisabled={false}
-                        isLoading={false}
-                        isRtl={false}
-                        closeMenuOnSelect={false}
-                    />  
-                    <button className="button" type='submit'>Save Changes</button>
+                        <input type="text"
+                            value={describtion}
+                            onChange={(e) => setDescribtion(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <div>
+                            <h2>Tag your work with its category.</h2>
+                        </div>
+                        <div className="selector-container">
+                        <Select 
+                            isMulti
+                            name="tag"
+                            placeholder="Tell us what you interested in…"
+                            options={options}
+                            onChange={(item) => setTags(item)}
+                            isClearable={true}
+                            isSearchable={true}
+                            isDisabled={false}
+                            isLoading={false}
+                            isRtl={false}
+                            closeMenuOnSelect={false}
+                        />
+                        </div>
+                    </div>
+                    <div className="profile-button-container">
+                        <button type='submit'>Save Changes</button> 
+                    </div>
                 </form>
             </div>
         </div>

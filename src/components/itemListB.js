@@ -1,9 +1,10 @@
-import "../css/itemList.css";
 import item1 from "../image/items/item1.png";
 import item2 from "../image/items/item2.png";
 import item3 from "../image/items/item3.png";
 import item4 from "../image/items/item4.png";
 import item5 from "../image/items/item5.png";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function ItemList() {
   return (
@@ -52,11 +53,14 @@ export default function ItemList() {
 function Card(props) {
   return (
     <div className="card">
-      <img src={props.img} alt="item" className="card__img" />
-      <div className="card__body">
-        <h2 className="card__title">{props.title}</h2>
-        <p className="card__description">{props.description}</p>
-        <h3 className="card__price">{props.price}</h3>
+      <img src={props.img} alt="item" className="card-img" />
+      <div className="card-body">
+        <h2 className="card-title">{props.title}</h2>
+        <h3 className="card-price">{props.price}</h3>
+        <div className="icon-container">
+          <EditIcon className="edit-icon"/>
+          <DeleteForeverIcon className="delete-icon"/>
+        </div>
       </div>
     </div>
   );

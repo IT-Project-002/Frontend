@@ -3,45 +3,12 @@
 
 .layout-market {
   grid-area: main;
-  margin: 15vh 3vw;
+  margin: 10vh 3vw;
   display: grid;
-  grid-template-columns: 1fr 0.5fr 2.5fr;
+  grid-template-columns: 0.5fr 1fr 2.5fr;
   grid-template-areas:
     "user-avatar user-intro user-collection";
-  grid-gap: 2vw;
-  padding: 10px;
-}
-
-/* ===================================================== */
-/* Responsive design */
-
-@media screen and (max-width:1300px) {
-  .layout-market {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "user-intro"
-      "user-collection";
-    text-align: center;
-  }
-
-  .user-intro-container {
-    visibility: hidden;
-  }
-
-  .user-avatar-container {
-    visibility: hidden;
-  }
-
-  .user-collection-container {
-    grid-area: user-collection;
-    display: grid;
-    grid-gap: 5px;
-    padding-left: 2%;
-    padding-right: 2%;
-    text-align: center;
-    margin-bottom: 5vh;
-  }
+  grid-gap:1vw;
 }
 
 /* ===================================================== */
@@ -58,15 +25,7 @@
   bottom: 0;
   height: 75vh;
   width: auto;
-}
-
-.user-avatar-bg {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 90vh;
-  width: 40vw;
-  z-index: -1;
+  z-index:2;
 }
 
 /* ===================================================== */
@@ -76,8 +35,18 @@
   grid-area: user-intro;
   position: fixed;
   width: 15vw;
-  margin-top: 15vh;
-  left: 18vw;
+  margin-top: 22vh;
+  left: 17.5vw;
+  text-align: left;
+}
+
+.user-avatar-bg {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 90vh;
+  width: 38vw;
+  z-index: -1;
 }
 
 .user-intro-container svg {
@@ -97,67 +66,60 @@
 /* ===================================================== */
 /* User Collections */
 
-.user-collection-grid-container {
+.user-collection-container {
   grid-area: user-collection;
   display: grid;
 }
 
-.user-collection-container {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: space-between;
-}
-
-.user-collection-container > div {
-  width:250px;
-  height:250px;
-  padding:5px;
-  text-align:center;
-}
-
-.user-collection-container img {
-  width:90%;
-  height:80%;
-  object-fit:fill;
-  border-radius:10px;
-}
-
-.user-collection-container h3 {
-  margin:0;
-}
-
 /* ===================================================== */
-/* Edit, Delete Icon */
+/* Responsive design */
 
-.user-collection-container svg {
-  fill:grey;
-  width:25px;
-  height:25px;
-  background-color: white;
-  border-radius: 15px;
-  padding: 2px;
+@media screen and (max-width:1500px) {
+  .layout-market {
+    display: grid;
+    grid-template-columns: 0.7fr 2fr;
+    grid-template-areas:
+      "user-intro user-collection";
+    text-align: center;
+  }
+
+  .user-avatar-container {
+    display: none;
+  }
+
+  .user-intro-container {
+    width: 15vw;
+    margin-top: 10vh;
+    left: 5vw;
+  }
+
+  .user-avatar-bg {
+    display: none;
+  }
 }
 
-.edit-icon {
-  position:absolute;
-  margin-top:10px;
-  margin-left:185px;
-  z-index:3;
-}
 
-.edit-icon:hover {
-  fill:white;
-  background-color:#4F7942;
-}
 
-.delete-icon {
-  position:absolute;
-  margin-top:45px;
-  margin-left:185px;
-  z-index:3;
-}
+@media screen and (max-width:1000px) {
+  .layout-market {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "user-intro" 
+      "user-collection";
+    text-align: center;
+  }
 
-.delete-icon:hover {
-  fill:white;
-  background-color:#A93226;
+  .user-avatar-container {
+    display: none;
+  }
+
+  .user-intro-container {
+    position:static;
+    width: 95%;
+  }
+
+  .user-avatar-bg {
+    display: none;
+  }
 }

@@ -6,6 +6,8 @@ import male1 from "../image/avatar/male2background.png";
 import male2 from "../image/avatar/male2background.png";
 import male3 from "../image/avatar/male3background.png";
 import EditIcon from '@mui/icons-material/Edit';
+import Cards from "../components/itemListB";
+import "../css/itemListB.css";
 
 import item1 from "../image/items/item1.png";
 import item2 from "../image/items/item2.png";
@@ -49,6 +51,8 @@ export default function Market() {
   }, [access_token]);
   return (
     <div className="layout-market">
+
+      {/* User Aavatar */}
       <div className="user-avatar-container">
         {avatar === "female1" ? (
           <img className="user-avatar" src={female1} alt="female1"></img>
@@ -68,9 +72,9 @@ export default function Market() {
         {avatar === "male3" ? (
           <img className="user-avatar" src={male3} alt="male3"></img>
         ) : null}
-        <img className="user-avatar-bg" src={background} alt="background"></img>
       </div>
 
+      {/* User Intro & Upload button */}
       <div className="user-intro-container">
         <a href="/user/upload">
           <AddAPhotoOutlinedIcon />
@@ -85,64 +89,12 @@ export default function Market() {
           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
           rebum.{" "}
         </p>
+        <img className="user-avatar-bg" src={background} alt="background"></img>
       </div>
-      <div className="user-collection-grid-container">
-        <div className="user-collection-container">
-          <div className="market-item">
-            <EditIcon className="edit-icon"/>
-            <DeleteForeverIcon className="delete-icon"/>
-            <img src={item1} alt="item1"></img>
-            <h3>Embroidery Artist Katerina Marchenko</h3>
-          </div>
-          <div className="market-item">
-            <EditIcon className="edit-icon"/>
-            <DeleteForeverIcon className="delete-icon"/>
-            <img src={item1} alt="item1"></img>
-            <h3>Painting: Clouds</h3>
-          </div>
-          <div className="market-item">
-            <EditIcon className="edit-icon"/>
-            <DeleteForeverIcon className="delete-icon"/>
-            <img src={item2} alt="item1"></img>
-            <h3>Painting: Clouds</h3>
-          </div>
-          <div className="market-item">
-            <EditIcon className="edit-icon"/>
-            <DeleteForeverIcon className="delete-icon"/>
-            <img src={item3} alt="item1"></img>
-            <h3>Embroidery Artist Katerina Marchenko</h3>
-          </div>
-          <div className="market-item">
-            <EditIcon className="edit-icon"/>
-            <DeleteForeverIcon className="delete-icon"/>
-            <img src={item4} alt="item1"></img>
-            <h3>Spring in Coming in my mug</h3>
-          </div>
-          <div className="market-item">
-            <EditIcon className="edit-icon"/>
-            <DeleteForeverIcon className="delete-icon"/>
-            <img src={item5} alt="item1"></img>
-            <h3>Spring in Coming in my mug</h3>
-          </div>
-          <div className="market-item">
-            <EditIcon className="edit-icon"/>
-            <DeleteForeverIcon className="delete-icon"/>
-            <img src={item1} alt="item1"></img>
-            <h3>Painting: Clouds</h3>
-          </div>
-          <div className="market-item">
-            <EditIcon className="edit-icon"/>
-            <DeleteForeverIcon className="delete-icon"/>
-            <img src={item2} alt="item1"></img>
-            <h3>Painting: Clouds</h3>
-          </div>
-          <div className="market-item">
-            <EditIcon className="edit-icon"/>
-            <DeleteForeverIcon className="delete-icon"/>
-            <img src={item3} alt="item1"></img>
-            <h3>Spring in Coming in my mug</h3>
-          </div>
-        </div>
+
+      {/* User Item Collections */}
+      <div className="user-collection-container">
+          <Cards />
       </div>
     </div>
   );

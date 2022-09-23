@@ -32,36 +32,47 @@ function Landing() {
         <div className="browse-container">
           <div>
             <a href="/user/item"><img src={item1} alt="item1" ></img></a>
+            <h3>$23.00</h3>
           </div>
           <div>
             <a href="/user/item"><img src={item2} alt="item1" ></img></a>
+            <h3>$49.00</h3>
           </div>
           <div>
             <a href="/user/item"><img src={item3} alt="item1" ></img></a>
+            <h3>$49.00</h3>
           </div>
           <div>
             <a href="/user/item"><img src={item4} alt="item1" ></img></a>
+            <h3>$49.00</h3>
           </div>
           <div>
             <a href="/user/item"><img src={item5} alt="item1" ></img></a>
+            <h3>$49.00</h3>
           </div>
           <div>
             <a href="/user/item"><img src={item1} alt="item1" ></img></a>
+            <h3>$66.00</h3>
           </div>
           <div>
             <a href="/user/item"><img src={item2} alt="item1" ></img></a>
+            <h3>$49.00</h3>
           </div>
           <div>
             <a href="/user/item"><img src={item4} alt="item1" ></img></a>
+            <h3>$49.00</h3>
           </div>
           <div>
             <a href="/user/item"><img src={item5} alt="item1" ></img></a>
+            <h3>$49.00</h3>
           </div>
           <div>
             <a href="/user/item"><img src={item1} alt="item1" ></img></a>
+            <h3>$49.00</h3>
           </div>
           <div>
             <a href="/user/item"><img src={item2} alt="item1" ></img></a>
+            <h3>$49.00</h3>
           </div>
           <div></div>
         </div>

@@ -37,14 +37,19 @@
 .browse-container > div {
   width:250px;
   height:250px;
-  padding:10px;
+  text-align: center;
+  padding:15px;
 }
 
 .browse-container img {
-  width:100%;
-  height:100%;
+  width:95%;
+  height:95%;
   object-fit: fill;
-  border-radius: 10px;
+  border-radius: 3px;
+}
+
+.browse-container h3 {
+  margin-top: 0;
 }
 
 /* ===================================================== */

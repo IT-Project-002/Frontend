@@ -68,7 +68,6 @@ export default function Market() {
         {avatar === "male3" ? (
           <img className="user-avatar" src={male3} alt="male3"></img>
         ) : null}
-        <img className="user-avatar-bg" src={background} alt="background"></img>
       </div>
 
       <div className="user-intro-container">
@@ -85,6 +84,7 @@ export default function Market() {
           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
           rebum.{" "}
         </p>
+        <img className="user-avatar-bg" src={background} alt="background"></img>
       </div>
       <div className="user-collection-grid-container">
         <div className="user-collection-container">

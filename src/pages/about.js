@@ -5,6 +5,7 @@ import item3 from "../image/pages/aboutUs1.png";
 import item4 from "../image/pages/aboutUs2.png";
 import item5 from "../image/pages/aboutUs3.png";
 import item6 from "../image/pages/aboutUs4.png";
+import React from "react";
 
 export default function About() {
     return (

@@ -5,7 +5,7 @@ import item4 from "../image/items/item4.png";
 import item5 from "../image/items/item5.png";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import * as React from 'react';
+import React from "react";
 
 export default function ItemList() {
   return (

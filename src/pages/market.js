@@ -8,7 +8,6 @@ import male3 from "../image/avatar/male3background.png";
 import EditIcon from '@mui/icons-material/Edit';
 import Cards from "../components/itemListB";
 import "../css/itemListB.css";
-import React from "react";
 
 import item1 from "../image/items/item1.png";
 import item2 from "../image/items/item2.png";
@@ -18,7 +17,6 @@ import item5 from "../image/items/item5.png";
 import background from "../image/background/marketplace.png";
 import AddAPhotoOutlinedIcon from "@mui/icons-material/AddAPhotoOutlined";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-
 import React, { useState, useEffect } from "react";
 
 export default function Market() {

@@ -9,8 +9,8 @@ import item4 from "../image/items/item4.png";
 import item5 from "../image/items/item5.png";
 import Gallery from "../components/carousel";
 import Cards from "../components/itemListA";
-
 import React, { useEffect, useState } from "react";
+
 function Landing() {
   const [showModal, setShowModal] = useState(false);
   /* appear after 5 seconds */

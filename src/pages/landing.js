@@ -9,7 +9,6 @@ import item4 from "../image/items/item4.png";
 import item5 from "../image/items/item5.png";
 import Gallery from "../components/carousel";
 import Cards from "../components/itemListA";
-import React from "react";
 
 import React, { useEffect, useState } from "react";
 function Landing() {

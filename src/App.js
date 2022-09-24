@@ -11,6 +11,7 @@ import Footer from "./components/footer";
 import Item from "./pages/item";
 import About from "./pages/about";
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import React from "react";
 
 function App() {
   // window.onload = function(){

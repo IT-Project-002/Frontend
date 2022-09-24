@@ -8,6 +8,7 @@ import male3 from "../image/avatar/male3background.png";
 import EditIcon from '@mui/icons-material/Edit';
 import Cards from "../components/itemListB";
 import "../css/itemListB.css";
+import React from "react";
 
 import item1 from "../image/items/item1.png";
 import item2 from "../image/items/item2.png";

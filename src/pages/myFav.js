@@ -6,6 +6,7 @@ import item2 from "../image/items/item2.png"
 import item3 from "../image/items/item3.png"
 import item4 from "../image/items/item4.png"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import React from "react";
 
 export default function MyFav() {
   return (

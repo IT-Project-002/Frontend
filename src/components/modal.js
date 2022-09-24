@@ -1,6 +1,7 @@
 import "../css/modal.css";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import flowerBasket from "../image/pages/modalPlants.png";
+import React from "react";
 
 export default function Modal({close}){
     return(

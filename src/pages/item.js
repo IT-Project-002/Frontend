@@ -1,5 +1,6 @@
 import "../css/item.css";
 import Slider from "../components/imageSlider";
+import React from "react";
 
 export default function Item() {
   return (

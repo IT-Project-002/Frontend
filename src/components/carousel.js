@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import image1 from "../image/pages/landingSlider1.png";
 import image2 from "../image/pages/landingSlider2.png";
 
+
 class Gallery extends React.Component {
     render() {
         return (

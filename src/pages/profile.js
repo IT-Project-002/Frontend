@@ -1,9 +1,9 @@
-import * as React from 'react';
 import "../css/profile.css";
 import female1 from "../image/avatar/female1.png";
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import PersonIcon from '@mui/icons-material/Person';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
+import React from "react";
 
 
 export default function Profile() {

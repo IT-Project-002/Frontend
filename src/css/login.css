@@ -8,9 +8,19 @@
   grid-template-columns: 1fr 2fr;
   grid-template-areas:
     'login today';
-  /* background-image: url(../image/background.png);
+  /* background-image: url(../image/background/login.png);
   background-repeat: none;
   background-position: fixed; */
+}
+
+.login-background {
+  position:fixed;
+  top:60px;
+  left: 20px;
+  width:100vw;
+  height: auto;
+  object-fit: contain;
+  z-index:-99;
 }
 
 /* ===================================================== */

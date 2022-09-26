@@ -5,7 +5,7 @@ import "../css/form.css";
 import d1 from "../image/pages/loginDrawer.png";
 import {AiFillEyeInvisible, AiFillEye, AiTwotoneMail} from "react-icons/ai";
 import React from "react";
-
+import background from "../image/background/login.png";
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 export const validateEmailInput = (str="") => EMAIL_REG.test(str);
 
@@ -95,6 +95,7 @@ function Login(){
           <p>- Henri Matisse</p>
           <img src={d1} alt="d1"></img>
         </div>
+        <img className='login-background' src={background} alt=""></img>
       </div>
     )
   }

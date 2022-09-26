@@ -6,8 +6,6 @@ import male1 from "../image/avatar/male2background.png";
 import male2 from "../image/avatar/male2background.png";
 import male3 from "../image/avatar/male3background.png";
 import EditIcon from '@mui/icons-material/Edit';
-import Cards from "../components/itemListB";
-import "../css/itemListB.css";
 
 import item1 from "../image/items/item1.png";
 import item2 from "../image/items/item2.png";
@@ -93,7 +91,31 @@ export default function Market() {
 
       {/* User Item Collections */}
       <div className="user-collection-container">
-          <Cards />
+        <div className="wrapper">
+          <Card img={item1} title="White Blouse" description="Blouse • Lacey" price="19.95"/>
+          <Card img={item2} title="White Blouse" description="Blouse • Lacey" price="19.95"/>
+          <Card img={item3} title="White Blouse" description="Blouse • Lacey" price="19.95"/>
+          <Card img={item4} title="White Blouse" description="Blouse • Lacey" price="19.95"/>
+          <Card img={item5} title="White Blouse" description="Blouse • Lacey" price="19.95"/>
+          <Card img={item1} title="White Blouse" description="Blouse • Lacey" price="19.95"/>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+function Card(props) {
+  return (
+    <div className="card">
+      <img src={props.img} alt="item" className="card-img" />
+      <div className="card-body">
+        <h2 className="card-title">{props.title}</h2>
+        <h3 className="card-price">{props.price}</h3>
+        <div className="icon-container">
+          <EditIcon className="edit-icon"/>
+          <DeleteForeverIcon className="delete-icon"/>
+        </div>
       </div>
     </div>
   );

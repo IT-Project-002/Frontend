@@ -17,31 +17,10 @@
   position:fixed;
   top:60px;
   left: 20px;
-  width:100vw;
+  width:1400px;
   height: auto;
   object-fit: contain;
   z-index:-99;
-}
-
-/* ===================================================== */
-/* Responsive design */
-
-@media screen and (max-width:1200px) {
-  .layout-login {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "login"
-      "today";
-    grid-gap: 10px;
-    padding: 10px;
-    text-align: left;
-  }
-
-  .today-container img {
-    max-width: 70%;
-    height: auto;
-  }
 }
 
 /* ===================================================== */
@@ -63,6 +42,45 @@
 }
 
 .today-container img {
-  max-width: 70%;
+  max-width: 700px;
   height: auto;
+}
+
+/* ===================================================== */
+/* Responsive design */
+
+@media screen and (max-width:1200px) {
+  .layout-login {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "today"  
+      "login";
+    grid-gap: 10px;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .today-container img {
+    max-width: 500px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .layout-login {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "today"  
+      "login";
+    grid-gap: 10px;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .today-container img {
+    max-width: 400px;
+    height: auto;
+  }
 }

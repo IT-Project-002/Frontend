@@ -6,6 +6,8 @@ import d1 from "../image/pages/loginDrawer.png";
 import {AiFillEyeInvisible, AiFillEye, AiTwotoneMail} from "react-icons/ai";
 import React from "react";
 import background from "../image/background/login.png";
+import Button from '@mui/material/Button';
+
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 export const validateEmailInput = (str="") => EMAIL_REG.test(str);
 
@@ -82,7 +84,7 @@ function Login(){
                 onChange = {(e) => setPassword(e.target.value)} required/>
             </div>
             <div>
-              <button>Log in</button>
+              <button type="submit">Log in</button>
             </div>
             <div>
               <button><a href="/user/register">Haven't Sign up?</a></button>

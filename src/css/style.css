@@ -28,10 +28,28 @@ a {
 }
 
 button {
-  background: transparent;
-  border: none;
-  text-decoration: 1px solid underline;
+  text-decoration: 1px solid black underline;
+  border:none;
+  background-color: transparent;
 }
+
+/* button {
+  width: 120px;
+  height: 30px;
+  color:white;
+  background-color: #BCB4A7;
+  border:none;
+  border-radius: 5px;
+}
+
+button:hover {
+  width: 120px;
+  height: 30px;
+  color:#BCB4A7;
+  background-color: white;
+  border:none;
+  border-radius: 5px;
+} */
 
 /* ===================================================== */
 /* Navigation bar */
@@ -67,18 +85,12 @@ button {
 }
 
 .home-icon {
-  margin-top: 0.6rem;
-  margin-left: 1.8rem;
-  width: 43px;
-  height: 43px;
-  border: 2px solid black;
+  margin-top: 0.3rem;
+  margin-left: 1.6rem;
+  width: 50px;
+  height: 50px;
   border-radius: 25px;
   padding:1.5px;
-}
-
-.website-name {
-  margin-top: 1rem;
-  margin-left:1.8rem;
 }
 
 /* ===================================================== */

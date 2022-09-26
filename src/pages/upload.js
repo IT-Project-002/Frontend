@@ -108,7 +108,6 @@ export default function Upload() {
      }, [access_token]);
     return (
         <div className="layout-upload">
-
             <div className="upload-container">
                 <label>
                     <CameraAltRoundedIcon className="upload-icon"/>

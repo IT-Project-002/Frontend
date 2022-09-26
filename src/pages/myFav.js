@@ -11,50 +11,35 @@ import React from "react";
 export default function MyFav() {
   return (
     <div className="layout-like">
-      <div className = "content">
-        <h1>My Favourite</h1>
-        <div className = "items">
-        <div className="singleImg">
-          <FavoriteBorderIcon className="heart"/>
-          <div className="ImgBox"><img className = "ItemImg" src={item1} alt="item3" ></img></div>
-          <h2>Embroidery Artist Katerina Marchenko</h2>
-        </div>
-        <div className="singleImg">
-          <FavoriteBorderIcon className="heart"/>
-          <div className="ImgBox"><img className = "ItemImg" src={item2} alt="item4" ></img></div>
-          <h2>Bébé mobile Crèche mobile Crèche neutre Lit bébé mobile Cloud</h2>
-        </div>
-        <div className="singleImg">
-          <FavoriteBorderIcon className="heart"/>
-          <div className="ImgBox"><img className = "ItemImg" src={item3} alt="item5" ></img></div>
-          <h2>Spring in Coming in my mug</h2>
-        </div>
-        <div className="singleImg">
-          <FavoriteBorderIcon className="heart"/>
-          <div className="ImgBox"><img className = "ItemImg" src={item4} alt="item6" ></img></div>
-          <h2>Painting: Clouds</h2>
-        </div>
-        <div className="singleImg">
-          <FavoriteBorderIcon className="heart"/>
-          <div className="ImgBox"><img className = "ItemImg" src={item1} alt="item6" ></img></div>
-          <h2>Painting: Clouds</h2>
-        </div>
-        <div className="singleImg">
-          <FavoriteBorderIcon className="heart"/>
-          <div className="ImgBox"><img className = "ItemImg" src={item2} alt="item6" ></img></div>
-          <h2>Painting: Clouds</h2>
-        </div>
-        <div className="singleImg">
-          <FavoriteBorderIcon className="heart"/>
-          <div className="ImgBox"><img className = "ItemImg" src={item3} alt="item6" ></img></div>
-          <h2>Painting: Clouds</h2>
-        </div>
+      <div className="myfav-title">
+        <h1 >My Favourite</h1>
       </div>
-
+      <div className="myfav-items-container">
+        <div className="wrapper">
+          <Card img={item1} title="Tie Up Boots"/>
+          <Card img={item2} title="Tie Up Boots"/>
+          <Card img={item3} title="Tie Up Boots"/>
+          <Card img={item4} title="Tie Up Boots"/>
+          <Card img={item1} title="Tie Up Boots"/>
+        </div>
       </div>
       <img className="itemhead" src={backgroundTop} alt="item1" ></img>
       <img className="itemfoot" src={backgroundBottom} alt="item2" ></img>
+    </div>
+  );
+}
 
+
+function Card(props) {
+  return (
+    <div className="card">
+      <div>
+        <FavoriteBorderIcon/>
+      </div>
+      <img src={props.img} alt="item" className="card-img" />
+      <div className="card-body">
+        <h2 className="card-title">{props.title}</h2>
+      </div>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import female3 from "../image/avatar/female3.png";
 import male1 from "../image/avatar/male1.png";
 import male2 from "../image/avatar/male2.png";
 import male3 from "../image/avatar/male3.png";
+import background from "../image/background/login.png";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][A-z0-9-_]{3,14}$/i);
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
@@ -164,6 +165,11 @@ function Registration() {
       </div>
       <div className="bubble-container">
         <h2>Pick your profile picture…</h2>
+        {!avatar ? (
+            <p id="uidnote" className="instructions">
+              Must pick profile picture
+            </p >
+          ) : null}
         <img src={female1} alt="female1" className = "avatar2" onClick={handleClick}></img>
         <img src={female2} alt="female2" className="avatar1" onClick={handleClick}></img>
         <img src={female3} alt="female3" className = "avatar2" onClick={handleClick}></img>
@@ -172,6 +178,7 @@ function Registration() {
         <img src={male3} alt="male3" className = "avatar1" onClick={handleClick}></img>
         <h2>Now…Let's set up your own space!</h2>
       </div>
+      <img className='login-background' src={background} alt=""></img>
     </div>
   );
 }

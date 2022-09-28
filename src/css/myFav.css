@@ -61,10 +61,6 @@
     margin-top: 10px;
 }
 
-
-
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
-
 .wrapper {
   margin: 1rem;
   display: grid;
@@ -74,7 +70,7 @@
 }
 
 .card {
-  box-shadow: 0 0 10px 10px rgb(244, 244, 247);
+  /* box-shadow: 0 0 10px 10px rgb(244, 244, 247); */
   border-radius: 20px;
   min-width: 28rem;
   display: flex;

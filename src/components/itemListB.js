@@ -1,52 +1,20 @@
-import item1 from "../image/items/item1.png";
-import item2 from "../image/items/item2.png";
-import item3 from "../image/items/item3.png";
-import item4 from "../image/items/item4.png";
-import item5 from "../image/items/item5.png";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import React from "react";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-export default function ItemList() {
+export default function ItemList(props) {
+  console.log(props);
+  console.log(props.data.item_names);
+  const items = props.data.item_names;
+  const links = props.data.item_links;
   return (
     <div className="wrapper">
-      <Card
-        img={item1}
-        title="Tie Up Boots"
-        description="Fall Favorite • Boots"
-        price="45.00"
-      />
-
-      <Card
-        img={item2}
-        title="Plush Sweater"
-        description="Sweater Season • Cozy"
-        price="29.95"
-      />
-      <Card
-        img={item3}
-        title="Slim-Fit Demin"
-        description="Demin • Verstile"
-        price="24.99"
-      />
-      <Card
-        img={item4}
-        title="White Blouse"
-        description="Blouse • Lacey"
-        price="19.95"
-      />
-      <Card
-        img={item5}
-        title="White Blouse"
-        description="Blouse • Lacey"
-        price="19.95"
-      />
-      <Card
-        img={item1}
-        title="White Blouse"
-        description="Blouse • Lacey"
-        price="19.95"
-      />
+      {/* avoid a blank array[] */}
+      {items?.map((item, index) => (
+        <div key={items[index]}>
+          <Card img={links[index]} title={item} description="/" price="/" />
+        </div>
+      ))}
     </div>
   );
 }
@@ -54,13 +22,18 @@ export default function ItemList() {
 function Card(props) {
   return (
     <div className="card">
-      <img src={props.img} alt="item" className="card-img" />
+      {/* navigate to item page */}
+      <a href="/user/item">
+        <img src={props.img} alt="item" className="card-img" />
+      </a>
       <div className="card-body">
         <h2 className="card-title">{props.title}</h2>
         <h3 className="card-price">{props.price}</h3>
         <div className="icon-container">
-          <EditIcon className="edit-icon"/>
-          <DeleteForeverIcon className="delete-icon"/>
+          <a href="/user/upload">
+            <EditIcon className="edit-icon" />
+          </a>
+          <DeleteForeverIcon className="delete-icon" />
         </div>
       </div>
     </div>

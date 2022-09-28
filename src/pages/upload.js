@@ -3,6 +3,7 @@ import Select from "react-select";
 import React, { useState, useRef, useEffect } from "react";
 import CameraAltRoundedIcon from "@mui/icons-material/CameraAltRounded";
 import Alert from "@mui/material/Alert";
+import PhotoIcon from "@mui/icons-material/PhotoSizeSelectActualOutlined";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,20}$/i);
 const PRICE_REG = new RegExp(/^[0-9]{1,8}$/i);
@@ -129,6 +130,9 @@ export default function Upload() {
       </div>
 
       <div className="preview-container">
+        {/* <div className="empty-wrapper" />
+        <div className="empty-wrapper" />
+        <div className="empty-wrapper" /> */}
         {selectedImages &&
           selectedImages.map((image) => {
             return (
@@ -138,6 +142,21 @@ export default function Upload() {
               </div>
             );
           })}
+        {selectedImages.length < 3 ? (
+          <div className="image-wrapper">
+            <PhotoIcon />
+          </div>
+        ) : null}
+        {selectedImages.length < 2 ? (
+          <div className="image-wrapper">
+            <PhotoIcon />
+          </div>
+        ) : null}
+        {selectedImages.length === 0 ? (
+          <div className="image-wrapper">
+            <PhotoIcon />
+          </div>
+        ) : null}
       </div>
 
       <div className="fillin-container">

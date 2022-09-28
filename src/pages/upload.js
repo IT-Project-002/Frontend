@@ -132,13 +132,8 @@ export default function Upload() {
         {selectedImages &&
           selectedImages.map((image) => {
             return (
-              <div key={image}>
-                <button
-                  className="delete-button"
-                  onClick={() => deleteImage(image)}
-                >
-                  X
-                </button>
+              <div key={image} className="image-wrapper">
+                <button onClick={() => deleteImage(image)}>X</button>
                 <img src={image} alt="file" />
               </div>
             );
@@ -162,13 +157,13 @@ export default function Upload() {
               required
             />
             {itemName && !validName(itemName) ? (
-              <p id="uidnote" className="instructions">
+              <div id="upload" className="instructions">
                 <Alert severity="warning">
                   3 to 20 characters. Must start with letters.
                   <br />
                   Letters, numbers, underscores, space, hyphens allowed.
                 </Alert>
-              </p>
+              </div>
             ) : null}
           </div>
           <div className="fillin-input-container">
@@ -181,11 +176,11 @@ export default function Upload() {
               required
             />
             {price && !validPrice(price) ? (
-              <p id="uidnote" className="instructions">
+              <div id="upload" className="instructions">
                 <Alert severity="warning">
-                  Price ranged between 0 to 99,999,999
+                  Price ranged between 0 to 99,999,999.
                 </Alert>
-              </p>
+              </div>
             ) : null}
           </div>
           <div className="fillin-input-container">

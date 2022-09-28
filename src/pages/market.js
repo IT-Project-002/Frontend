@@ -9,19 +9,14 @@ import male2 from "../image/avatar/male2background.png";
 import male3 from "../image/avatar/male3background.png";
 import background from "../image/background/marketplace.png";
 import AddAPhotoOutlinedIcon from "@mui/icons-material/AddAPhotoOutlined";
+import CircularProgress from "@mui/material/CircularProgress";
 import Cards from "../components/itemListB";
-// import EditIcon from '@mui/icons-material/Edit';
-// import item1 from "../image/items/item1.png";
-// import item2 from "../image/items/item2.png";
-// import item3 from "../image/items/item3.png";
-// import item4 from "../image/items/item4.png";
-// import item5 from "../image/items/item5.png";
-// import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function Market() {
   const access_token = sessionStorage.getItem("access_token");
   const [data, setData] = useState({});
   const avatar = data["Avatar"];
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/users/market", {
@@ -45,50 +40,61 @@ export default function Market() {
       .then((dat) => {
         console.log(dat);
         setData(dat);
+        setLoading(false);
       });
   }, [access_token]);
 
   return (
-    <div className="layout-market">
-      {/* Aavatar matching */}
-      <div className="user-avatar-container">
-        {avatar === "female1" ? (
-          <img className="user-avatar" src={female1} alt="female1"></img>
-        ) : null}
-        {avatar === "female2" ? (
-          <img className="user-avatar" src={female2} alt="female2"></img>
-        ) : null}
-        {avatar === "female3" ? (
-          <img className="user-avatar" src={female3} alt="female3"></img>
-        ) : null}
-        {avatar === "male1" ? (
-          <img className="user-avatar" src={male1} alt="male1"></img>
-        ) : null}
-        {avatar === "male2" ? (
-          <img className="user-avatar" src={male2} alt="male2"></img>
-        ) : null}
-        {avatar === "male3" ? (
-          <img className="user-avatar" src={male3} alt="male3"></img>
-        ) : null}
-      </div>
+    <>
+      {loading ? (
+        <CircularProgress className="layout-market" />
+      ) : (
+        <div className="layout-market">
+          {/* Aavatar matching */}
+          <div className="user-avatar-container">
+            {avatar === "female1" ? (
+              <img className="user-avatar" src={female1} alt="female1"></img>
+            ) : null}
+            {avatar === "female2" ? (
+              <img className="user-avatar" src={female2} alt="female2"></img>
+            ) : null}
+            {avatar === "female3" ? (
+              <img className="user-avatar" src={female3} alt="female3"></img>
+            ) : null}
+            {avatar === "male1" ? (
+              <img className="user-avatar" src={male1} alt="male1"></img>
+            ) : null}
+            {avatar === "male2" ? (
+              <img className="user-avatar" src={male2} alt="male2"></img>
+            ) : null}
+            {avatar === "male3" ? (
+              <img className="user-avatar" src={male3} alt="male3"></img>
+            ) : null}
+          </div>
 
-      {/* User Intro & Upload button */}
-      <div className="user-intro-container">
-        <a href="/user/upload">
-          <AddAPhotoOutlinedIcon />
-        </a>
-        <p>Click to upload more items.</p>
-        <hr className="divider"></hr>
-        <h1>{data["username"]}'s</h1>
-        <h1>Marketplace</h1>
-        <p>{data["Bio"]}</p>
-        <img className="user-avatar-bg" src={background} alt="background"></img>
-      </div>
+          {/* User Intro & Upload button */}
+          <div className="user-intro-container">
+            <a href="/user/upload">
+              <AddAPhotoOutlinedIcon />
+            </a>
+            <p>Click to upload more items.</p>
+            <hr className="divider"></hr>
+            <h1>{data["username"]}'s</h1>
+            <h1>Marketplace</h1>
+            <p>{data["Bio"]}</p>
+            <img
+              className="user-avatar-bg"
+              src={background}
+              alt="background"
+            ></img>
+          </div>
 
-      {/* User Item Collections */}
-      <div className="user-collection-container">
-        <Cards data={data} />
-      </div>
-    </div>
+          {/* User Item Collections */}
+          <div className="user-collection-container">
+            <Cards data={data} />
+          </div>
+        </div>
+      )}
+    </>
   );
 }

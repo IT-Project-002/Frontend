@@ -10,6 +10,7 @@
     grid-template-areas:
       "preview upload fill-in";
     grid-gap: 2rem;
+    overflow-x: hidden;
 }
 
 /* ===================================================== */
@@ -47,27 +48,59 @@
 
 .preview-container {
     grid-area: preview;
-    height: 70%;
-    text-align: center;
+    height: fit-content;
+    min-height: 90%;
+    border-radius: 20px;
 }
 
-.preview-container img {
-    max-width: 70%;
-    margin: 4%;
+/* .empty-wrapper{
+    width: 200px;
+    height: 170px;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 15px;
+    position: relative;
+} */
+
+.preview-container svg {
+    width: 200px;
+    height: 170px;
+    border-radius: 20px;
+    margin: auto;
+    color: white;
+    position: relative;
+    background-color: #D2CBC1;
+  }
+
+.image-wrapper{
+    width: 200px;
+    height: 170px;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 15px;
+    position: relative;
+    background-color: #D2CBC1;
+}
+
+.preview-container img{
+    /* margin: 10px; */
+    width: 200px;
+    height: 170px;
     border-radius: 20px;
     box-shadow: 0px 1px 6px 5px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
 }
 
-.delete-button {
+.image-wrapper button {
     width: 30px;
     height: 30px;
     position: absolute;
-    margin-left: 200px;
-    margin-top: 20px;
+    top: 2px;
+    right: 2px;
     border: transparent;
     border-radius: 50%;
     background-color: #D2CBC1;
-    z-index: 100;
+    z-index: 2;
 }
 
 /* ===================================================== */
@@ -80,7 +113,6 @@
 
 .upload-container img {
     max-width: 60%;
-
 }
 
 .upload-container svg {
@@ -95,7 +127,7 @@
     width: 250px;
     height: 250px;
     color: white;
-    background-color: black;
+    background-color: #8b867e;
     border-radius: 40px;
 }
 
@@ -117,7 +149,8 @@
 }
 
 .fillin-input-container input {
-    width: 95%;
+    /* width: 95%; */
+    width: 75%;
     height: 2rem;
     background: transparent;
     border: none;

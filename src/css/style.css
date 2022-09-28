@@ -7,10 +7,6 @@
 
 body {
   background-color: #fcf8f4;
-  /* background-image: url(../image/background/login.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed; */
   margin:0;
   font-family: Ariel;
 }
@@ -19,11 +15,11 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
   grid-template-areas:
     "navbar"
     "main"
     "footer";
+  min-height: 100vh;
 }
 
 /* redirect link */
@@ -32,10 +28,28 @@ a {
 }
 
 button {
-  background: transparent;
-  border: none;
-  text-decoration: 1px solid underline;
+  text-decoration: 1px solid black underline;
+  border:none;
+  background-color: transparent;
 }
+
+/* button {
+  width: 120px;
+  height: 30px;
+  color:white;
+  background-color: #BCB4A7;
+  border:none;
+  border-radius: 5px;
+}
+
+button:hover {
+  width: 120px;
+  height: 30px;
+  color:#BCB4A7;
+  background-color: white;
+  border:none;
+  border-radius: 5px;
+} */
 
 /* ===================================================== */
 /* Navigation bar */
@@ -43,7 +57,7 @@ button {
 /* Overall */
 .navbar {
   grid-area: navbar;
-  height: 8vh;
+  height: 60px;
   background:#fcf8f4;
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -56,14 +70,14 @@ button {
 .navbar ul {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-right:1rem;
 }
 
 /* Icons  */
 .navbar svg {
-  width: 35px;
-  height: 35px;
+  width: 33px;
+  height: 33px;
 }
 
 .navbar svg:hover {
@@ -71,18 +85,12 @@ button {
 }
 
 .home-icon {
-  margin-top: 0.8rem;
-  margin-left: 1.8rem;
-}
-
-.side-menu {
-  display: none;
-}
-
-@media screen and (max-width:800px) {
-  .menu{
-    display: none;
-  }
+  margin-top: 0.3rem;
+  margin-left: 1.6rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  padding:1.5px;
 }
 
 /* ===================================================== */
@@ -90,9 +98,9 @@ button {
 
 .footer {
   grid-area: footer;
-  height: 7vh;
+  height: 45px;
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.1);
-  /* position: fixed; */
+  position: fixed;
   width: 100%;
   bottom: 0;
   background: #fcf8f4;

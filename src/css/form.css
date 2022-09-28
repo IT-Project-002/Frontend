@@ -1,11 +1,22 @@
 /* ===================================================== */
 /* Error message */
-.instructions {
+#uidnote {
   font-size: 0.75rem;
   margin-top: 0;
   position: relative;
   color: firebrick;
   font-weight: bold;
+  /* width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: -20px;
+  text-align: left; */
+}
+
+#upload {
+  text-align: left;
+  width: 75%;
+  margin: 0 auto;
 }
 
 /* ===================================================== */
@@ -16,9 +27,9 @@
   display: flex;
   width: 60%;
   margin-left: 20%;
-  margin-right: 20%;;
+  margin-right: 20%;
   margin-bottom: 15px;
-  font-size: medium;
+  font-size: 40px;
 }
 
 .input-container input {
@@ -39,9 +50,9 @@
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow:200px 200px 100px #fcf8f4 inset; 
-  box-shadow:200px 200px 100px #fcf8f4 inset; 
-  border-radius: none;
+  -webkit-box-shadow:200px 200px 100px #E4DFD4 inset; 
+  box-shadow:200px 200px 100px #E4DFD4 inset; 
+  /* border-radius: none; */
 }
 
 /* ===================================================== */

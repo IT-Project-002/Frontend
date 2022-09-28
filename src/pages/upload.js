@@ -2,6 +2,8 @@ import "../css/upload.css";
 import Select from "react-select";
 import React, { useState, useRef, useEffect } from "react";
 import CameraAltRoundedIcon from "@mui/icons-material/CameraAltRounded";
+import Alert from "@mui/material/Alert";
+
 const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,20}$/i);
 const PRICE_REG = new RegExp(/^[0-9]{1,8}$/i);
 export const validName = (str = "") => NAME_REG.test(str);
@@ -161,16 +163,18 @@ export default function Upload() {
             />
             {itemName && !validName(itemName) ? (
               <p id="uidnote" className="instructions">
-                3 to 20 characters. Must start with letters.
-                <br />
-                Letters, numbers, underscores, space, hyphens allowed.
+                <Alert severity="warning">
+                  3 to 20 characters. Must start with letters.
+                  <br />
+                  Letters, numbers, underscores, space, hyphens allowed.
+                </Alert>
               </p>
             ) : null}
           </div>
           <div className="fillin-input-container">
             <h2>Price your work?</h2>
             <input
-              type="text"
+              type="texts"
               name="price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
@@ -178,7 +182,9 @@ export default function Upload() {
             />
             {price && !validPrice(price) ? (
               <p id="uidnote" className="instructions">
-                Price ranged between 0 to 99,999,999
+                <Alert severity="warning">
+                  Price ranged between 0 to 99,999,999
+                </Alert>
               </p>
             ) : null}
           </div>

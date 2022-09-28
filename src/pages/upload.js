@@ -2,6 +2,11 @@ import "../css/upload.css";
 import Select from "react-select";
 import React, { useState, useRef, useEffect } from "react";
 import CameraAltRoundedIcon from "@mui/icons-material/CameraAltRounded";
+const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,20}$/i);
+const PRICE_REG = new RegExp(/^[0-9]{1,8}$/i);
+export const validName = (str = "") => NAME_REG.test(str);
+export const validPrice = (str = "") => PRICE_REG.test(str);
+
 export default function Upload() {
   const access_token = sessionStorage.getItem("access_token");
   const options = [
@@ -14,16 +19,13 @@ export default function Upload() {
     { value: "painting", label: "Painting" },
     { value: "others", label: "Others" },
   ];
-
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState("");
   const [describtion, setDescribtion] = useState("");
   const [tags, setTags] = useState([]);
-
   /* Image */
   const [selectedImages, setSelectedImages] = useState([]);
   const [filesDict, setFileDict] = useState({});
-  //   const filesDict = {};
   const formRef = useRef();
 
   const onSelectFile = (e) => {
@@ -47,39 +49,44 @@ export default function Upload() {
     e.target.value = "";
     // setSelectedFile(e.target.files[0]);
   };
+
   const deleteImage = (image) => {
     setSelectedImages(selectedImages.filter((e) => e !== image));
     URL.revokeObjectURL(image);
   };
+
   const handleSubmit = (e) => {
+    console.log(selectedImages);
     // prevent page being refresh
-    e.preventDefault();
-    const data = new FormData(formRef.current);
-    data.append("tags", JSON.stringify(tags));
-    const filesArray = selectedImages.map((file) => {
-      return filesDict[file];
-    });
-    for (let i = 0; i < filesArray.length; i++) {
-      data.append(i, filesArray[i]);
-    }
-    console.log(filesArray);
-    fetch("/users/upload", {
-      headers: {
-        // 'Content-Type':'application/json',
-        "Access-Control-Allow-Origin": "*",
-        Authorization: "Bearer " + access_token,
-      },
-      method: "POST",
-      mode: "cors",
-      body: data,
-    })
-      .then((res) => {
-        console.log(res);
-        window.location.reload();
-      })
-      .then((itemInfo) => {
-        console.log("Success:", itemInfo);
+    if ((0 < selectedImages.length < 3) & tags) {
+      e.preventDefault();
+      const data = new FormData(formRef.current);
+      console.log(data);
+      data.append("tags", JSON.stringify(tags));
+      const filesArray = selectedImages.map((file) => {
+        return filesDict[file];
       });
+      for (let i = 0; i < filesArray.length; i++) {
+        data.append(i, filesArray[i]);
+      }
+      console.log(filesArray);
+      fetch("/users/upload", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          Authorization: "Bearer " + access_token,
+        },
+        method: "POST",
+        mode: "cors",
+        body: data,
+      })
+        .then((res) => {
+          console.log(res);
+          window.location.reload();
+        })
+        .then((itemInfo) => {
+          console.log("Success:", itemInfo);
+        });
+    }
   };
 
   useEffect(() => {
@@ -101,6 +108,7 @@ export default function Upload() {
       }
     });
   }, [access_token]);
+
   return (
     <div className="layout-upload">
       <div className="upload-container">
@@ -120,15 +128,14 @@ export default function Upload() {
 
       <div className="preview-container">
         {selectedImages &&
-          selectedImages.map((image, index) => {
+          selectedImages.map((image) => {
             return (
               <div key={image}>
                 <button
                   className="delete-button"
                   onClick={() => deleteImage(image)}
                 >
-                  {" "}
-                  X{" "}
+                  X
                 </button>
                 <img src={image} alt="file" />
               </div>
@@ -152,16 +159,28 @@ export default function Upload() {
               onChange={(e) => setItemName(e.target.value)}
               required
             />
+            {itemName && !validName(itemName) ? (
+              <p id="uidnote" className="instructions">
+                3 to 20 characters. Must start with letters.
+                <br />
+                Letters, numbers, underscores, space, hyphens allowed.
+              </p>
+            ) : null}
           </div>
           <div className="fillin-input-container">
             <h2>Price your work?</h2>
             <input
-              type="number"
+              type="text"
               name="price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               required
             />
+            {price && !validPrice(price) ? (
+              <p id="uidnote" className="instructions">
+                Price ranged between 0 to 99,999,999
+              </p>
+            ) : null}
           </div>
           <div className="fillin-input-container">
             <h2>Can you precisely describe your work?</h2>

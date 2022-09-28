@@ -23,6 +23,11 @@ describe("Register email format",()=>{
         expect(validEmail(text)).toBe(true);
     })
 
+    test("validEmailfunction should pass on correct input 2",()=> {
+        const text = "text@gmail.com.au";
+        expect(validEmail(text)).toBe(true);
+    })
+
     test("validEmail function should fail when missing @",()=> {
         const text = "textgmailcom";
         expect(validEmail(text)).toBe(false);

@@ -15,14 +15,13 @@ import React from "react";
 
 function App() {
   // window.onload = function(){
-  //   var ab =document.getElementById('a')
-  //   var bod = document.getElementsByTagName('body')[0]
-  //   console.log(bod)
-  //   if(ab == null){
-  //       bod.style.backgroundImage="url(../src/image/background/login.png)"
-  //   }else{
-  //       bod.style.background='blue'
-  //   }}
+  //   if(document.getElementById('login-page') == null){
+  //     changeBackground("url('../image/background/register.png')")
+  //   }
+  //   else{
+  //     changeBackground("url('../image/background/register.png')")
+  //   }
+  // }
 
   return (
     <Router>
@@ -44,3 +43,7 @@ function App() {
 }
 
 export default App;
+
+// function changeBackground(bg){
+//   document.body.style.backgroundImage=bg;
+// }

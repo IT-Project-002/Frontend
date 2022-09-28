@@ -61,35 +61,33 @@ export default function Upload() {
   const handleSubmit = (e) => {
     console.log(selectedImages);
     // prevent page being refresh
-    if ((0 < selectedImages.length < 3) & tags) {
-      e.preventDefault();
-      const data = new FormData(formRef.current);
-      console.log(data);
-      data.append("tags", JSON.stringify(tags));
-      const filesArray = selectedImages.map((file) => {
-        return filesDict[file];
-      });
-      for (let i = 0; i < filesArray.length; i++) {
-        data.append(i, filesArray[i]);
-      }
-      console.log(filesArray);
-      fetch("/users/upload", {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          Authorization: "Bearer " + access_token,
-        },
-        method: "POST",
-        mode: "cors",
-        body: data,
-      })
-        .then((res) => {
-          console.log(res);
-          window.location.reload();
-        })
-        .then((itemInfo) => {
-          console.log("Success:", itemInfo);
-        });
+    e.preventDefault();
+    const data = new FormData(formRef.current);
+    console.log(data);
+    data.append("tags", JSON.stringify(tags));
+    const filesArray = selectedImages.map((file) => {
+      return filesDict[file];
+    });
+    for (let i = 0; i < filesArray.length; i++) {
+      data.append(i, filesArray[i]);
     }
+    console.log(filesArray);
+    fetch("/users/upload", {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        Authorization: "Bearer " + access_token,
+      },
+      method: "POST",
+      mode: "cors",
+      body: data,
+    })
+      .then((res) => {
+        console.log(res);
+        window.location.reload();
+      })
+      .then((itemInfo) => {
+        console.log("Success:", itemInfo);
+      });
   };
 
   useEffect(() => {

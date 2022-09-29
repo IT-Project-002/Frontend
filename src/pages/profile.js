@@ -5,8 +5,35 @@ import female1 from "../image/avatar/female1.png";
 // import ToggleOffIcon from "@mui/icons-material/ToggleOff";
 // import InfoIcon from "@mui/icons-material/Info";
 import React from "react";
+import { useState, useEffect } from "react";
 
 export default function Profile() {
+    const access_token = sessionStorage.getItem("access_token");
+    const [data, setData] = useState({});
+     useEffect(() => {
+        fetch("/users/profile", {
+             headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                Authorization: "Bearer " + access_token,
+             },
+            method: "GET",
+            mode: "cors",
+        })
+        .then((res) => {
+            console.log(res);
+            if (res.status === 401) {
+              sessionStorage.removeItem("access_token");
+              window.location.href = window.location.origin + "/user/login";
+            } else {
+              return res.json();
+            }
+        })
+        .then((dat) => {
+            console.log(dat);
+            setData(dat);
+        });
+     }, [access_token]);
   return (
     <div className="layout-profile">
       <div className="profile-photo-container">

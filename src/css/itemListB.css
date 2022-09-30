@@ -1,9 +1,10 @@
 .wrapper {
-  margin: 1rem;
+  /* margin-top: 1rem; */
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr;
   justify-content: center;
+  /* margin-bottom: 50px; */
 }
 
 .card {
@@ -16,11 +17,18 @@
 
 .card-img {
   width: 14rem;
-  height: 11rem;
+  height: 12rem;
   object-fit: cover;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   z-index: 2;
+}
+
+/* 加了跳转后<a>有一个高度 */
+@media screen and (max-width: 750px){
+  .card {
+    height: 12rem;
+  }
 }
 
 .card-body {

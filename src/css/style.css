@@ -14,7 +14,8 @@ body {
 #root {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
+  /* grid-template-rows: auto 1fr auto; */
+  grid-template-rows: 60px auto 45px;
   grid-template-areas:
     "navbar"
     "main"
@@ -110,18 +111,3 @@ button:hover {
 .footer p {
   text-align: center;
 }
-
-/* error message*/
-.errmsg {
-  color: firebrick;
-  font-weight: bold;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.offscreen {
-  background-color: transparent;
-  position: absolute;
-  left: -9999px;
-}
-

@@ -23,7 +23,7 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  height: 75vh;
+  height: 85vh;
   width: auto;
   z-index:2;
 }
@@ -74,7 +74,7 @@
 /* ===================================================== */
 /* Responsive design */
 
-@media screen and (max-width:1500px) {
+@media screen and (max-width:1420px) {
   .layout-market {
     display: grid;
     grid-template-columns: 0.7fr 2fr;

@@ -83,7 +83,8 @@ export default function Upload() {
     })
       .then((res) => {
         console.log(res);
-        window.location.reload();
+        // window.location.reload();
+        window.location.href = window.location.origin + "/user/market";
       })
       .then((itemInfo) => {
         console.log("Success:", itemInfo);
@@ -128,9 +129,6 @@ export default function Upload() {
       </div>
 
       <div className="preview-container">
-        {/* <div className="empty-wrapper" />
-        <div className="empty-wrapper" />
-        <div className="empty-wrapper" /> */}
         {selectedImages &&
           selectedImages.map((image) => {
             return (
@@ -230,9 +228,7 @@ export default function Upload() {
             </div>
           </div>
           <div className="profile-button-container">
-            <a href="user/market">
-              <button type="submit">Save Changes</button>
-            </a>
+            <button type="submit">Save Changes</button>
           </div>
         </form>
       </div>

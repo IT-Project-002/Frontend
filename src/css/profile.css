@@ -6,7 +6,7 @@
   margin-top: 0;
   padding: 1.5vw;
   display: grid;
-  background-color: #FCF9F4;
+  background-color: #fcf9f4;
   grid-template-columns: 1fr;
   grid-template-rows: 0.1fr 0.3fr 1.5fr;
   row-gap: 3vw;
@@ -20,15 +20,15 @@
 /* ===================================================== */
 /* Responsive design */
 
-@media screen and (max-width:800px) {
+@media screen and (max-width: 800px) {
   .edit-container {
     margin: 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
-     "edit-left" 
-     "edit-right"
-     "button";
+      "edit-left"
+      "edit-right"
+      "button";
     grid-gap: 10px;
     padding: 10px;
     text-align: left;
@@ -39,97 +39,94 @@
 /* Profile Photo */
 
 .profile-photo-container {
-grid-area: profile-photo;
-display: flex;
-justify-content: center;
+  grid-area: profile-photo;
+  display: flex;
+  justify-content: center;
 }
 
 .profile-photo-container img {
-width: 20%;
-position: fixed;
+  width: 20%;
+  position: fixed;
 }
 
 /* ===================================================== */
 /* Edit */
 
 .edit-container {
-margin: 0 4%;
-grid-area: edit;
-display: grid;
-grid-template-columns: 1fr 1fr;
-grid-template-areas: 
-"edit-left edit-right"
-"button    button";
-background-color: rgba(210, 203, 193, 0.4);
-border-radius: 20px;
+  margin: 0 4%;
+  grid-area: edit;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "edit-left edit-right"
+    "button    button";
+  background-color: rgba(210, 203, 193, 0.4);
+  border-radius: 20px;
 }
 
-.edit-container h2{
+.edit-container h2 {
   font-size: 1.2rem;
 }
 
 .edit-container button {
-border: none;
-background: transparent;
-text-decoration: 1px solid underline;
+  border: none;
+  background: transparent;
+  text-decoration: 1px solid underline;
 }
 
 .buttonBox {
-display: flex;
-width: 100%;
-grid-area: button;
-justify-content: center;
+  display: flex;
+  width: 100%;
+  grid-area: button;
+  justify-content: center;
 }
 
 /* ===================================================== */
 /* Left: Edit profile  */
 
 .edit-left-container {
-margin-top: 20%;
-grid-area: edit-left;
-/* display: flex; */
-width: 100%;
-align-items: center;
-
+  margin-top: 20%;
+  grid-area: edit-left;
+  /* display: flex; */
+  width: 100%;
+  align-items: center;
 }
-
 
 /* ===================================================== */
 /* Right: Edit profile */
 
 .edit-right-container {
-margin-top: 20%;
-grid-area: edit-right;
-/* display: flex; */
-width: 100%;
-align-items:center;
+  margin-top: 20%;
+  grid-area: edit-right;
+  /* display: flex; */
+  width: 100%;
+  align-items: center;
 }
 
 #contactSelect {
-width: 45%;
-height: 3rem;
-background: transparent;
-border: none;
-border-bottom: 1px solid #000000;
-text-align: center;
+  width: 45%;
+  height: 3rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  text-align: center;
 }
 
 /* ===================================================== */
 
 .layout-profile input {
-width: 75%;
-height: 3rem;
-background: transparent;
-border: none;
-border-bottom: 1px solid #000000;
+  width: 75%;
+  height: 3rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
 }
-
 
 .selector-container {
   display: -ms-flexbox; /* IE10 */
   display: flex;
   width: 100%;
-  margin-right: 20%;;
+  margin-right: 20%;
   margin-bottom: 15px;
   font-size: medium;
 }
@@ -137,7 +134,7 @@ border-bottom: 1px solid #000000;
 .selector-container svg {
   width: 25px;
   height: 25px;
-  color:#707070;
+  color: #707070;
   position: relative;
   margin-top: 15px;
 }

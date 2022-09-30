@@ -2,42 +2,41 @@
 /* Grid template */
 
 .layout-item {
-    grid-area: main;
-    margin: 15vh 10vw;
-    display: grid;
-    grid-template-columns: 1fr 0.8fr;
-    grid-template-areas:
-      "item-img item-desc";
-    grid-gap: 5vw;
-    place-items: center;
-  }
+  grid-area: main;
+  margin: 15vh 10vw;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  grid-template-areas: "item-img item-desc";
+  grid-gap: 5vw;
+  place-items: center;
+}
 
 /* ===================================================== */
 /* Responsive design */
 
-@media screen and (max-width:1023px) {
-    .layout-item {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "item-img"
-        "item-desc";
-      text-align: center;
-    }
+@media screen and (max-width: 1023px) {
+  .layout-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "item-img"
+      "item-desc";
+    text-align: center;
   }
+}
 
 /* ===================================================== */
 /* Left section: Item image */
 
 .item-img {
-    grid-area: item-img;
-    border-radius: 10px;
-    padding: 30px;
-    background-color: #C5C1A4;
+  grid-area: item-img;
+  border-radius: 10px;
+  padding: 30px;
+  background-color: #c5c1a4;
 }
 
 .layout-item img {
-  width:100%;
+  width: 100%;
   /* width:200px;
   height:200px; */
   object-fit: contain;
@@ -47,22 +46,23 @@
 /* Right section: Item description */
 
 .item-desc-container {
-    grid-area: item-desc;
-    display: grid;
-    grid-template-rows: 0.1fr 0.1fr 0.1fr 0.05fr 0.05fr;
-    grid-template-areas: 
-      "item-name"
-      "item-price"
-      "item-desc"
-      "item-status"
-      "item-contact";
-    text-align: left;
+  grid-area: item-desc;
+  display: grid;
+  grid-template-rows: 0.1fr 0.1fr 0.1fr 0.05fr 0.05fr;
+  grid-template-areas:
+    "item-name"
+    "item-price"
+    "item-desc"
+    "item-status"
+    "item-contact";
+  text-align: left;
 }
 
 /* Item status and contact */
-.item-status, .item-contact {
-    background-color: #BCB4A7;
-    border-radius: 5px;
-    height: 2rem;
-    text-align: center;
+.item-status,
+.item-contact {
+  background-color: #bcb4a7;
+  border-radius: 5px;
+  height: 2rem;
+  text-align: center;
 }

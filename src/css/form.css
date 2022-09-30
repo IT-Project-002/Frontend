@@ -44,14 +44,16 @@
   text-align: left;
 }
 
-.input-container input[type=email]:focus,input[type=password]:focus,input[type=text]:focus {
+.input-container input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
   background: transparent;
   outline: none;
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow:200px 200px 100px #E4DFD4 inset; 
-  box-shadow:200px 200px 100px #E4DFD4 inset; 
+  -webkit-box-shadow: 200px 200px 100px #e4dfd4 inset;
+  box-shadow: 200px 200px 100px #e4dfd4 inset;
   /* border-radius: none; */
 }
 
@@ -61,7 +63,7 @@ input:-webkit-autofill {
 .input-container svg {
   width: 25px;
   height: 25px;
-  color:#707070;
+  color: #707070;
   position: relative;
   margin-top: 15px;
 }

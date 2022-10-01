@@ -40,8 +40,6 @@ function Registration() {
 
   // Avatar selection
   const handleClick = (event) => {
-    //refers to the image element
-    // console.log(event.target);
     setAvatar(event.target.alt);
   };
 

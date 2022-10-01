@@ -77,7 +77,9 @@ function Login() {
               />
             </div>
             {email && !validateEmailInput(email) ? (
-              <p className="instructions">Email not valid</p>
+              <p id="uidnote" className="instructions">
+                Email not valid
+              </p>
             ) : null}
             <div className="input-container">
               <label className="login-icon">
@@ -95,7 +97,11 @@ function Login() {
                 required
               />
             </div>
-            {loginError ? <p className="instructions">{loginError}</p> : null}
+            {loginError ? (
+              <p id="uidnote" className="instructions">
+                {loginError}
+              </p>
+            ) : null}
             <div>
               <button type="submit">Log in</button>
             </div>

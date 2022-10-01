@@ -6,9 +6,8 @@
   margin: 10vh 3vw;
   display: grid;
   grid-template-columns: 0.5fr 1fr 2.5fr;
-  grid-template-areas:
-    "user-avatar user-intro user-collection";
-  grid-gap:1vw;
+  grid-template-areas: "user-avatar user-intro user-collection";
+  grid-gap: 1vw;
 }
 
 /* ===================================================== */
@@ -23,9 +22,9 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  height: 75vh;
+  height: 85vh;
   width: auto;
-  z-index:2;
+  z-index: 2;
 }
 
 /* ===================================================== */
@@ -55,11 +54,11 @@
 }
 
 .user-intro-container svg:hover {
-  fill:#BCB4A7;
+  fill: #bcb4a7;
 }
 
 .divider {
-  border: 1px solid #C5C1A4;
+  border: 1px solid #c5c1a4;
   border-radius: 10px;
 }
 
@@ -74,12 +73,11 @@
 /* ===================================================== */
 /* Responsive design */
 
-@media screen and (max-width:1500px) {
+@media screen and (max-width: 1420px) {
   .layout-market {
     display: grid;
     grid-template-columns: 0.7fr 2fr;
-    grid-template-areas:
-      "user-intro user-collection";
+    grid-template-areas: "user-intro user-collection";
     text-align: center;
   }
 
@@ -98,14 +96,12 @@
   }
 }
 
-
-
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 1000px) {
   .layout-market {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
-      "user-intro" 
+      "user-intro"
       "user-collection";
     text-align: center;
   }
@@ -115,7 +111,7 @@
   }
 
   .user-intro-container {
-    position:static;
+    position: static;
     width: 95%;
   }
 

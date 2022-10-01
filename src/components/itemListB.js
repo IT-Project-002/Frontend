@@ -1,21 +1,27 @@
 import React from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function ItemList(props) {
-  console.log(props);
-  console.log(props.data.item_names);
+  // console.log(props);
+  // console.log(props.data.item_names);
   const items = props.data.item_names;
   const links = props.data.item_links;
   return (
-    <div className="wrapper">
-      {/* avoid a blank array[] */}
-      {items?.map((item, index) => (
-        <div key={items[index]}>
-          <Card img={links[index]} title={item} description="/" price="/" />
+    <>
+      {!items ? (
+        <CircularProgress className="wrapper" />
+      ) : (
+        <div className="wrapper">
+          {items.map((item, index) => (
+            <div key={items[index]}>
+              <Card img={links[index]} title={item} description="/" price="/" />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 }
 
@@ -23,6 +29,7 @@ function Card(props) {
   return (
     <div className="card">
       {/* navigate to item page */}
+      {/* <a href={`/user/item/${item._id}`}> */}
       <a href="/user/item">
         <img src={props.img} alt="item" className="card-img" />
       </a>

@@ -1,91 +1,89 @@
 /* ===================================================== */
 /* Page styleji */
 .layout-model {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    /* Grey out the page (other than pop-up window) */
-    background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  /* Grey out the page (other than pop-up window) */
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* ===================================================== */
 /* Pop-up window: position and grid template */
 
 .modal-container {
-    position: fixed;
-    width: 600px;
-    height: 400px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 30px;
-    background-color: #FDF6E6;
-    z-index: 999;
-    /* Grid layout inside the pop-up window */
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas:
-        "left-image right-text";
-    padding:50px;
+  position: fixed;
+  width: 600px;
+  height: 400px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+  background-color: #fdf6e6;
+  z-index: 999;
+  /* Grid layout inside the pop-up window */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "left-image right-text";
+  padding: 50px;
 }
 
 /* ===================================================== */
 /* Right section: Flower Basket */
 
 .modal-flower-basket {
-    grid-area: left-image;
-    max-width: 250px;
-    max-height: 250px;
+  grid-area: left-image;
+  max-width: 250px;
+  max-height: 250px;
 }
 
 /* ===================================================== */
 /* Left section: text */
 
 .text-container {
-    grid-area: right-text;
-    text-align: center;
+  grid-area: right-text;
+  text-align: center;
 }
 
 /* ===================================================== */
 /* Close icon */
 
-.modal-container svg{
-    width: 30px;
-    height: 30px;
-    top: 10px;
-    right: 15px;
-    position: fixed;
+.modal-container svg {
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 15px;
+  position: fixed;
 }
 
-.modal-container svg:hover{
-    fill:#A93226;
+.modal-container svg:hover {
+  fill: #a93226;
 }
 
 /* ===================================================== */
 /* Responsive design */
 
-@media screen and (max-width:800px){
-    .modal-container {
-        position: fixed;
-        width: 350px;
-        height: 350px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 30px;
-        background-color: #FDF6E6;
-        z-index: 999;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "right-text";
-        padding: 55px;
-    }
+@media screen and (max-width: 800px) {
+  .modal-container {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    background-color: #fdf6e6;
+    z-index: 999;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "right-text";
+    padding: 55px;
+  }
 
-    .modal-flower-basket {
-        display: none;
-    }
+  .modal-flower-basket {
+    display: none;
+  }
 }

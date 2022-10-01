@@ -7,14 +7,15 @@
 
 body {
   background-color: #fcf8f4;
-  margin:0;
+  margin: 0;
   font-family: Ariel;
 }
 
 #root {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
+  /* grid-template-rows: auto 1fr auto; */
+  grid-template-rows: 60px auto 45px;
   grid-template-areas:
     "navbar"
     "main"
@@ -29,7 +30,7 @@ a {
 
 button {
   text-decoration: 1px solid black underline;
-  border:none;
+  border: none;
   background-color: transparent;
 }
 
@@ -58,7 +59,7 @@ button:hover {
 .navbar {
   grid-area: navbar;
   height: 60px;
-  background:#fcf8f4;
+  background: #fcf8f4;
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -71,7 +72,7 @@ button:hover {
   list-style: none;
   display: flex;
   gap: 1.5rem;
-  margin-right:1rem;
+  margin-right: 1rem;
 }
 
 /* Icons  */
@@ -81,7 +82,7 @@ button:hover {
 }
 
 .navbar svg:hover {
-  fill:#BCB4A7;
+  fill: #bcb4a7;
 }
 
 .home-icon {
@@ -90,7 +91,7 @@ button:hover {
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  padding:1.5px;
+  padding: 1.5px;
 }
 
 /* ===================================================== */
@@ -110,18 +111,3 @@ button:hover {
 .footer p {
   text-align: center;
 }
-
-/* error message*/
-.errmsg {
-  color: firebrick;
-  font-weight: bold;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.offscreen {
-  background-color: transparent;
-  position: absolute;
-  left: -9999px;
-}
-

@@ -6,8 +6,7 @@
   margin: 10vh 2vw;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-    "register avator-selection";
+  grid-template-areas: "register avator-selection";
   grid-gap: 0px;
   padding: 10px;
   text-align: left;
@@ -49,7 +48,7 @@
 .avatar1:hover {
   /* outline: 3px solid black; */
   border-radius: 50%;
-  background-color: #BCB4A7;
+  background-color: #bcb4a7;
   /* 向外阴影x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
   box-shadow: 0 0 10px 10px rgb(244, 244, 247);
 }
@@ -57,10 +56,9 @@
 .avatar2:hover {
   /* outline: 3px solid black; */
   border-radius: 50%;
-  background-color: #BCB4A7;
+  background-color: #bcb4a7;
   box-shadow: 0 0 10px 10px rgb(244, 244, 247);
 }
-
 
 /* Button */
 .button {
@@ -71,7 +69,7 @@
 
 /* ===================================================== */
 /* Responsive design */
-@media screen and (max-width:1400px) {
+@media screen and (max-width: 1400px) {
   /* Avatar size */
   .avatar1 {
     width: 200px;
@@ -87,7 +85,7 @@
   }
 }
 
-@media screen and (max-width:1100px) {
+@media screen and (max-width: 1100px) {
   /* Avatar size */
   .avatar1 {
     width: 150px;
@@ -103,7 +101,7 @@
   }
 }
 
-@media screen and (max-width:897px) {
+@media screen and (max-width: 897px) {
   .layout-register {
     margin: 0;
     display: grid;

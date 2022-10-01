@@ -2,63 +2,63 @@
 /* Overall */
 
 .layout-like {
-    grid-area: main;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-        "myfav-title"
-        "like-items";
-    grid-gap:40px;
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "myfav-title"
+    "like-items";
+  grid-gap: 40px;
 }
 
 .itemhead {
-    width: 60%;
-    position: fixed;
-    z-index: -1;
+  width: 60%;
+  position: fixed;
+  z-index: -1;
 }
 
 .itemfoot {
-    bottom: 0;
-    width:100%;
-    position: fixed;
-    z-index: 1;
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
 }
 
 /* ===================================================== */
 /* Page title */
 
 .myfav-title {
-    grid-area: myfav-title;
+  grid-area: myfav-title;
 }
 
 .myfav-title h1 {
-    font-weight: 500;
-    position: absolute;
-    margin-top: 8%;
-    z-index: 3;
-    margin-left: 18%;
-    font-size: 58px;
+  font-weight: 500;
+  position: absolute;
+  margin-top: 8%;
+  z-index: 3;
+  margin-left: 18%;
+  font-size: 58px;
 }
 
 /* ===================================================== */
 /* Item containers */
 
 .myfav-items-container {
-    grid-area: like-items;
+  grid-area: like-items;
 }
 
 .layout-like svg {
-    position: absolute;
-    background-color: white;
-    z-index: 99;
-    background-color: red;
-    fill: white;
-    width:35px;
-    height:35px;
-    padding:4px;
-    border-radius: 50%;
-    margin-left:175px;
-    margin-top: 10px;
+  position: absolute;
+  background-color: white;
+  z-index: 99;
+  background-color: red;
+  fill: white;
+  width: 35px;
+  height: 35px;
+  padding: 4px;
+  border-radius: 50%;
+  margin-left: 175px;
+  margin-top: 10px;
 }
 
 .wrapper {
@@ -74,7 +74,7 @@
   border-radius: 20px;
   min-width: 28rem;
   display: flex;
-  background-color: #E6DED0;
+  background-color: #e6ded0;
 }
 
 .card-img {
@@ -125,18 +125,17 @@
     border-bottom-left-radius: 0px;
   }
 
-    .layout-like svg {
-        position: absolute;
-        background-color: white;
-        z-index: 99;
-        background-color: red;
-        fill: white;
-        width:35px;
-        height:35px;
-        padding:4px;
-        border-radius: 50%;
-        margin-left:65px;
-        margin-top: 10px;
-    }
-
+  .layout-like svg {
+    position: absolute;
+    background-color: white;
+    z-index: 99;
+    background-color: red;
+    fill: white;
+    width: 35px;
+    height: 35px;
+    padding: 4px;
+    border-radius: 50%;
+    margin-left: 65px;
+    margin-top: 10px;
+  }
 }

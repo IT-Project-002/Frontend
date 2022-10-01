@@ -2,164 +2,154 @@
 /* Grid template */
 
 .layout-upload {
-    grid-area: main;
-    margin-top: 14vh;
-    padding: 1.5vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
-    grid-template-areas:
-      "preview upload fill-in";
-    grid-gap: 2rem;
-    overflow-x: hidden;
+  grid-area: main;
+  margin-top: 14vh;
+  padding: 1.5vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-areas: "preview upload fill-in";
+  grid-gap: 2rem;
+  overflow-x: hidden;
 }
 
 /* ===================================================== */
 /* Responsive design */
 
-@media screen and (max-width:800px) {
-    .layout-upload {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "upload" 
-        "fill-in" 
-        "preview";
-      grid-gap: 10px;
-      padding: 10px;
-      text-align: center;
-    }
-
-    .preview-container img {
-        max-width: 70%;
-        margin: 4%;
-        border-radius: 20px;
-        box-shadow: 0px 1px 6px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .selector-container {
-        width: 70%;
-        margin-left:10%;
-        margin-bottom: 5%;
-    }
+@media screen and (max-width: 800px) {
+  .layout-upload {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "upload"
+      "fill-in"
+      "preview";
+    grid-gap: 10px;
+    padding: 10px;
+    text-align: center;
   }
-  
+
+  .preview-container img {
+    max-width: 70%;
+    margin: 4%;
+    border-radius: 20px;
+    box-shadow: 0px 1px 6px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .selector-container {
+    width: 70%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+  }
+}
+
 /* ===================================================== */
 /* Left section: Preview images */
 
 .preview-container {
-    grid-area: preview;
-    height: fit-content;
-    min-height: 90%;
-    border-radius: 20px;
+  grid-area: preview;
+  height: fit-content;
+  min-height: 90%;
+  border-radius: 20px;
 }
-
-/* .empty-wrapper{
-    width: 200px;
-    height: 170px;
-    border-radius: 20px;
-    margin: auto;
-    margin-top: 15px;
-    position: relative;
-} */
 
 .preview-container svg {
-    width: 200px;
-    height: 170px;
-    border-radius: 20px;
-    margin: auto;
-    color: white;
-    position: relative;
-    background-color: #D2CBC1;
-  }
-
-.image-wrapper{
-    width: 200px;
-    height: 170px;
-    border-radius: 20px;
-    margin: auto;
-    margin-top: 15px;
-    position: relative;
-    background-color: #D2CBC1;
+  width: 200px;
+  height: 170px;
+  border-radius: 20px;
+  margin: auto;
+  color: white;
+  position: relative;
+  background-color: #d2cbc1;
 }
 
-.preview-container img{
-    /* margin: 10px; */
-    width: 200px;
-    height: 170px;
-    border-radius: 20px;
-    box-shadow: 0px 1px 6px 5px rgba(0, 0, 0, 0.2);
-    object-fit: cover;
+.image-wrapper {
+  width: 200px;
+  height: 170px;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 15px;
+  position: relative;
+  background-color: #d2cbc1;
+}
+
+.preview-container img {
+  /* margin: 10px; */
+  width: 200px;
+  height: 170px;
+  border-radius: 20px;
+  box-shadow: 0px 1px 6px 5px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
 }
 
 .image-wrapper button {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    border: transparent;
-    border-radius: 50%;
-    background-color: #D2CBC1;
-    z-index: 2;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  border: transparent;
+  border-radius: 50%;
+  background-color: #d2cbc1;
+  z-index: 2;
 }
 
 /* ===================================================== */
 /* Middle section: Upload image */
 
 .upload-container {
-    grid-area: upload;
-    text-align: center;
+  grid-area: upload;
+  text-align: center;
 }
 
 .upload-container img {
-    max-width: 60%;
+  max-width: 60%;
 }
 
 .upload-container svg {
-    width: 250px;
-    height: 250px;
-    color: white;
-    background-color: #D2CBC1;
-    border-radius: 40px;
+  width: 250px;
+  height: 250px;
+  color: white;
+  background-color: #d2cbc1;
+  border-radius: 40px;
 }
 
 .upload-container svg:hover {
-    width: 250px;
-    height: 250px;
-    color: white;
-    background-color: #8b867e;
-    border-radius: 40px;
+  width: 250px;
+  height: 250px;
+  color: white;
+  background-color: #8b867e;
+  border-radius: 40px;
 }
 
 .upload-input {
-    display: none;
+  display: none;
 }
 
 /* ===================================================== */
 /* Right section: Fill in information */
 
 .fillin-container {
-    grid-area: fill-in;
-    display: grid;
-    text-align: center;
+  grid-area: fill-in;
+  display: grid;
+  text-align: center;
 }
 
 .fillin-container input:focus {
-    outline:none;
+  outline: none;
 }
 
 .fillin-input-container input {
-    /* width: 95%; */
-    width: 75%;
-    height: 2rem;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #000000;
-    text-align: left;
-    font-size: large;
+  /* width: 95%; */
+  width: 75%;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  text-align: left;
+  font-size: large;
 }
 
 .selector-container {
-    width: 100%;
-    margin-bottom: 5%;
+  width: 100%;
+  margin-bottom: 5%;
 }

@@ -40,8 +40,6 @@ function Registration() {
 
   // Avatar selection
   const handleClick = (event) => {
-    //refers to the image element
-    // console.log(event.target);
     setAvatar(event.target.alt);
   };
 
@@ -54,7 +52,7 @@ function Registration() {
       const userInfo = { username, email, password, matchPwd, bio, avatar };
       console.log(userInfo);
       history("/user/login");
-      fetch("http://localhost:9000/user/register", {
+      fetch("/users/register", {
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",

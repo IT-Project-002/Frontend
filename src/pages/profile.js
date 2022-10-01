@@ -33,7 +33,6 @@ export default function Profile() {
         setLoading(false);
       });
   }, [access_token]);
-
   return (
     <>
       {loading ? (

@@ -161,9 +161,9 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
+      "fill-in"
       "upload"
-      "preview"
-      "fill-in";
+      "preview";
     grid-gap: 10px;
     padding: 10px;
     text-align: center;

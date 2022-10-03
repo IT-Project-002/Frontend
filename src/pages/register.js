@@ -42,6 +42,7 @@ function Registration() {
   // Avatar selection
   const handleClick = (event) => {
     setAvatar(event.target.alt);
+
   };
 
   const handleSubmit = (e) => {
@@ -179,49 +180,57 @@ function Registration() {
         </button>
       </div>
       <div className="bubble-container">
-        <h2>Pick your profile picture…</h2>
+        <h2 className="avatar-remindar">
+          Pick your profile picture…        
+        </h2>
         {!avatar ? (
-          <Alert className="avatar-alert" severity="warning" variant="outlined">
-              Must pick profile picture
-          </Alert>
-        ) : null}
+            <Alert className="avatar-alert" severity="warning" variant="outlined">
+                Must pick profile picture
+            </Alert>
+          ) : null}
         <img
+          id="female1"
           src={female1}
           alt="female1"
           className="avatar2"
           onClick={handleClick}
         ></img>
         <img
+          id="female2"
           src={female2}
           alt="female2"
           className="avatar1"
           onClick={handleClick}
         ></img>
         <img
+          id="female3"
           src={female3}
           alt="female3"
           className="avatar2"
           onClick={handleClick}
         ></img>
         <img
+          id="male1"
           src={male1}
           alt="male1"
           className="avatar1"
           onClick={handleClick}
         ></img>
         <img
+          id="male2"
           src={male2}
           alt="male2"
           className="avatar2"
           onClick={handleClick}
         ></img>
         <img
+          id="male3"
           src={male3}
           alt="male3"
           className="avatar1"
           onClick={handleClick}
         ></img>
-        <h2>Now…Let's set up your own space!</h2>
+        <h2 className="avatar-setup-msg">Now…Let's set up your own space!</h2>
       </div>
       <img className="login-background" src={background} alt=""></img>
     </div>

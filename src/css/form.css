@@ -32,12 +32,6 @@ input[type="text"]:focus {
   outline: none;
 }
 
-/* input:-webkit-autofill {
-  -webkit-box-shadow: 200px 200px 100px #e4dfd4 inset;
-  box-shadow: 200px 200px 100px #e4dfd4 inset;
-  font-size:15px;
-} */
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

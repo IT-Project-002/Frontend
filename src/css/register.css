@@ -3,11 +3,11 @@
 
 .layout-register {
   grid-area: main;
-  margin: 10vh 2vw;
+  margin: 0px 30px;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "register avator-selection";
-  grid-gap: 0px;
+  grid-gap: 100px;
   padding: 10px;
   text-align: left;
 }
@@ -18,6 +18,7 @@
 .register-container {
   grid-area: register;
   text-align: center;
+  margin-top: 70px;
 }
 
 .register-alert {
@@ -29,86 +30,102 @@
 /* ===================================================== */
 /* Right section: Bubble */
 
-.avatar-alert {
-  width: 220px;
-  margin-left:39%;
-}
-
 .bubble-container {
   grid-area: avator-selection;
-  text-align: center;
+  place-items: center;
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr;
+  grid-template-areas:
+    "title alert ."
+    "female1 female2 female3"
+    "male1 male2 male3"
+    "title-bottom title-bottom title-bottom";
 }
+
+#female1 {grid-area: female1;}
+#female2 {grid-area: female2;}
+#female3 {grid-area: female3;}
+#male1 {grid-area: male1;}
+#male2 {grid-area: male2;}
+#male3 {grid-area: male3;}
+.avatar-remindar {grid-area: title;}
+.avatar-setup-msg {grid-area: title-bottom}
 
 /* Avatar size */
 .avatar1 {
-  width: 210px;
-  height: 210px;
+  width: 95%;
+  height: auto;
   border-radius: 50%;
   margin: 5px;
   background-color: white;
 }
-
 .avatar2 {
-  width: 230px;
-  height: 230px;
+  width: 80%;
+  height: auto;
   border-radius: 50%;
   margin: 5px;
   background-color: white;
 }
 
+/* Avatar hover */
 .avatar1:hover {
-  /* outline: 3px solid black; */
   border-radius: 50%;
   background-color: #bcb4a7;
-  /* 向外阴影x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
   box-shadow: 0 0 10px 10px rgb(244, 244, 247);
 }
-
 .avatar2:hover {
-  /* outline: 3px solid black; */
   border-radius: 50%;
   background-color: #bcb4a7;
   box-shadow: 0 0 10px 10px rgb(244, 244, 247);
 }
 
-/* Button */
-.button {
-  background-color: transparent;
-  border: 0ch;
-  text-decoration: underline;
+/* Avatar select alert */
+.avatar-alert {
+  grid-area: alert;
+  width: 220px;
+  margin-top:10px;
+  margin-left:10%;
 }
 
 /* ===================================================== */
 /* Responsive design */
 @media screen and (max-width: 1400px) {
-  /* Avatar size */
-  .avatar1 {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin: 5px;
-  }
-  .avatar2 {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    margin: 5px;
+  .bubble-container {
+    grid-area: avator-selection;
+    place-items: center;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    grid-template-areas:
+      "title title alert"
+      "female1 female2 female3"
+      "male1 male2 male3"
+      "title-bottom title-bottom title-bottom";
   }
 }
 
 @media screen and (max-width: 1100px) {
-  /* Avatar size */
-  .avatar1 {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin: 5px;
+  .layout-register {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "register"
+      "avator-selection";
+    grid-gap: 10px;
+    padding: 10px;
+    text-align: left;
   }
-  .avatar2 {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    margin: 5px;
+
+  .bubble-container {
+    grid-area: avator-selection;
+    place-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "title title alert"
+      "female1 female2 female3"
+      "male1 male2 male3"
+      "title-bottom title-bottom title-bottom";
   }
 }
 
@@ -125,17 +142,10 @@
     text-align: left;
   }
 
-  /* Avatar size */
-  .avatar1 {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 5px;
-  }
-  .avatar2 {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin: 5px;
+  .avatar-alert {
+    grid-area: alert;
+    width: 220px;
+    margin-top:10px;
+    margin-left:0;
   }
 }

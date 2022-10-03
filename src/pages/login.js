@@ -12,6 +12,7 @@ const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 export const validateEmailInput = (str = "") => EMAIL_REG.test(str);
 
 function Login() {
+
   const userRef = useRef();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

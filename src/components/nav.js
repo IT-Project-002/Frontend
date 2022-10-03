@@ -6,7 +6,6 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import {AiOutlineHome} from "react-icons/ai";
 import HomeIcon from "../image/home.png";
 
 
@@ -45,7 +44,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
           <Link to="/">
-            <img className="home-icon" src={HomeIcon} text={"Hi"} onClick={toggleMenu}></img>
+            <img className="home-icon" alt="homebutton" src={HomeIcon} text={"Hi"} onClick={toggleMenu}></img>
           </Link>
            <ul className="menu">
               {

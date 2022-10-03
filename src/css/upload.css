@@ -3,43 +3,13 @@
 
 .layout-upload {
   grid-area: main;
-  margin-top: 14vh;
+  margin-top: 5vh;
   padding: 1.5vw;
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
   grid-template-areas: "preview upload fill-in";
   grid-gap: 2rem;
   overflow-x: hidden;
-}
-
-/* ===================================================== */
-/* Responsive design */
-
-@media screen and (max-width: 800px) {
-  .layout-upload {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "upload"
-      "fill-in"
-      "preview";
-    grid-gap: 10px;
-    padding: 10px;
-    text-align: center;
-  }
-
-  .preview-container img {
-    max-width: 70%;
-    margin: 4%;
-    border-radius: 20px;
-    box-shadow: 0px 1px 6px 5px rgba(0, 0, 0, 0.2);
-  }
-
-  .selector-container {
-    width: 70%;
-    margin-left: 10%;
-    margin-bottom: 5%;
-  }
 }
 
 /* ===================================================== */
@@ -72,6 +42,16 @@
   background-color: #d2cbc1;
 }
 
+.image-wrapper-2 {
+  width: 200px;
+  height: 170px;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 15px;
+  position: relative;
+  background-color: #d2cbc1;
+}
+
 .preview-container img {
   /* margin: 10px; */
   width: 200px;
@@ -81,17 +61,30 @@
   object-fit: cover;
 }
 
-.image-wrapper button {
+.image-wrapper svg {
   width: 30px;
   height: 30px;
   position: absolute;
   top: 2px;
   right: 2px;
-  border: transparent;
   border-radius: 50%;
-  background-color: #d2cbc1;
+  fill:white;
+  background-color: transparent;
   z-index: 2;
 }
+
+.image-wrapper svg:hover {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  border-radius: 50%;
+  fill:#a93226;
+  background-color: transparent;
+  z-index: 2;
+}
+
 
 /* ===================================================== */
 /* Middle section: Upload image */
@@ -99,23 +92,28 @@
 .upload-container {
   grid-area: upload;
   text-align: center;
+  margin-top: 40%;
+}
+
+.upload-alert {
+  width:200px;
+  margin-top: 10px;
+  margin-left: 20%;
 }
 
 .upload-container img {
   max-width: 60%;
 }
 
-.upload-container svg {
-  width: 250px;
-  height: 250px;
+.upload-container label svg {
+  width: 270px;
+  height: 270px;
   color: white;
   background-color: #d2cbc1;
   border-radius: 40px;
 }
 
-.upload-container svg:hover {
-  width: 250px;
-  height: 250px;
+.upload-container label svg:hover {
   color: white;
   background-color: #8b867e;
   border-radius: 40px;
@@ -131,7 +129,7 @@
 .fillin-container {
   grid-area: fill-in;
   display: grid;
-  text-align: center;
+  text-align: left;
 }
 
 .fillin-container input:focus {
@@ -152,4 +150,42 @@
 .selector-container {
   width: 100%;
   margin-bottom: 5%;
+}
+
+
+/* ===================================================== */
+/* Responsive design */
+
+@media screen and (max-width: 800px) {
+  .layout-upload {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "upload"
+      "preview"
+      "fill-in";
+    grid-gap: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .preview-container img {
+    max-width: 70%;
+    margin: 4%;
+    border-radius: 20px;
+    box-shadow: 0px 1px 6px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .selector-container {
+    width: 70%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+  }
+}
+
+.upload-error {
+  text-align: left;
+  width: 75%;
+  margin-left:0;
+  padding:5px;
 }

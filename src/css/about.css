@@ -9,6 +9,10 @@
   padding: 10px;
 }
 
+.layout-about p {
+  font-size: 18px;
+}
+
 p {
   line-height: 1.8;
 }
@@ -81,7 +85,7 @@ p {
   grid-area: about-us;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0.6fr 1fr 1fr;
+  grid-template-rows: 0.35fr 1fr 1fr;
   grid-column-gap: 1rem;
   grid-row-gap: 2rem;
   grid-template-areas:
@@ -123,7 +127,7 @@ p {
 
 @media screen and (max-width: 1485px){
   .about-us-container {
-    grid-template-rows: 0.1fr 1fr 1fr;
+    grid-template-rows: 0.3fr 1fr 1fr;
   }
 }
 
@@ -142,7 +146,7 @@ p {
     grid-area: about-us;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.3fr 0.5fr 1fr;
+    grid-template-rows: 0.25fr 0.5fr 1fr;
     grid-column-gap: 1rem;
     grid-row-gap: 2rem;
     grid-template-areas:

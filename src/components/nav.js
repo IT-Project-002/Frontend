@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link, useMatch, useResolvedPath, useLocation } from "react-router-dom";
 import "../css/style.css";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import { AiOutlineHome } from "react-icons/ai";
+
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+
 import HomeIcon from "../image/home.png";
 
 export default function Navbar() {
@@ -45,29 +46,22 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <Link to="/">
-        <img
-          className="home-icon"
-          src={HomeIcon}
-          text={"Hi"}
-          onClick={toggleMenu}
-        ></img>
-      </Link>
-      <ul className="menu">
-        {token && token !== "" && token !== undefined ? (
-          <CustomLink to="/user/myFav">
-            <FavoriteBorderIcon />
-          </CustomLink>
-        ) : (
-          ""
-        )}
-        {token && token !== "" && token !== undefined ? (
-          <CustomLink to="/user/market">
-            <StorefrontOutlinedIcon />
-          </CustomLink>
-        ) : (
-          ""
-        )}
+          <Link to="/">
+            <img className="home-icon" alt="homebutton" src={HomeIcon} text={"Hi"} onClick={toggleMenu}></img>
+          </Link>
+           <ul className="menu">
+              {
+              (token && token!=='' &&token!==undefined)?
+                  <CustomLink to="/user/myFav">
+                     <FavoriteBorderIcon/>
+                  </CustomLink>:''
+              }
+              {
+              (token && token!=='' &&token!==undefined)?
+                  <CustomLink to="/user/market">
+                     <StorefrontOutlinedIcon />
+                  </CustomLink>:''
+              }
 
         {token && token !== "" && token !== undefined ? (
           ""

@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import CameraAltRoundedIcon from "@mui/icons-material/CameraAltRounded";
 import Alert from "@mui/material/Alert";
 import PhotoIcon from "@mui/icons-material/PhotoSizeSelectActualOutlined";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,20}$/i);
 const PRICE_REG = new RegExp(/^[0-9]{1,8}$/i);
@@ -125,7 +126,9 @@ export default function Upload() {
             onChange={onSelectFile}
           />
         </label>
-        <p>Maximum 3 photos</p>
+        <Alert severity="warning" variant="outlined" className="upload-alert">
+          Maximum 3 photos
+        </Alert>
       </div>
 
       <div className="preview-container">
@@ -133,23 +136,23 @@ export default function Upload() {
           selectedImages.map((image) => {
             return (
               <div key={image} className="image-wrapper">
-                <button onClick={() => deleteImage(image)}>X</button>
+                <HighlightOffIcon className="preview-close" onClick={() => deleteImage(image)}/>
                 <img src={image} alt="file" />
               </div>
             );
           })}
         {selectedImages.length < 3 ? (
-          <div className="image-wrapper">
+          <div className="image-wrapper-2">
             <PhotoIcon />
           </div>
         ) : null}
         {selectedImages.length < 2 ? (
-          <div className="image-wrapper">
+          <div className="image-wrapper-2">
             <PhotoIcon />
           </div>
         ) : null}
         {selectedImages.length === 0 ? (
-          <div className="image-wrapper">
+          <div className="image-wrapper-2">
             <PhotoIcon />
           </div>
         ) : null}
@@ -172,8 +175,8 @@ export default function Upload() {
               required
             />
             {itemName && !validName(itemName) ? (
-              <div id="upload" className="instructions">
-                <Alert severity="warning">
+              <div className="upload-error">
+                <Alert severity="warning" variant="outlined">
                   3 to 20 characters. Must start with letters.
                   <br />
                   Letters, numbers, underscores, space, hyphens allowed.
@@ -191,8 +194,8 @@ export default function Upload() {
               required
             />
             {price && !validPrice(price) ? (
-              <div id="upload" className="instructions">
-                <Alert severity="warning">
+              <div className="upload-error">
+                <Alert severity="warning" variant="outlined">
                   Price ranged between 0 to 99,999,999.
                 </Alert>
               </div>

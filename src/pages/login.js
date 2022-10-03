@@ -6,11 +6,13 @@ import d1 from "../image/pages/loginDrawer.png";
 import { AiFillEyeInvisible, AiFillEye, AiTwotoneMail } from "react-icons/ai";
 import React from "react";
 import background from "../image/background/login.png";
+import Alert from "@mui/material/Alert";
 
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 export const validateEmailInput = (str = "") => EMAIL_REG.test(str);
 
 function Login() {
+
   const userRef = useRef();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -76,9 +78,9 @@ function Login() {
               />
             </div>
             {email && !validateEmailInput(email) ? (
-              <p id="uidnote" className="instructions">
+              <Alert className="login-alert" severity="warning" variant="outlined"> 
                 Email not valid
-              </p>
+              </Alert>
             ) : null}
             <div className="input-container">
               <label className="login-icon">
@@ -106,7 +108,7 @@ function Login() {
             </div>
             <div>
               <button>
-                <a href="/user/register">Haven't Sign up?</a>
+                <a href="/user/register">Sign Up</a>
               </button>
             </div>
           </form>

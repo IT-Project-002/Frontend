@@ -11,9 +11,9 @@ export default function ItemList(props) {
   return (
     <>
       {!items ? (
-        <CircularProgress className="wrapper" />
+        <CircularProgress className="wrapperB" />
       ) : (
-        <div className="wrapper">
+        <div className="wrapperB">
           {items.map((item, index) => (
             <div key={items[index]}>
               <Card img={links[index]} title={item} description="/" price="/" />

@@ -3,13 +3,13 @@
 
 .layout-profile {
   grid-area: main;
-  margin-top: 0;
-  padding: 1.5vw;
+  margin-top: 60px;
+  padding: 1.5vh;
   display: grid;
   background-color: #fcf9f4;
   grid-template-columns: 1fr;
   grid-template-rows: 0.1fr 0.3fr 1.5fr;
-  row-gap: 3vw;
+  row-gap: 3vh;
   grid-template-areas:
     "."
     "profile-photo"
@@ -50,8 +50,9 @@
 }
 
 .profile-photo-container img {
-  width: 20%;
-  position: fixed;
+  width: 200px;
+  border-radius: 50rem;
+  background-color: white;
 }
 
 /* ===================================================== */
@@ -81,6 +82,8 @@
 
 .buttonBox {
   display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
   width: 100%;
   grid-area: button;
   justify-content: center;
@@ -90,7 +93,7 @@
 /* Left: Edit profile  */
 
 .edit-left-container {
-  margin-top: 20%;
+  margin-top: 100px;
   grid-area: edit-left;
   /* display: flex; */
   width: 100%;
@@ -101,7 +104,7 @@
 /* Right: Edit profile */
 
 .edit-right-container {
-  margin-top: 20%;
+  margin-top: 100px;
   grid-area: edit-right;
   /* display: flex; */
   width: 100%;
@@ -109,12 +112,14 @@
 }
 
 #contactSelect {
-  width: 45%;
-  height: 3rem;
+  margin: 0;
+  width: 75%;
+  height: 2rem;
+  font-size: large;
   background: transparent;
   border: none;
   border-bottom: 1px solid #000000;
-  text-align: center;
+  text-align: left;
 }
 
 /* ===================================================== */
@@ -128,12 +133,7 @@
 }
 
 .selector-container {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
   width: 100%;
-  margin-right: 20%;
-  margin-bottom: 15px;
-  font-size: medium;
 }
 
 .selector-container svg {

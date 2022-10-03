@@ -11,6 +11,18 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.text-container a {
+  width: 115px;
+  height: 25px;
+  background: #AF9177;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  line-height: 20px;
+  text-decoration: none;
+}
+
 /* ===================================================== */
 /* Pop-up window: position and grid template */
 

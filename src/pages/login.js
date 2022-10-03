@@ -49,7 +49,6 @@ function Login() {
           return data.access_token;
         } else {
           setLoginError("Check out your Account or Password again");
-          // window.location.reload();
         }
       })
       .catch((error) => {

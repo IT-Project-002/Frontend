@@ -152,6 +152,17 @@
   margin-bottom: 5%;
 }
 
+.profile-button-container button {
+  border: 1px solid white;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #AF9177;
+  color:white;
+  font-size:15px;
+  margin:30px;
+  margin-left:25%;
+}
 
 /* ===================================================== */
 /* Responsive design */

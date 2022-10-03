@@ -12,6 +12,23 @@
   text-align: left;
 }
 
+.register-button {
+  border: 1px solid white;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #AF9177;
+  color:white;
+  font-size:15px;
+  margin:20px;
+}
+
+.register-signin {
+  font-family:Arial;
+  font-size:15px;
+  color:#0047AB;
+}
+
 /* ===================================================== */
 /* Left section: Register */
 

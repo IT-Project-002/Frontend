@@ -171,13 +171,11 @@ function Registration() {
               onChange={(e) => setBio(e.target.value)}
             />
           </div>
-          <button className="button" type="submit">
+          <button className="register-button" type="submit">
             Sign Up
           </button>
         </form>
-        <button>
-          <a href="/user/login">Already has an account?</a>
-        </button>
+        <a className="register-signin" href="/user/login">Already has an account?</a>
       </div>
       <div className="bubble-container">
         <h2 className="avatar-remindar">

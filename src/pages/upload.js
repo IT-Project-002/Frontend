@@ -231,7 +231,7 @@ export default function Upload() {
               options={options}
               getOptionLabel={(option) => option.value}
               renderInput={(params) => <TextField {...params} label="Category" />}
-              sx={{ width: "500px" }}
+              sx={{ width: "350px" }}
             />
             {/* <LimitTags onChange={(item) => setTags(item)} /> */}
             {/* <div className="selector-container">

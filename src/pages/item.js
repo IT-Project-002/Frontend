@@ -21,7 +21,7 @@ export default function Item() {
           nonumy eirmod tempor invidunt ut labore et ut labore et dolore magna
           aliquyam erat.
         </p>
-        <p className="item-status">Available</p>
+        <p className="item-status">Di Lu's Marketplace</p>
         <p className="item-contact">ann.b@gmail.com</p>
       </div>
     </div>

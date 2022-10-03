@@ -49,7 +49,7 @@ export default function Profile() {
         setEmail(dat.userEmail);
         setName(dat.username);
         setBio(dat.Bio);
-        setShow(dat.hide_email);
+        !dat.hide_email?setShow("Public"):setShow("Private");
         setLoading(false);
       });
   }, [access_token]);
@@ -66,6 +66,25 @@ export default function Profile() {
       showEmail,
     };
     console.log(updateInfo);
+     fetch("/users/profile", {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          Authorization: "Bearer " + access_token
+        },
+        method: "POST",
+        mode: "cors",
+        body: JSON.stringify(updateInfo),
+      })
+        .then((response) => {
+          console.log("hi:", response);
+        })
+        .then((updateInfo) => {
+          console.log("Success:", updateInfo);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
   };
 
   return (

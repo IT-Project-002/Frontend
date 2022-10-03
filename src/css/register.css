@@ -20,8 +20,19 @@
   text-align: center;
 }
 
+.register-alert {
+  width: 300px;
+  margin-left:20%;
+  text-align: left;
+}
+
 /* ===================================================== */
 /* Right section: Bubble */
+
+.avatar-alert {
+  width: 220px;
+  margin-left:39%;
+}
 
 .bubble-container {
   grid-area: avator-selection;

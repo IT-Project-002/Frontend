@@ -25,23 +25,23 @@
 .input-container {
   display: -ms-flexbox; /* IE10 */
   display: flex;
-  width: 60%;
+  width: 300px;
   margin-left: 20%;
   margin-right: 20%;
-  margin-bottom: 15px;
-  font-size: 40px;
+  margin-bottom: 10px;
 }
 
 .input-container input {
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 5px 0;
   display: inline-block;
   border: none;
   background: transparent;
   border-bottom: 1px solid black;
   box-sizing: border-box;
   text-align: left;
+  font-size:15px;
 }
 
 .input-container input[type="email"]:focus,
@@ -51,10 +51,17 @@ input[type="text"]:focus {
   outline: none;
 }
 
-input:-webkit-autofill {
+/* input:-webkit-autofill {
   -webkit-box-shadow: 200px 200px 100px #e4dfd4 inset;
   box-shadow: 200px 200px 100px #e4dfd4 inset;
-  /* border-radius: none; */
+  font-size:15px;
+} */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 /* ===================================================== */
@@ -72,9 +79,9 @@ input:-webkit-autofill {
 /* Textarea (bio) */
 
 textarea {
-  font-family: "Ariel";
+  font-family: Arial;
   width: 100%;
-  padding: 12px 20px;
+  padding: 2px 20px;
   margin: 8px 0;
   display: inline-block;
   border: none;
@@ -83,6 +90,7 @@ textarea {
   box-sizing: border-box;
   text-align: left;
   resize: none;
+  font-size: 15px;
 }
 
 textarea:focus {

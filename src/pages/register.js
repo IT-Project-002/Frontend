@@ -13,6 +13,7 @@ import male1 from "../image/avatar/male1.png";
 import male2 from "../image/avatar/male2.png";
 import male3 from "../image/avatar/male3.png";
 import background from "../image/background/login.png";
+import Alert from "@mui/material/Alert";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][A-z0-9-_]{3,14}$/i);
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
@@ -95,11 +96,9 @@ function Registration() {
             />
           </div>
           {username && !validName(username) ? (
-            <p id="uidnote" className="instructions">
-              3 to 14 characters.
-              <br />
-              Letters, numbers, underscores, hyphens allowed.
-            </p>
+            <Alert className="register-alert" severity="warning" variant="outlined">
+              3 to 14 characters. Letters, numbers, underscores, hyphens allowed.
+            </Alert>
           ) : null}
 
           {/* Email */}
@@ -116,9 +115,9 @@ function Registration() {
             />
           </div>
           {email && !validEmail(email) ? (
-            <p id="uidnote" className="instructions">
+            <Alert className="register-alert" severity="warning" variant="outlined">
               Valid email prefixes: example@mail.com
-            </p>
+            </Alert>
           ) : null}
 
           {/* Password */}
@@ -135,12 +134,9 @@ function Registration() {
             />
           </div>
           {password && !validPwd(password) ? (
-            <p id="uidnote" className="instructions">
-              8 to 24 characters.
-              <br />
-              Must include uppercase, lowercase letters and a number.
-              <br />
-            </p>
+            <Alert className="register-alert" severity="warning" variant="outlined">
+              8 to 24 characters. Must include uppercase, lowercase letters and a number.
+            </Alert>
           ) : null}
 
           {/* Confirm Password */}
@@ -157,9 +153,9 @@ function Registration() {
             />
           </div>
           {password && !validMatch(password, matchPwd) ? (
-            <p id="uidnote" className="instructions">
+            <Alert className="register-alert" severity="warning" variant="outlined">
               Passwords did not match
-            </p>
+            </Alert>
           ) : null}
 
           {/* Bio */}
@@ -185,9 +181,9 @@ function Registration() {
       <div className="bubble-container">
         <h2>Pick your profile picture…</h2>
         {!avatar ? (
-          <p id="uidnote" className="instructions">
-            Must pick profile picture
-          </p>
+          <Alert className="avatar-alert" severity="warning" variant="outlined">
+              Must pick profile picture
+          </Alert>
         ) : null}
         <img
           src={female1}

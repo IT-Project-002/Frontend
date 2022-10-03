@@ -32,6 +32,11 @@
   text-align: center;
 }
 
+.login-alert {
+  width: 300px;
+  margin-left: 20%;
+}
+
 /* ===================================================== */
 /* Right section: Today */
 

@@ -109,7 +109,7 @@ function Login() {
             </div>
             <div>
               <button>
-                <a href="/user/register">Haven't Sign up?</a>
+                <a href="/user/register">Sign Up</a>
               </button>
             </div>
           </form>

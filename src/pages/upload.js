@@ -4,7 +4,9 @@ import React, { useState, useRef, useEffect } from "react";
 import CameraAltRoundedIcon from "@mui/icons-material/CameraAltRounded";
 import Alert from "@mui/material/Alert";
 import PhotoIcon from "@mui/icons-material/PhotoSizeSelectActualOutlined";
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,20}$/i);
 const PRICE_REG = new RegExp(/^[0-9]{1,8}$/i);
@@ -13,6 +15,11 @@ export const validPrice = (str = "") => PRICE_REG.test(str);
 
 export default function Upload() {
   const access_token = sessionStorage.getItem("access_token");
+  const [itemName, setItemName] = useState("");
+  const [price, setPrice] = useState("");
+  const [describtion, setDescribtion] = useState("");
+  const [tags, setTags] = useState([]);
+
   const options = [
     { value: "textiles", label: "Textiles" },
     { value: "ceramics", label: "Ceramics" },
@@ -23,10 +30,8 @@ export default function Upload() {
     { value: "painting", label: "Painting" },
     { value: "others", label: "Others" },
   ];
-  const [itemName, setItemName] = useState("");
-  const [price, setPrice] = useState("");
-  const [describtion, setDescribtion] = useState("");
-  const [tags, setTags] = useState([]);
+  
+  console.log(tags);
   /* Image */
   const [selectedImages, setSelectedImages] = useState([]);
   const [filesDict, setFileDict] = useState({});
@@ -136,7 +141,10 @@ export default function Upload() {
           selectedImages.map((image) => {
             return (
               <div key={image} className="image-wrapper">
-                <HighlightOffIcon className="preview-close" onClick={() => deleteImage(image)}/>
+                <HighlightOffIcon
+                  className="preview-close"
+                  onClick={() => deleteImage(image)}
+                />
                 <img src={image} alt="file" />
               </div>
             );
@@ -215,7 +223,18 @@ export default function Upload() {
             <div>
               <h2>Tag your work with its category.</h2>
             </div>
-            <div className="selector-container">
+            <Autocomplete
+              multiple
+              limitTags={2}
+              id="multiple-limit-tags"
+              onChange={(item) => setTags(item)}
+              options={options}
+              getOptionLabel={(option) => option.value}
+              renderInput={(params) => <TextField {...params} label="Category" />}
+              sx={{ width: "500px" }}
+            />
+            {/* <LimitTags onChange={(item) => setTags(item)} /> */}
+            {/* <div className="selector-container">
               <Select
                 isMulti
                 placeholder="Tell us what you interested in…"
@@ -228,7 +247,7 @@ export default function Upload() {
                 isRtl={false}
                 closeMenuOnSelect={false}
               />
-            </div>
+            </div> */}
           </div>
           <div className="profile-button-container">
             <button type="submit">Save Changes</button>
@@ -238,3 +257,28 @@ export default function Upload() {
     </div>
   );
 }
+
+function LimitTags() {
+  return (
+    <Autocomplete
+      multiple
+      limitTags={2}
+      id="multiple-limit-tags"
+      options={options}
+      getOptionLabel={(option) => option.value}
+      renderInput={(params) => <TextField {...params} label="Category" />}
+      sx={{ width: "500px" }}
+    />
+  );
+}
+
+const options = [
+  { value: "textiles", label: "Textiles" },
+  { value: "ceramics", label: "Ceramics" },
+  { value: "glass", label: "Glass" },
+  { value: "woodwork", label: "Woodwork" },
+  { value: "jewelry", label: "Jewelry" },
+  { value: "leather", label: "Leather" },
+  { value: "painting", label: "Painting" },
+  { value: "others", label: "Others" },
+];

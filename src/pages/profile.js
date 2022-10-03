@@ -94,11 +94,11 @@ export default function Profile() {
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="layout-profile">
-            <div className="profile-photo-container">
-              <img src={female1} alt="female1"></img>
-            </div>
+            {/* <div className="profile-photo-container">
+            </div> */}
 
             <div className="edit-container">
+              <img className="edit-avatar" src={female1} alt="female1"></img>
               <div className="edit-left-container">
                 <div className="fillin-input-container">
                   <h2>User Email (ReadOnly) </h2>

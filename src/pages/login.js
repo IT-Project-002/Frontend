@@ -107,9 +107,7 @@ function Login() {
               <button type="submit">Log in</button>
             </div>
             <div>
-              <button>
-                <a href="/user/register">Sign Up</a>
-              </button>
+              <a href="/user/register">Sign Up</a>
             </div>
           </form>
         </div>

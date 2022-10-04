@@ -81,6 +81,7 @@ export default function Profile() {
       })
       .then((updateInfo) => {
         console.log("Success:", updateInfo);
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -90,13 +91,12 @@ export default function Profile() {
   return (
     <>
       {loading ? (
-        <CircularProgress className="layout-profile" />
+        <CircularProgress className="loading" />
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="layout-profile">
             {/* <div className="profile-photo-container">
             </div> */}
-
             <div className="edit-container">
               <img className="edit-avatar" src={female1} alt="female1"></img>
               <div className="edit-left-container">

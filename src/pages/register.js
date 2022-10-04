@@ -1,11 +1,12 @@
+import "../css/register.css";
+import "../css/form.css";
 import React, { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import { useNavigate } from "react-router-dom";
-import "../css/register.css";
-import "../css/form.css";
+import Alert from "@mui/material/Alert";
 import female1 from "../image/avatar/female1.png";
 import female2 from "../image/avatar/female2.png";
 import female3 from "../image/avatar/female3.png";
@@ -32,6 +33,7 @@ function Registration() {
   const [matchPwd, setMatchPwd] = useState("");
   const [bio, setBio] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [isActive, setIsActive] = useState(false);
 
   // setting a focus on username input when the component loads
   useEffect(() => {
@@ -40,9 +42,11 @@ function Registration() {
 
   // Avatar selection
   const handleClick = (event) => {
-    //refers to the image element
-    // console.log(event.target);
     setAvatar(event.target.alt);
+  };
+
+  const toggleButton = () => {
+    setIsActive((current) => !current);
   };
 
   const handleSubmit = (e) => {
@@ -65,10 +69,15 @@ function Registration() {
       })
         .then((response) => {
           console.log("hi:", response);
-          history("/user/login");
+          if (response.status !== 200) {
+            //这里写弹窗？
+            console.log("出错了");
+          } else {
+            history("/user/login");
+          }
         })
         .then((userInfo) => {
-          console.log("Success:", userInfo);
+          console.log("Form Contains:", userInfo);
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -97,11 +106,14 @@ function Registration() {
             />
           </div>
           {username && !validName(username) ? (
-            <p id="uidnote" className="instructions">
-              3 to 14 characters.
-              <br />
-              Letters, numbers, underscores, hyphens allowed.
-            </p>
+            <Alert
+              className="register-alert"
+              severity="warning"
+              variant="outlined"
+            >
+              3 to 14 characters. Letters, numbers, underscores, hyphens
+              allowed.
+            </Alert>
           ) : null}
 
           {/* Email */}
@@ -118,9 +130,13 @@ function Registration() {
             />
           </div>
           {email && !validEmail(email) ? (
-            <p id="uidnote" className="instructions">
+            <Alert
+              className="register-alert"
+              severity="warning"
+              variant="outlined"
+            >
               Valid email prefixes: example@mail.com
-            </p>
+            </Alert>
           ) : null}
 
           {/* Password */}
@@ -137,12 +153,14 @@ function Registration() {
             />
           </div>
           {password && !validPwd(password) ? (
-            <p id="uidnote" className="instructions">
-              8 to 24 characters.
-              <br />
-              Must include uppercase, lowercase letters and a number.
-              <br />
-            </p>
+            <Alert
+              className="register-alert"
+              severity="warning"
+              variant="outlined"
+            >
+              8 to 24 characters. Must include uppercase, lowercase letters and
+              a number.
+            </Alert>
           ) : null}
 
           {/* Confirm Password */}
@@ -159,9 +177,13 @@ function Registration() {
             />
           </div>
           {password && !validMatch(password, matchPwd) ? (
-            <p id="uidnote" className="instructions">
+            <Alert
+              className="register-alert"
+              severity="warning"
+              variant="outlined"
+            >
               Passwords did not match
-            </p>
+            </Alert>
           ) : null}
 
           {/* Bio */}
@@ -176,58 +198,91 @@ function Registration() {
               onChange={(e) => setBio(e.target.value)}
             />
           </div>
-          <button className="button" type="submit">
+          <button
+            className="register-button"
+            type="submit"
+            style={{
+              backgroundColor: isActive ? "#c5c1a4" : "",
+            }}
+            onClick={toggleButton}
+          >
             Sign Up
           </button>
         </form>
-        <button>
-          <a href="/user/login">Already has an account?</a>
-        </button>
+
+        <a className="register-signin" href="/user/login">
+          Already has an account?
+        </a>
       </div>
+      {/* Avatar */}
       <div className="bubble-container">
-        <h2>Pick your profile picture…</h2>
+        <h2 className="avatar-remindar">Pick your profile picture…</h2>
         {!avatar ? (
-          <p id="uidnote" className="instructions">
+          <Alert className="avatar-alert" severity="warning" variant="outlined">
             Must pick profile picture
-          </p>
+          </Alert>
         ) : null}
         <img
+          id="female1"
           src={female1}
           alt="female1"
           className="avatar2"
           onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "female1" ? "#bcb4a7" : "",
+          }}
         ></img>
         <img
+          id="female2"
           src={female2}
           alt="female2"
           className="avatar1"
           onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "female2" ? "#bcb4a7" : "",
+          }}
         ></img>
         <img
+          id="female3"
           src={female3}
           alt="female3"
           className="avatar2"
           onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "female3" ? "#bcb4a7" : "",
+          }}
         ></img>
         <img
+          id="male1"
           src={male1}
           alt="male1"
           className="avatar1"
           onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "male1" ? "#bcb4a7" : "",
+          }}
         ></img>
         <img
+          id="male2"
           src={male2}
           alt="male2"
           className="avatar2"
           onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "male2" ? "#bcb4a7" : "",
+          }}
         ></img>
         <img
+          id="male3"
           src={male3}
           alt="male3"
           className="avatar1"
           onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "male3" ? "#bcb4a7" : "",
+          }}
         ></img>
-        <h2>Now…Let's set up your own space!</h2>
+        <h2 className="avatar-setup-msg">Now…Let's set up your own space!</h2>
       </div>
       <img className="login-background" src={background} alt=""></img>
     </div>

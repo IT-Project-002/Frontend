@@ -22,20 +22,18 @@
 /* ===================================================== */
 /* Browse Items */
 
-
 .browse-grid-container {
   grid-area: browse;
   display: grid;
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1200px) {
   .layout-landing {
     grid-area: main;
     margin: 10vh 5vw;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "browse";
+    grid-template-areas: "browse";
   }
 
   .slider-container {

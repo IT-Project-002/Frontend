@@ -1,9 +1,15 @@
-.wrapper {
-  margin: 1rem;
+.wrapperB {
+  /* margin-top: 1rem; */
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr;
   justify-content: center;
+  /* margin-bottom: 50px; */
+}
+
+.wrapperB svg {
+  width: 50px;
+  height: 50px;
 }
 
 .card {
@@ -11,16 +17,23 @@
   border-radius: 20px;
   min-width: 28rem;
   display: flex;
-  background-color: #E6DED0;
+  background-color: #e6ded0;
 }
 
 .card-img {
   width: 14rem;
-  height: 11rem;
+  height: 12rem;
   object-fit: cover;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   z-index: 2;
+}
+
+/* 加了跳转后<a>有一个高度 */
+@media screen and (max-width: 750px) {
+  .card {
+    height: 12rem;
+  }
 }
 
 .card-body {
@@ -29,7 +42,7 @@
 }
 .card-title {
   line-height: 1.4rem;
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0.1rem;
@@ -54,7 +67,7 @@
 }
 
 @media screen and (min-width: 750px) {
-  .wrapper {
+  .wrapperB {
     grid-template-columns: repeat(auto-fit, minmax(10rem, 14rem));
   }
   .card {
@@ -79,7 +92,7 @@
 }
 
 .icon-container svg {
-  fill:grey;
+  fill: grey;
   width: 5.5rem;
   height: 1.5rem;
   background-color: white;
@@ -87,11 +100,11 @@
 }
 
 .edit-icon:hover {
-  fill:white;
-  background-color:#4F7942;
+  fill: white;
+  background-color: #4f7942;
 }
 
 .delete-icon:hover {
-  fill:white;
-  background-color:#A93226;
+  fill: white;
+  background-color: #a93226;
 }

@@ -7,6 +7,7 @@ import Cards from "../components/itemListA";
 import React, { useEffect, useState } from "react";
 
 function Landing() {
+  const token = sessionStorage.getItem("access_token");
   const [showModal, setShowModal] = useState(false);
   /* appear after 5 seconds */
   useEffect(() => {
@@ -30,7 +31,7 @@ function Landing() {
           <Cards />
         </div>
       </div>
-      {showModal && <Modal className="pop-up" close={Toggle} />}
+      {!token && showModal && <Modal className="pop-up" close={Toggle} />}
     </div>
   );
 }

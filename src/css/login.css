@@ -3,24 +3,23 @@
 
 .layout-login {
   grid-area: main;
-  margin:15vh 3vw;
+  margin: 15vh 3vw;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-    'login today';
+  grid-template-areas: "login today";
   /* background-image: url(../image/background/login.png);
   background-repeat: none;
   background-position: fixed; */
 }
 
 .login-background {
-  position:fixed;
-  top:60px;
+  position: fixed;
+  top: 60px;
   left: 20px;
-  width:1400px;
+  width: 1400px;
   height: auto;
   object-fit: contain;
-  z-index:-99;
+  z-index: -99;
 }
 
 /* ===================================================== */
@@ -29,8 +28,31 @@
 .login-container {
   grid-area: login;
   display: grid;
-  padding:5%;
+  padding: 5%;
   text-align: center;
+}
+
+.login-alert {
+  text-align: left;
+  width: 300px;
+  margin-left: 20%;
+}
+
+.login-container button {
+  border: 1px solid white;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #af9177;
+  color: white;
+  font-size: 15px;
+  margin: 15px;
+}
+
+.signup-link {
+  font-family: Arial;
+  font-size: 15px;
+  color: #0047ab;
 }
 
 /* ===================================================== */
@@ -49,12 +71,12 @@
 /* ===================================================== */
 /* Responsive design */
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1200px) {
   .layout-login {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
-      "today"  
+      "today"
       "login";
     grid-gap: 10px;
     padding: 10px;
@@ -67,12 +89,12 @@
   }
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width: 800px) {
   .layout-login {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
-      "today"  
+      "today"
       "login";
     grid-gap: 10px;
     padding: 10px;

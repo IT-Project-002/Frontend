@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import CameraAltRoundedIcon from "@mui/icons-material/CameraAltRounded";
 import Alert from "@mui/material/Alert";
 import PhotoIcon from "@mui/icons-material/PhotoSizeSelectActualOutlined";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,20}$/i);
 const PRICE_REG = new RegExp(/^[0-9]{1,8}$/i);
@@ -12,6 +13,12 @@ export const validPrice = (str = "") => PRICE_REG.test(str);
 
 export default function Upload() {
   const access_token = sessionStorage.getItem("access_token");
+  const [itemName, setItemName] = useState("");
+  const [price, setPrice] = useState("");
+  const [describtion, setDescribtion] = useState("");
+  const [tags, setTags] = useState([]);
+  const [isActive, setIsActive] = useState(false);
+
   const options = [
     { value: "textiles", label: "Textiles" },
     { value: "ceramics", label: "Ceramics" },
@@ -22,14 +29,15 @@ export default function Upload() {
     { value: "painting", label: "Painting" },
     { value: "others", label: "Others" },
   ];
-  const [itemName, setItemName] = useState("");
-  const [price, setPrice] = useState("");
-  const [describtion, setDescribtion] = useState("");
-  const [tags, setTags] = useState([]);
+
   /* Image */
   const [selectedImages, setSelectedImages] = useState([]);
   const [filesDict, setFileDict] = useState({});
   const formRef = useRef();
+
+  const toggleButton = () => {
+    setIsActive((current) => !current);
+  };
 
   const onSelectFile = (e) => {
     // const file = e.target.files[0];
@@ -63,8 +71,8 @@ export default function Upload() {
     // prevent page being refresh
     e.preventDefault();
     const data = new FormData(formRef.current);
-    console.log(data);
     data.append("tags", JSON.stringify(tags));
+    console.log(data);
     const filesArray = selectedImages.map((file) => {
       return filesDict[file];
     });
@@ -83,7 +91,8 @@ export default function Upload() {
     })
       .then((res) => {
         console.log(res);
-        window.location.reload();
+        // window.location.reload();
+        window.location.href = window.location.origin + "/user/market";
       })
       .then((itemInfo) => {
         console.log("Success:", itemInfo);
@@ -124,34 +133,36 @@ export default function Upload() {
             onChange={onSelectFile}
           />
         </label>
-        <p>Maximum 3 photos</p>
+        <Alert severity="warning" className="upload-alert">
+          Maximum 3 photos
+        </Alert>
       </div>
 
       <div className="preview-container">
-        {/* <div className="empty-wrapper" />
-        <div className="empty-wrapper" />
-        <div className="empty-wrapper" /> */}
         {selectedImages &&
           selectedImages.map((image) => {
             return (
               <div key={image} className="image-wrapper">
-                <button onClick={() => deleteImage(image)}>X</button>
+                <HighlightOffIcon
+                  className="preview-close"
+                  onClick={() => deleteImage(image)}
+                />
                 <img src={image} alt="file" />
               </div>
             );
           })}
         {selectedImages.length < 3 ? (
-          <div className="image-wrapper">
+          <div className="image-wrapper-2">
             <PhotoIcon />
           </div>
         ) : null}
         {selectedImages.length < 2 ? (
-          <div className="image-wrapper">
+          <div className="image-wrapper-2">
             <PhotoIcon />
           </div>
         ) : null}
         {selectedImages.length === 0 ? (
-          <div className="image-wrapper">
+          <div className="image-wrapper-2">
             <PhotoIcon />
           </div>
         ) : null}
@@ -174,7 +185,7 @@ export default function Upload() {
               required
             />
             {itemName && !validName(itemName) ? (
-              <div id="upload" className="instructions">
+              <div className="upload-error">
                 <Alert severity="warning">
                   3 to 20 characters. Must start with letters.
                   <br />
@@ -193,7 +204,7 @@ export default function Upload() {
               required
             />
             {price && !validPrice(price) ? (
-              <div id="upload" className="instructions">
+              <div className="upload-error">
                 <Alert severity="warning">
                   Price ranged between 0 to 99,999,999.
                 </Alert>
@@ -210,30 +221,31 @@ export default function Upload() {
               required
             />
           </div>
-          <div>
-            <div>
-              <h2>Tag your work with its category.</h2>
-            </div>
-            <div className="selector-container">
-              <Select
-                isMulti
-                placeholder="Tell us what you interested in…"
-                options={options}
-                onChange={(item) => setTags(item)}
-                isClearable={true}
-                isSearchable={true}
-                isDisabled={false}
-                isLoading={false}
-                isRtl={false}
-                closeMenuOnSelect={false}
-              />
-            </div>
+          <div className="fillin-input-container">
+            <h2>Tag your work with its category.</h2>
+            <Select
+              isMulti
+              placeholder="Category"
+              options={options}
+              onChange={(item) => setTags(item)}
+              isClearable={true}
+              isSearchable={true}
+              isDisabled={false}
+              isLoading={false}
+              isRtl={false}
+              closeMenuOnSelect={false}
+            />
           </div>
-          <div className="profile-button-container">
-            <a href="user/market">
-              <button type="submit">Save Changes</button>
-            </a>
-          </div>
+          <button
+            className="profile-button-container"
+            type="submit"
+            style={{
+              backgroundColor: isActive ? "#c5c1a4" : "",
+            }}
+            onClick={toggleButton}
+          >
+            Save Changes
+          </button>
         </form>
       </div>
     </div>

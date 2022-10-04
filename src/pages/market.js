@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import female1 from "../image/avatar/female1background.png";
 import female2 from "../image/avatar/female2background.png";
 import female3 from "../image/avatar/female3background.png";
-import male1 from "../image/avatar/male2background.png";
-import male2 from "../image/avatar/male2background.png";
+import male1 from "../image/avatar/male1background.png";
+import male2 from "../image/avatar/male2backgound.png";
 import male3 from "../image/avatar/male3background.png";
 import background from "../image/background/marketplace.png";
 import AddAPhotoOutlinedIcon from "@mui/icons-material/AddAPhotoOutlined";
@@ -29,7 +29,7 @@ export default function Market() {
       mode: "cors",
     })
       .then((res) => {
-        console.log(res);
+        // console.log({res});
         if (res.status === 401) {
           sessionStorage.removeItem("access_token");
           window.location.href = window.location.origin + "/user/login";
@@ -38,7 +38,7 @@ export default function Market() {
         }
       })
       .then((dat) => {
-        console.log(dat);
+        // console.log(dat);
         setData(dat);
         setLoading(false);
       });

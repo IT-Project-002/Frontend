@@ -6,6 +6,7 @@ import d1 from "../image/pages/loginDrawer.png";
 import { AiFillEyeInvisible, AiFillEye, AiTwotoneMail } from "react-icons/ai";
 import React from "react";
 import background from "../image/background/login.png";
+import Alert from "@mui/material/Alert";
 
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 export const validateEmailInput = (str = "") => EMAIL_REG.test(str);
@@ -16,7 +17,12 @@ function Login() {
   const [password, setPassword] = useState("");
   const [isShown, setIsSHown] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const [isActive, setIsActive] = useState(false);
   const token = sessionStorage.getItem("access_token");
+
+  const toggleButton = () => {
+    setIsActive((current) => !current);
+  };
 
   // show password or not
   const togglePassword = () => {
@@ -48,8 +54,7 @@ function Login() {
           window.location.href = window.location.origin + "/user/market";
           return data.access_token;
         } else {
-          setLoginError("Check out your Account or Password again");
-          // window.location.reload();
+          setLoginError("Check out your Account/Password again");
         }
       })
       .catch((error) => {
@@ -77,7 +82,13 @@ function Login() {
               />
             </div>
             {email && !validateEmailInput(email) ? (
-              <p className="instructions">Email not valid</p>
+              <Alert
+                className="login-alert"
+                severity="warning"
+                variant="outlined"
+              >
+                Email not valid
+              </Alert>
             ) : null}
             <div className="input-container">
               <label className="login-icon">
@@ -95,14 +106,30 @@ function Login() {
                 required
               />
             </div>
-            {loginError ? <p className="instructions">{loginError}</p> : null}
+            {loginError ? (
+              <Alert
+                className="login-alert"
+                severity="warning"
+                variant="outlined"
+              >
+                {loginError}
+              </Alert>
+            ) : null}
             <div>
-              <button type="submit">Log in</button>
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: isActive ? "#c5c1a4" : "",
+                }}
+                onClick={toggleButton}
+              >
+                Log in
+              </button>
             </div>
             <div>
-              <button>
-                <a href="/user/register">Haven't Sign up?</a>
-              </button>
+              <a className="signup-link" href="/user/register">
+                Sign Up
+              </a>
             </div>
           </form>
         </div>

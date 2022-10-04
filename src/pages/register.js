@@ -69,10 +69,15 @@ function Registration() {
       })
         .then((response) => {
           console.log("hi:", response);
-          history("/user/login");
+          if(response.status != 200){
+            //这里写弹窗？
+            console.log('出错了')
+          }else{
+            history("/user/login");
+          }
         })
         .then((userInfo) => {
-          console.log("Success:", userInfo);
+          console.log("Form Contains:", userInfo);
         })
         .catch((error) => {
           console.error("Error:", error);

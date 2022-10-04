@@ -215,7 +215,7 @@ export default function Upload() {
             <h2>Can you precisely describe your work?</h2>
             <input
               type="text"
-              name="tag"
+              name="description"
               value={describtion}
               onChange={(e) => setDescribtion(e.target.value)}
               required

@@ -8,6 +8,9 @@ export default function ItemList(props) {
   // console.log(props.data.item_names);
   const items = props.data.item_names;
   const links = props.data.item_links;
+  const prices = props.data.item_price;
+  const tags = props.data.item_tags;
+  const access_token = sessionStorage.getItem("access_token");
   return (
     <>
       {!items ? (
@@ -16,7 +19,7 @@ export default function ItemList(props) {
         <div className="wrapperB">
           {items.map((item, index) => (
             <div key={items[index]}>
-              <Card img={links[index]} title={item} description="/" price="/" />
+              <Card img={links[index]} title={item} description={tags[index]} price={prices[index]} token={access_token}/>
             </div>
           ))}
         </div>
@@ -26,6 +29,24 @@ export default function ItemList(props) {
 }
 
 function Card(props) {
+  const access_token = sessionStorage.getItem("access_token");
+  const deleteItem = (item) => {
+    console.log({"aaa": item});
+    fetch("/users/delete", {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: "Bearer " + access_token,
+      },
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify(props),
+    })
+    .then((res) => {
+      console.log({res});
+    })
+  }
+
   return (
     <div className="card">
       {/* navigate to item page */}
@@ -40,7 +61,8 @@ function Card(props) {
           <a href="/user/upload">
             <EditIcon className="edit-icon" />
           </a>
-          <DeleteForeverIcon className="delete-icon" />
+          <a><DeleteForeverIcon className="delete-icon" onClick={() => deleteItem(props)}/></a>
+          {/* <DeleteForeverIcon className="delete-icon" onClick={deleteItem(props)}/> */}
         </div>
       </div>
     </div>

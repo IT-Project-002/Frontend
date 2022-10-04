@@ -29,7 +29,7 @@ export default function Market() {
       mode: "cors",
     })
       .then((res) => {
-        console.log(res);
+        // console.log({res});
         if (res.status === 401) {
           sessionStorage.removeItem("access_token");
           window.location.href = window.location.origin + "/user/login";
@@ -38,7 +38,7 @@ export default function Market() {
         }
       })
       .then((dat) => {
-        console.log(dat);
+        // console.log(dat);
         setData(dat);
         setLoading(false);
       });

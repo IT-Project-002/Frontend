@@ -31,18 +31,20 @@ export default function ItemList(props) {
 function Card(props) {
   const access_token = sessionStorage.getItem("access_token");
   const deleteItem = (item) => {
+    console.log(access_token)
+    console.log(props)
     console.log({"aaa": item});
     fetch("/users/delete", {
       headers: {
-        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         Authorization: "Bearer " + access_token,
       },
       method: "POST",
-      mode: "no-cors",
+      mode: "cors",
       body: JSON.stringify(props),
     })
     .then((res) => {
+      console.log(access_token)
       console.log({res});
     })
   }

@@ -33,6 +33,7 @@
 }
 
 .login-alert {
+  text-align: left;
   width: 300px;
   margin-left: 20%;
 }
@@ -42,16 +43,20 @@
   width: 100px;
   height: 30px;
   border-radius: 5px;
-  background-color: #AF9177;
-  color:white;
-  font-size:15px;
-  margin:15px;
+  background-color: #af9177;
+  color: white;
+  font-size: 15px;
+  margin: 15px;
+}
+
+.login-container button :hover {
+  background-color: #c5c1a4;
 }
 
 .signup-link {
-  font-family:Arial;
-  font-size:15px;
-  color:#0047AB;
+  font-family: Arial;
+  font-size: 15px;
+  color: #0047ab;
 }
 
 /* ===================================================== */

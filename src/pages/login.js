@@ -12,13 +12,17 @@ const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 export const validateEmailInput = (str = "") => EMAIL_REG.test(str);
 
 function Login() {
-
   const userRef = useRef();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isShown, setIsSHown] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const [isActive, setIsActive] = useState(false);
   const token = sessionStorage.getItem("access_token");
+
+  const toggleButton = () => {
+    setIsActive((current) => !current);
+  };
 
   // show password or not
   const togglePassword = () => {
@@ -50,7 +54,7 @@ function Login() {
           window.location.href = window.location.origin + "/user/market";
           return data.access_token;
         } else {
-          setLoginError("Check out your Account or Password again");
+          setLoginError("Check out your Account/Password again");
         }
       })
       .catch((error) => {
@@ -78,7 +82,11 @@ function Login() {
               />
             </div>
             {email && !validateEmailInput(email) ? (
-              <Alert className="login-alert" severity="warning" variant="outlined"> 
+              <Alert
+                className="login-alert"
+                severity="warning"
+                variant="outlined"
+              >
                 Email not valid
               </Alert>
             ) : null}
@@ -99,15 +107,29 @@ function Login() {
               />
             </div>
             {loginError ? (
-              <p id="uidnote" className="instructions">
+              <Alert
+                className="login-alert"
+                severity="warning"
+                variant="outlined"
+              >
                 {loginError}
-              </p>
+              </Alert>
             ) : null}
             <div>
-              <button type="submit">Log in</button>
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: isActive ? "#c5c1a4" : "",
+                }}
+                onClick={toggleButton}
+              >
+                Log in
+              </button>
             </div>
             <div>
-              <a className="signup-link" href="/user/register">Sign Up</a>
+              <a className="signup-link" href="/user/register">
+                Sign Up
+              </a>
             </div>
           </form>
         </div>

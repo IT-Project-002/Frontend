@@ -35,7 +35,7 @@
 .myfav-title h1 {
   font-weight: 500;
   position: absolute;
-  margin-left:20%;
+  margin-left: 10%;
   z-index: 3;
   font-size: 35px;
 }
@@ -52,7 +52,7 @@
   position: absolute;
   background-color: white;
   z-index: 98;
-  background-color: #F48B8B;
+  background-color: #f48b8b;
   fill: white;
   width: 30px;
   height: 30px;
@@ -123,13 +123,13 @@
   .myfav-title {
     grid-area: myfav-title;
   }
-  
+
   .myfav-title h1 {
     font-weight: 500;
     position: absolute;
-    margin-top: 8%;
+    /* margin-top: 8%; */
     z-index: 3;
-    margin-left: 18%;
+    margin-left: 10%;
     font-size: 58px;
   }
 
@@ -153,7 +153,7 @@
     position: absolute;
     background-color: white;
     z-index: 98;
-    background-color: #F48B8B;
+    background-color: #f48b8b;
     fill: white;
     width: 30px;
     height: 30px;

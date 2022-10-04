@@ -4,12 +4,13 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export default function ItemList(props) {
-  // console.log(props);
+//   console.log(props);
   // console.log(props.data.item_names);
   const items = props.data.item_names;
   const links = props.data.item_links;
   const prices = props.data.item_price;
   const tags = props.data.item_tags;
+  const prodId = props.data.item_id;
   const access_token = sessionStorage.getItem("access_token");
   return (
     <>
@@ -19,7 +20,7 @@ export default function ItemList(props) {
         <div className="wrapperB">
           {items.map((item, index) => (
             <div key={items[index]}>
-              <Card img={links[index]} title={item} description={tags[index]} price={prices[index]} token={access_token}/>
+              <Card prod_id={prodId[index]} img={links[index]} title={item} description={tags[index]} price={prices[index]}/>
             </div>
           ))}
         </div>
@@ -44,8 +45,9 @@ function Card(props) {
       body: JSON.stringify(props),
     })
     .then((res) => {
-      console.log(access_token)
-      console.log({res});
+      if (res.status === 200){
+        window.location.reload()
+      }
     })
   }
 

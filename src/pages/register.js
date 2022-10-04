@@ -69,10 +69,10 @@ function Registration() {
       })
         .then((response) => {
           console.log("hi:", response);
-          if(response.status != 200){
+          if (response.status !== 200) {
             //这里写弹窗？
-            console.log('出错了')
-          }else{
+            console.log("出错了");
+          } else {
             history("/user/login");
           }
         })

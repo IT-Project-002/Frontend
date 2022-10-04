@@ -68,7 +68,7 @@
   top: 2px;
   right: 2px;
   border-radius: 50%;
-  fill:white;
+  fill: #8b867e;
   background-color: transparent;
   z-index: 2;
 }
@@ -80,11 +80,10 @@
   top: 2px;
   right: 2px;
   border-radius: 50%;
-  fill:#a93226;
+  fill: #a93226;
   background-color: transparent;
   z-index: 2;
 }
-
 
 /* ===================================================== */
 /* Middle section: Upload image */
@@ -92,13 +91,12 @@
 .upload-container {
   grid-area: upload;
   text-align: center;
-  margin-top: 40%;
+  margin-top: 100px;
 }
 
 .upload-alert {
-  width:200px;
-  margin-top: 10px;
-  margin-left: 20%;
+  width: 200px;
+  margin: auto;
 }
 
 .upload-container img {
@@ -152,16 +150,39 @@
   margin-bottom: 5%;
 }
 
-.profile-button-container button {
+.profile-button-container {
   border: 1px solid white;
   width: 150px;
   height: 30px;
   border-radius: 5px;
-  background-color: #AF9177;
-  color:white;
-  font-size:15px;
-  margin:30px;
-  margin-left:25%;
+  background-color: #af9177;
+  color: white;
+  font-size: 15px;
+  margin-top: 30px;
+  /* margin: 30px; */
+  /* margin-left: 25%; */
+}
+
+/* select conatiner */
+.css-b62m3t-container {
+  min-width: 75%;
+  max-width: 75%;
+}
+.css-1s2u09g-control {
+  width: 100%;
+}
+/* select tags */
+.css-1rhbuit-multiValue {
+  background-color: #d2cbc1;
+  text-align: center;
+}
+/* select tags font*/
+.css-12jo7m5 {
+  font-size: 100%;
+}
+/* select delete button */
+.selector-container svg {
+  margin-top: 0;
 }
 
 /* ===================================================== */
@@ -176,27 +197,39 @@
       "upload"
       "preview";
     grid-gap: 10px;
-    padding: 10px;
-    text-align: center;
+    padding: 20px;
   }
 
   .preview-container img {
-    max-width: 70%;
-    margin: 4%;
+    width: 200px;
+    height: 170px;
+    border-radius: 20px;
+    margin: auto;
+    position: relative;
     border-radius: 20px;
     box-shadow: 0px 1px 6px 5px rgba(0, 0, 0, 0.2);
   }
-
-  .selector-container {
-    width: 70%;
-    margin-left: 10%;
-    margin-bottom: 5%;
+  .upload-container {
+    margin-top: 0;
+  }
+  .upload-container label svg {
+    border-radius: 20px;
+    height: 60px;
+  }
+  .fillin-container {
+    text-align: center;
+    justify-content: center;
+  }
+  /* select conatiner */
+  .css-b62m3t-container {
+    min-width: 100%;
+    max-width: 100%;
   }
 }
 
 .upload-error {
   text-align: left;
   width: 75%;
-  margin-left:0;
-  padding:5px;
+  margin-left: 0;
+  padding: 5px;
 }

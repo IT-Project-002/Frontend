@@ -49,10 +49,6 @@
   margin: 15px;
 }
 
-.login-container button :hover {
-  background-color: #c5c1a4;
-}
-
 .signup-link {
   font-family: Arial;
   font-size: 15px;

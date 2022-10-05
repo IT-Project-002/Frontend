@@ -75,6 +75,7 @@
 
 @media screen and (max-width: 1420px) {
   .layout-market {
+    margin-top: 30px;
     display: grid;
     grid-template-columns: 0.7fr 2fr;
     grid-template-areas: "user-intro user-collection";
@@ -87,7 +88,7 @@
 
   .user-intro-container {
     width: 15vw;
-    margin-top: 10vh;
+    margin-top: 0;
     left: 5vw;
   }
 

@@ -149,7 +149,7 @@
     border-bottom-left-radius: 0px;
   }
 
-  .like-icon {
+  .layout-like svg {
     position: absolute;
     background-color: white;
     z-index: 98;

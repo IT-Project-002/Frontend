@@ -61,7 +61,7 @@ function Card(props) {
     <div className="card">
       {/* navigate to item page */}
       {/* <a href={`/user/item/${item._id}`}> */}
-      <a href="/user/item">
+      <a href={`/user/item/${props.prod_id}`}>
         <img src={props.img} alt="item" className="card-img" />
       </a>
       <div className="card-body">

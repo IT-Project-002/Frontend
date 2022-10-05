@@ -1,14 +1,16 @@
 import "../css/item.css";
 import Slider from "../components/imageSlider";
 import React from "react";
+import { useParams } from "react-router-dom";
 
 export default function Item() {
+  const { itemId } = useParams();
+  console.log(itemId);
   return (
     <div className="layout-item">
       <div className="item-img">
         <Slider />
       </div>
-      {/* <img className="item-img" src={sample} alt="sample"></img> */}
       <div className="item-desc-container">
         <h1 className="item-name">
           Purely Hand-made mug, Perfectly for hot tea in winter.

@@ -1,14 +1,17 @@
 import "../css/item.css";
-import Slider from "../components/imageSlider";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Slider from "../components/imageSlider";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Item() {
-const access_token = sessionStorage.getItem("access_token");
+  const access_token = sessionStorage.getItem("access_token");
   const { itemId } = useParams();
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    fetch("/users/item/"+itemId, {
+    fetch("/users/item/" + itemId, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -27,30 +30,33 @@ const access_token = sessionStorage.getItem("access_token");
         }
       })
       .then((dat) => {
-         console.log(dat);
-         setData(dat);
+        console.log(dat);
+        setData(dat);
+        setLoading(false);
       });
-  }, [access_token]);
+  }, [access_token, itemId]);
+
   return (
-    <div className="layout-item">
-      <div className="item-img">
-        <Slider />
-      </div>
-      <div className="item-desc-container">
-        <h1 className="item-name">
-          Purely Hand-made mug, Perfectly for hot tea in winter.
-        </h1>
-        <h1 className="item-price">AU$49.00+</h1>
-        <p className="item-desc">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et ut labore et dolore magna
-          aliquyam erat.
-        </p>
-        <p className="item-status">Di Lu's Marketplace</p>
-        <p className="item-contact">ann.b@gmail.com</p>
-      </div>
-    </div>
+    <>
+      {loading ? (
+        <CircularProgress className="loading" />
+      ) : (
+        <div className="layout-item">
+          <div className="item-img">
+            <Slider image={data["prod_images"]} />
+          </div>
+          <div className="item-desc-container">
+            <h1 className="item-name">{data["prod_name"]}</h1>
+            <h1 className="item-price">AU${data["prod_price"]}</h1>
+            {data["prod_tags"]?.map((tag) => (
+              <div key={tag}> {tag}</div>
+            ))}
+            <p className="item-desc">{data["prod_desc"]}</p>
+            <p className="item-status">{data["user_name"]}'s Marketplace</p>
+            <p className="item-contact">{data["user_email"]}</p>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

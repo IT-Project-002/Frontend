@@ -5,6 +5,7 @@ import CameraAltRoundedIcon from "@mui/icons-material/CameraAltRounded";
 import Alert from "@mui/material/Alert";
 import PhotoIcon from "@mui/icons-material/PhotoSizeSelectActualOutlined";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import CircularProgress from "@mui/material/CircularProgress";
 import { useParams } from "react-router-dom";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,20}$/i);
@@ -17,10 +18,11 @@ export default function Edit() {
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [tagValue, setTagValue] = useState([]);
   const [tags, setTags] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [loading, setLoading] = useState(true);
-
+  const test = [{ value: "textiles", label: "Textiles" }];
   const options = [
     { value: "textiles", label: "Textiles" },
     { value: "ceramics", label: "Ceramics" },
@@ -31,7 +33,9 @@ export default function Edit() {
     { value: "painting", label: "Painting" },
     { value: "others", label: "Others" },
   ];
-
+  console.log(tags);
+  console.log(test);
+  console.log(options);
   /* Image */
   const [selectedImages, setSelectedImages] = useState([]);
   const [filesDict, setFileDict] = useState({});
@@ -39,7 +43,7 @@ export default function Edit() {
   const { itemId } = useParams();
 
   useEffect(() => {
-    fetch("/users/item/edit/"+itemId, {
+    fetch("/users/item/edit/" + itemId, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -58,16 +62,27 @@ export default function Edit() {
         }
       })
       .then((dat) => {
-        console.log(dat)
+        console.log(dat);
         setItemName(dat.prod_name);
         setPrice(dat.prod_price);
         setDescription(dat.prod_desc);
         setItemName(dat.prod_name);
-        setTags(dat.prod_tags);
+        setTagValue(dat.prod_tags);
+        // make tags array of objects
+        const list = [];
+        console.log(dat.prod_tags.map((value) => value));
+        dat.prod_tags?.map((value) => {
+          let tags = {
+            value: value,
+            label: value.charAt(0).toUpperCase() + value.slice(1),
+          };
+          list.push(tags);
+        });
+        setTags(list);
         setSelectedImages(dat.prod_images);
         setLoading(false);
       });
-  }, [access_token]);
+  }, [access_token, itemId]);
 
   const toggleButton = () => {
     setIsActive((current) => !current);
@@ -105,16 +120,16 @@ export default function Edit() {
     // prevent page being refresh
     e.preventDefault();
     const data = new FormData(formRef.current);
-    data.append("tags", JSON.stringify(tags));
+    data.append("tags", JSON.stringify(tagValue));
     data.append("images", JSON.stringify(selectedImages));
-    console.log({"hi": formRef.current});
+    console.log({ hi: formRef.current });
     const filesArray = selectedImages.map((file) => {
       return filesDict[file];
     });
     for (let i = 0; i < filesArray.length; i++) {
       data.append(i, filesArray[i]);
     }
-    fetch("/users/item/edit/"+itemId, {
+    fetch("/users/item/edit/" + itemId, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         Authorization: "Bearer " + access_token,
@@ -237,19 +252,21 @@ export default function Edit() {
           </div>
           <div className="fillin-input-container">
             <h2>Tag your work with its category.</h2>
-            <Select
-              isMulti
-              placeholder="Category"
-              options={options}
-              defaultValue={tags}
-              onChange={(item) => setTags(item)}
-              isClearable={true}
-              isSearchable={true}
-              isDisabled={false}
-              isLoading={false}
-              isRtl={false}
-              closeMenuOnSelect={false}
-            />
+            {tags.length > 0 ? (
+              <Select
+                isMulti
+                placeholder="Category"
+                options={options}
+                defaultValue={tags}
+                onChange={(item) => setTagValue(item)}
+                isClearable={true}
+                isSearchable={true}
+                isDisabled={false}
+                isLoading={false}
+                isRtl={false}
+                closeMenuOnSelect={false}
+              />
+            ) : null}
           </div>
           <button
             className="profile-button-container"

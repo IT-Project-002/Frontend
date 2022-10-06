@@ -80,7 +80,7 @@
   background-color: white;
   border-radius: 50%;
   margin-left: 35%;
-  margin-top: -200px;
+  margin-top: -150px;
 }
 
 /* ===================================================== */
@@ -173,6 +173,10 @@
     text-align: left;
   }
 
+  .edit-right-container {
+    margin-top: 0px;
+  }
+
   /* Avatar */
   .edit-avatar {
     position: absolute;
@@ -181,6 +185,17 @@
     background-color: white;
     border-radius: 50%;
     margin-left: 28%;
-    margin-top: -180px;
+  }
+}
+
+@media screen and (max-width: 550px){
+  .edit-avatar{
+    margin-left: 15%;
+  }
+}
+
+@media screen and (max-width: 450px){
+  .edit-avatar{
+    margin-left: 10%;
   }
 }

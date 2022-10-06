@@ -68,7 +68,7 @@ function Card(props) {
         <h2 className="card-title">{props.title}</h2>
         <h3 className="card-price">{props.price}</h3>
         <div className="icon-container">
-          <a href="/user/upload">
+          <a href={`/user/item/edit/${props.prod_id}`}>
             <EditIcon className="edit-icon" />
           </a>
           <DeleteForeverIcon

@@ -114,8 +114,14 @@
 @media screen and (min-width: 1023px) {
   .item-desc {
     grid-area: item-desc;
-    height: 15vh;
+    min-height: 15vh;
   }
+}
+
+.item-desc {
+  grid-area: item-desc;
+  line-height: 0.5cm;
+  text-align: justify;
 }
 
 /* Item owner and contact */

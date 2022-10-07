@@ -38,7 +38,7 @@ export default function Market() {
         }
       })
       .then((dat) => {
-        // console.log(dat);
+        console.log(dat);
         setData(dat);
         setLoading(false);
       });

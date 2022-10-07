@@ -79,6 +79,7 @@ export default function Edit() {
           list.push(tags);
         });
         setTags(list);
+        setTagValue(list);
         setSelectedImages(dat.prod_images);
         setLoading(false);
       });

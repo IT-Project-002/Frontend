@@ -69,7 +69,7 @@ export default function Item() {
               />
             </div>
             <h1 className="item-price">AU${data["prod_price"]}</h1>
-            <p className="item-desc">
+            {/* <p className="item-desc">
               Artist Statement: “Constant attention to form, shape, mass (and a
               dislike for repetition) has caused me to explore beyond the common
               and simple forms attributed to most woodworking. I take pleasure
@@ -78,8 +78,8 @@ export default function Item() {
               surprise alone, but more from an intent to stoke another's
               imagination and amusement, to encourage the need to touch and
               explore. My current work makes use of
-            </p>
-            {/* <p className="item-desc">{data["prod_desc"]}</p> */}
+            </p> */}
+            <p className="item-desc">{data["prod_desc"]}</p>
             <p className="item-owner">{data["user_name"]}'s Marketplace</p>
             <p className="item-contact">{data["user_email"]}</p>
           </div>

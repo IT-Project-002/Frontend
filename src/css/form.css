@@ -1,12 +1,10 @@
-
-
 /* ===================================================== */
 /* Input styles */
 
-.input-container {
-  display: -ms-flexbox; /* IE10 */
+/* .input-container {
+  display: -ms-flexbox;
   display: flex;
-  width: 300px;
+  width: 70%;
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 10px;
@@ -30,8 +28,10 @@ input[type="password"]:focus,
 input[type="text"]:focus {
   background: transparent;
   outline: none;
-}
+} */
 
+/* ===================================================== */
+/* Auto-fill css */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

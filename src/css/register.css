@@ -6,7 +6,7 @@
   margin: 0px 30px;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-areas: "register avator-selection";
+  grid-template-areas: "register avatar-selection";
   grid-gap: 100px;
   padding: 10px;
   text-align: left;
@@ -39,16 +39,45 @@
 }
 
 .register-alert {
-  width: 300px;
-  margin-left:20%;
+  width: 70%;
+  margin-left: 15%;
   text-align: left;
+}
+
+.register-container .input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 20%;
+  margin-bottom: 10px;
+}
+
+.register-container .input-container input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 5px 0;
+  display: inline-block;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  text-align: left;
+  font-size:15px;
+}
+
+.register-container .input-container input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+  background: transparent;
+  outline: none;
 }
 
 /* ===================================================== */
 /* Right section: Bubble */
 
 .bubble-container {
-  grid-area: avator-selection;
+  grid-area: avatar-selection;
   place-items: center;
   display: grid;
   grid-template-columns: 0.5fr 0.5fr 0.5fr;
@@ -68,6 +97,7 @@
 .avatar-remindar {grid-area: title;}
 .avatar-setup-msg {grid-area: title-bottom}
 
+/* ===================================================== */
 /* Avatar size */
 .avatar1 {
   width: 95%;
@@ -108,7 +138,7 @@
 /* Responsive design */
 @media screen and (max-width: 1400px) {
   .bubble-container {
-    grid-area: avator-selection;
+    grid-area: avatar-selection;
     place-items: center;
     display: grid;
     grid-template-columns: 0.5fr 0.5fr 0.5fr;
@@ -127,14 +157,14 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "register"
-      "avator-selection";
+      "avatar-selection";
     grid-gap: 10px;
     padding: 10px;
     text-align: left;
   }
 
   .bubble-container {
-    grid-area: avator-selection;
+    grid-area: avatar-selection;
     place-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -153,16 +183,29 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "register"
-      "avator-selection";
+      "avatar-selection";
     grid-gap: 10px;
     padding: 10px;
     text-align: left;
   }
 
+  .bubble-container {
+    grid-area: avatar-selection;
+    place-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "title title title"
+      "alert alert alert"
+      "female1 female2 female3"
+      "male1 male2 male3"
+      "title-bottom title-bottom title-bottom";
+  }
+
   .avatar-alert {
     grid-area: alert;
-    width: 220px;
-    margin-top:10px;
-    margin-left:0;
+    width: 270px;
+    margin-top:0px;
+    margin-left:0px;
   }
 }

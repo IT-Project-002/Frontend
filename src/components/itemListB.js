@@ -61,14 +61,14 @@ function Card(props) {
     <div className="card">
       {/* navigate to item page */}
       {/* <a href={`/user/item/${item._id}`}> */}
-      <a href="/user/item">
+      <a href={`/user/item/${props.prod_id}`}>
         <img src={props.img} alt="item" className="card-img" />
       </a>
       <div className="card-body">
         <h2 className="card-title">{props.title}</h2>
         <h3 className="card-price">{props.price}</h3>
         <div className="icon-container">
-          <a href="/user/upload">
+          <a href={`/user/item/edit/${props.prod_id}`}>
             <EditIcon className="edit-icon" />
           </a>
           <DeleteForeverIcon

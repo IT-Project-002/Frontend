@@ -5,22 +5,24 @@ import CameraAltRoundedIcon from "@mui/icons-material/CameraAltRounded";
 import Alert from "@mui/material/Alert";
 import PhotoIcon from "@mui/icons-material/PhotoSizeSelectActualOutlined";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import CircularProgress from "@mui/material/CircularProgress";
+import { useParams } from "react-router-dom";
 
-const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,40}$/i);
-const PRICE_REG = new RegExp(/^[0-9]*(\.[0-9]{0,2})?$/);
-const DESC_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{10,480}$/i);
+const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,20}$/i);
+const PRICE_REG = new RegExp(/^[0-9]{1,8}$/i);
 export const validName = (str = "") => NAME_REG.test(str);
 export const validPrice = (str = "") => PRICE_REG.test(str);
-export const validDesc = (str = "") => DESC_REG.test(str);
 
-export default function Upload() {
+export default function Edit() {
   const access_token = sessionStorage.getItem("access_token");
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState("");
-  const [description, setdescription] = useState("");
+  const [description, setDescription] = useState("");
+  const [tagValue, setTagValue] = useState([]);
   const [tags, setTags] = useState([]);
   const [isActive, setIsActive] = useState(false);
-
+  const [loading, setLoading] = useState(true);
+  const test = [{ value: "textiles", label: "Textiles" }];
   const options = [
     { value: "textiles", label: "Textiles" },
     { value: "ceramics", label: "Ceramics" },
@@ -31,11 +33,57 @@ export default function Upload() {
     { value: "painting", label: "Painting" },
     { value: "others", label: "Others" },
   ];
-
+  console.log(tags);
+  console.log(test);
+  console.log(options);
   /* Image */
   const [selectedImages, setSelectedImages] = useState([]);
   const [filesDict, setFileDict] = useState({});
   const formRef = useRef();
+  const { itemId } = useParams();
+
+  useEffect(() => {
+    fetch("/users/item/edit/" + itemId, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: "Bearer " + access_token,
+      },
+      method: "GET",
+      mode: "cors",
+    })
+      .then((res) => {
+        // console.log({res});
+        if (res.status === 401) {
+          sessionStorage.removeItem("access_token");
+          window.location.href = window.location.origin + "/user/login";
+        } else {
+          return res.json();
+        }
+      })
+      .then((dat) => {
+        console.log(dat);
+        setItemName(dat.prod_name);
+        setPrice(dat.prod_price);
+        setDescription(dat.prod_desc);
+        setItemName(dat.prod_name);
+        setTagValue(dat.prod_tags);
+        // make tags array of objects
+        const list = [];
+        console.log(dat.prod_tags.map((value) => value));
+        dat.prod_tags?.map((value) => {
+          let tags = {
+            value: value,
+            label: value.charAt(0).toUpperCase() + value.slice(1),
+          };
+          list.push(tags);
+        });
+        setTags(list);
+        setTagValue(list);
+        setSelectedImages(dat.prod_images);
+        setLoading(false);
+      });
+  }, [access_token, itemId]);
 
   const toggleButton = () => {
     setIsActive((current) => !current);
@@ -73,16 +121,16 @@ export default function Upload() {
     // prevent page being refresh
     e.preventDefault();
     const data = new FormData(formRef.current);
-    data.append("tags", JSON.stringify(tags));
-    console.log(data);
+    data.append("tags", JSON.stringify(tagValue));
+    data.append("images", JSON.stringify(selectedImages));
+    console.log({ hi: formRef.current });
     const filesArray = selectedImages.map((file) => {
       return filesDict[file];
     });
     for (let i = 0; i < filesArray.length; i++) {
       data.append(i, filesArray[i]);
     }
-    console.log(filesArray);
-    fetch("/users/upload", {
+    fetch("/users/item/edit/" + itemId, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         Authorization: "Bearer " + access_token,
@@ -93,33 +141,13 @@ export default function Upload() {
     })
       .then((res) => {
         console.log(res);
-        // window.location.reload();
+        window.location.reload();
         window.location.href = window.location.origin + "/user/market";
       })
       .then((itemInfo) => {
         console.log("Success:", itemInfo);
       });
   };
-
-  useEffect(() => {
-    fetch("/users/upload", {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        Authorization: "Bearer " + access_token,
-      },
-      method: "GET",
-      mode: "cors",
-    }).then((res) => {
-      console.log(res);
-      if (res.status === 401) {
-        sessionStorage.removeItem("access_token");
-        window.location.href = window.location.origin + "/user/login";
-      } else {
-        return res.json();
-      }
-    });
-  }, [access_token]);
 
   return (
     <div className="layout-upload">
@@ -216,34 +244,30 @@ export default function Upload() {
           <div className="fillin-input-container">
             <h2>Can you precisely describe your work?</h2>
             <input
-              type="textarea"
+              type="text"
               name="description"
               value={description}
-              onChange={(e) => setdescription(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
               required
             />
-            {description && !validDesc(description) ? (
-              <div className="upload-error">
-                <Alert severity="warning">
-                  10 to 480 characters.
-                </Alert>
-              </div>
-            ) : null}
           </div>
           <div className="fillin-input-container">
             <h2>Tag your work with its category.</h2>
-            <Select
-              isMulti
-              placeholder="Category"
-              options={options}
-              onChange={(item) => setTags(item)}
-              isClearable={true}
-              isSearchable={true}
-              isDisabled={false}
-              isLoading={false}
-              isRtl={false}
-              closeMenuOnSelect={false}
-            />
+            {tags.length > 0 ? (
+              <Select
+                isMulti
+                placeholder="Category"
+                options={options}
+                defaultValue={tags}
+                onChange={(item) => setTagValue(item)}
+                isClearable={true}
+                isSearchable={true}
+                isDisabled={false}
+                isLoading={false}
+                isRtl={false}
+                closeMenuOnSelect={false}
+              />
+            ) : null}
           </div>
           <button
             className="profile-button-container"

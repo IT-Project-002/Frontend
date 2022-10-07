@@ -47,7 +47,7 @@ export default function Market() {
   return (
     <>
       {loading ? (
-        <CircularProgress className="layout-market" />
+        <CircularProgress className="loading" />
       ) : (
         <div className="layout-market">
           {/* Aavatar matching */}

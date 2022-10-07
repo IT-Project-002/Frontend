@@ -55,6 +55,35 @@
   color: #0047ab;
 }
 
+.login-container .input-container {
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 20%;
+  margin-bottom: 10px;
+}
+
+.login-container .input-container input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 5px 0;
+  display: inline-block;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  text-align: left;
+  font-size:15px;
+}
+
+.login-container .input-container input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+  background: transparent;
+  outline: none;
+}
+
 /* ===================================================== */
 /* Right section: Today */
 

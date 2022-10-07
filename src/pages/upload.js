@@ -6,16 +6,18 @@ import Alert from "@mui/material/Alert";
 import PhotoIcon from "@mui/icons-material/PhotoSizeSelectActualOutlined";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,20}$/i);
-const PRICE_REG = new RegExp(/^[0-9]{1,8}$/i);
+const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,40}$/i);
+const PRICE_REG = new RegExp(/^[0-9]*(\.[0-9]{0,2})?$/);
+const DESC_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{10,480}$/i);
 export const validName = (str = "") => NAME_REG.test(str);
 export const validPrice = (str = "") => PRICE_REG.test(str);
+export const validDesc = (str = "") => DESC_REG.test(str);
 
 export default function Upload() {
   const access_token = sessionStorage.getItem("access_token");
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState("");
-  const [describtion, setDescribtion] = useState("");
+  const [description, setdescription] = useState("");
   const [tags, setTags] = useState([]);
   const [isActive, setIsActive] = useState(false);
 
@@ -214,12 +216,19 @@ export default function Upload() {
           <div className="fillin-input-container">
             <h2>Can you precisely describe your work?</h2>
             <input
-              type="text"
+              type="textarea"
               name="description"
-              value={describtion}
-              onChange={(e) => setDescribtion(e.target.value)}
+              value={description}
+              onChange={(e) => setdescription(e.target.value)}
               required
             />
+            {description && !validDesc(description) ? (
+              <div className="upload-error">
+                <Alert severity="warning">
+                  10 to 480 characters.
+                </Alert>
+              </div>
+            ) : null}
           </div>
           <div className="fillin-input-container">
             <h2>Tag your work with its category.</h2>

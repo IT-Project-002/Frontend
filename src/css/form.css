@@ -46,7 +46,9 @@ input:-webkit-border-radius {
 input:-webkit-box-shadow {
   box-shadow: none;
 }
-
+input {
+  -webkit-appearance: none;
+}
 
 /* ===================================================== */
 /* Input icon */

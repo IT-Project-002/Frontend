@@ -3,12 +3,12 @@
 
 .layout-landing {
   grid-area: main;
-  margin: 10vh 10vw;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
     "slider"
     "browse";
+  gap:50px;
 }
 
 /* ===================================================== */
@@ -17,6 +17,23 @@
 .slider-container {
   grid-area: slider;
   display: grid;
+  width: 90%;
+  margin-top:50px;
+  margin-left:5%;
+  margin-right:5%;
+}
+
+.layout-landing .thumbs-wrapper {
+  display: none;
+}
+
+.carousel-status {
+  display: none;
+}
+
+.slider-container img {
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 /* ===================================================== */
@@ -30,7 +47,6 @@
 @media screen and (max-width: 1200px) {
   .layout-landing {
     grid-area: main;
-    margin: 10vh 5vw;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: "browse";

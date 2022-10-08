@@ -14,7 +14,6 @@ body {
 #root {
   display: grid;
   grid-template-columns: 1fr;
-  /* grid-template-rows: auto 1fr auto; */
   grid-template-rows: 60px auto 45px;
   grid-template-areas:
     "navbar"
@@ -27,30 +26,6 @@ body {
 a {
   color: black;
 }
-
-/* button {
-  text-decoration: 1px solid black underline;
-  border: none;
-  background-color: transparent;
-} */
-
-/* button {
-  width: 120px;
-  height: 30px;
-  color:white;
-  background-color: #BCB4A7;
-  border:none;
-  border-radius: 5px;
-}
-
-button:hover {
-  width: 120px;
-  height: 30px;
-  color:#BCB4A7;
-  background-color: white;
-  border:none;
-  border-radius: 5px;
-} */
 
 /* ===================================================== */
 /* Navigation bar */

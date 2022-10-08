@@ -21,6 +21,7 @@ export default function Upload() {
   const [description, setdescription] = useState("");
   const [tags, setTags] = useState([]);
   const [isActive, setIsActive] = useState(false);
+  const [warning, setWarning] = useState("");
 
   const options = [
     { value: "textiles", label: "Textiles" },
@@ -82,23 +83,28 @@ export default function Upload() {
       data.append(i, filesArray[i]);
     }
     console.log(filesArray);
-    fetch("/users/upload", {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        Authorization: "Bearer " + access_token,
-      },
-      method: "POST",
-      mode: "cors",
-      body: data,
-    })
-      .then((res) => {
-        console.log(res);
-        // window.location.reload();
-        window.location.href = window.location.origin + "/user/market";
-      })
-      .then((itemInfo) => {
-        console.log("Success:", itemInfo);
-      });
+    // at least one image
+    if (filesArray.length !== 0 && filesArray.length <= 3) {
+      // fetch("/users/upload", {
+      //   headers: {
+      //     "Access-Control-Allow-Origin": "*",
+      //     Authorization: "Bearer " + access_token,
+      //   },
+      //   method: "POST",
+      //   mode: "cors",
+      //   body: data,
+      // })
+      //   .then((res) => {
+      //     console.log(res);
+      //     // window.location.reload();
+      //     window.location.href = window.location.origin + "/user/market";
+      //   })
+      //   .then((itemInfo) => {
+      //     console.log("Success:", itemInfo);
+      //   });
+    } else {
+      setWarning("1-3 photos allowed");
+    }
   };
 
   useEffect(() => {
@@ -135,9 +141,11 @@ export default function Upload() {
             onChange={onSelectFile}
           />
         </label>
-        <Alert severity="warning" className="upload-alert">
-          Maximum 3 photos
-        </Alert>
+        {warning ? (
+          <Alert severity="warning" className="upload-alert">
+            {warning}
+          </Alert>
+        ) : null}
       </div>
 
       <div className="preview-container">
@@ -224,9 +232,7 @@ export default function Upload() {
             />
             {description && !validDesc(description) ? (
               <div className="upload-error">
-                <Alert severity="warning">
-                  10 to 480 characters.
-                </Alert>
+                <Alert severity="warning">10 to 480 characters.</Alert>
               </div>
             ) : null}
           </div>

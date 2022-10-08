@@ -19,7 +19,7 @@ export default function ItemList(props) {
       ) : (
         <div className="wrapperB">
           {items.map((item, index) => (
-            <div key={items[index]}>
+            <div key={prodId[index]}>
               <Card
                 prod_id={prodId[index]}
                 img={links[index]}

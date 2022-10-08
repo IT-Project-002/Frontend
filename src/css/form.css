@@ -39,6 +39,15 @@ input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+
+input:-webkit-border-radius {
+  border-radius: 0;
+}
+input:-webkit-box-shadow {
+  box-shadow: none;
+}
+
+
 /* ===================================================== */
 /* Input icon */
 

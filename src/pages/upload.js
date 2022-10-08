@@ -6,12 +6,13 @@ import Alert from "@mui/material/Alert";
 import PhotoIcon from "@mui/icons-material/PhotoSizeSelectActualOutlined";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,40}$/i);
-const PRICE_REG = new RegExp(/^[0-9]*(\.[0-9]{0,2})?$/);
-const DESC_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{10,480}$/i);
+const NAME_REG = new RegExp(/^[A-Z0-9][A-z0-9-_ ]{3,40}$/i);
+const PRICE_REG = new RegExp(/^[1-9][0-9]{0,7}(\.[0-9]{0,2})?$/);
+const DESC_REG = new RegExp(/^[A-Za-z0-9!@$%^&*(),.?/: ]{10,480}$/);
 export const validName = (str = "") => NAME_REG.test(str);
 export const validPrice = (str = "") => PRICE_REG.test(str);
 export const validDesc = (str = "") => DESC_REG.test(str);
+export const validTag = (tag = {}) => tag.length > 0;
 
 export default function Upload() {
   const access_token = sessionStorage.getItem("access_token");
@@ -36,7 +37,6 @@ export default function Upload() {
   const [selectedImages, setSelectedImages] = useState([]);
   const [filesDict, setFileDict] = useState({});
   const formRef = useRef();
-
   const toggleButton = () => {
     setIsActive((current) => !current);
   };
@@ -189,7 +189,7 @@ export default function Upload() {
             {itemName && !validName(itemName) ? (
               <div className="upload-error">
                 <Alert severity="warning">
-                  3 to 20 characters. Must start with letters.
+                  3 to 40 characters. Must start with letters.
                   <br />
                   Letters, numbers, underscores, space, hyphens allowed.
                 </Alert>
@@ -208,7 +208,7 @@ export default function Upload() {
             {price && !validPrice(price) ? (
               <div className="upload-error">
                 <Alert severity="warning">
-                  Price ranged between 0 to 99,999,999.
+                  Price ranged between 0 to 99,999,999
                 </Alert>
               </div>
             ) : null}
@@ -244,6 +244,20 @@ export default function Upload() {
               isRtl={false}
               closeMenuOnSelect={false}
             />
+            <input
+              tabIndex={-1}
+              autoComplete="off"
+              style={{ opacity: 0, height: 0 }}
+              value={tags}
+              required
+            />
+            {tags && !validTag(tags) ? (
+              <div className="upload-error">
+                <Alert severity="warning">
+                  Must select at least one category.
+                </Alert>
+              </div>
+            ) : null}
           </div>
           <button
             className="profile-button-container"

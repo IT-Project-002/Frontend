@@ -33,7 +33,7 @@ function Landing() {
     })
       .then((res) => {
         // console.log({res});
-          return res.json();
+        return res.json();
       })
       .then((dat) => {
         setData(dat);
@@ -47,7 +47,7 @@ function Landing() {
         <Gallery autoPlay={false} />
       </div>
       <div className="browse-gird-container">
-          <Cards />
+        <Cards data={data} />
       </div>
       {!token && showModal && <Modal className="pop-up" close={Toggle} />}
     </div>

@@ -8,7 +8,7 @@ export default function ItemList(props) {
   const tags = props.data.tags;
   const prodId = props.data.uuid;
   // console.log(props);
-  console.log(prices);
+  console.log(links);
   return (
     <>
       {!items ? (
@@ -19,7 +19,7 @@ export default function ItemList(props) {
             <div key={prodId[index]}>
               <Card
                 prod_id={prodId[index]}
-                img={links[index]}
+                img={links[index][0]}
                 title={item}
                 description={tags[index]}
                 price={prices[index]}

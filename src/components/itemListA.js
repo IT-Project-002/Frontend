@@ -1,61 +1,46 @@
-import item1 from "../image/items/item1.png";
-import item2 from "../image/items/item2.png";
-import item3 from "../image/items/item3.png";
-import item4 from "../image/items/item4.png";
-import item5 from "../image/items/item5.png";
 import React from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
-export default function ItemList() {
+export default function ItemList(props) {
+  const items = props.data.name;
+  const links = props.data.img;
+  const prices = props.data.price;
+  const tags = props.data.tags;
+  const prodId = props.data.uuid;
+  // console.log(props);
+  console.log(links);
   return (
-    <div className="wrapper">
-      <Card
-        img={item1}
-        title="Tie Up Boots"
-        description="Fall Favorite • Boots"
-        price="45.00"
-      />
-
-      <Card
-        img={item2}
-        title="Plush Sweater"
-        description="Sweater Season • Cozy"
-        price="29.95"
-      />
-      <Card
-        img={item3}
-        title="Slim-Fit Demin"
-        description="Demin • Verstile"
-        price="24.99"
-      />
-      <Card
-        img={item4}
-        title="White Blouse"
-        description="Blouse • Lacey"
-        price="19.95"
-      />
-      <Card
-        img={item5}
-        title="White Blouse"
-        description="Blouse • Lacey"
-        price="19.95"
-      />
-      <Card
-        img={item1}
-        title="White Blouse"
-        description="Blouse • Lacey"
-        price="19.95"
-      />
-    </div>
+    <>
+      {!items ? (
+        <CircularProgress className="wrapper" />
+      ) : (
+        <div className="wrapper">
+          {items.map((item, index) => (
+            <div key={prodId[index]}>
+              <Card
+                prod_id={prodId[index]}
+                img={links[index][0]}
+                title={item}
+                description={tags[index]}
+                price={prices[index]}
+              />
+            </div>
+          ))}
+        </div>
+      )}
+    </>
   );
 }
 
 function Card(props) {
   return (
     <div className="card">
-      <img src={props.img} alt="item" className="card-img" />
+      {/* navigate to item page */}
+      <a href={`/user/item/${props.prod_id}`}>
+        <img src={props.img} alt="item" className="card-img" />
+      </a>
       <div className="card-body">
         <h2 className="card-title">{props.title}</h2>
-        <p className="card-description">{props.description}</p>
         <h3 className="card-price">{props.price}</h3>
       </div>
     </div>

@@ -58,8 +58,8 @@
   height: 30px;
   padding: 4px;
   border-radius: 50%;
-  margin-left: 170px;
-  margin-top: 10px;
+  margin-left: 240px;
+  margin-top: 150px;
 }
 
 .wrapper {
@@ -91,7 +91,7 @@
   flex-grow: 1;
 }
 .card-title {
-  line-height: 1.4rem;
+  line-height: 5rem;
   margin-bottom: 0.5rem;
 }
 .card-description {
@@ -107,6 +107,13 @@
   position: relative;
   top: -0.3rem;
   padding-right: 0.1rem;
+}
+
+@media screen and (min-width:1000px) {
+  .myfav-title {
+    grid-area: myfav-title;
+    margin-bottom: 120px;
+  }
 }
 
 @media screen and (min-width: 750px) {
@@ -159,7 +166,7 @@
     height: 30px;
     padding: 4px;
     border-radius: 50%;
-    margin-left: 85px;
-    margin-top: 10px;
+    margin-left:70px;
+    margin-top: 220px;
   }
 }

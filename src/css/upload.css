@@ -135,7 +135,6 @@
 }
 
 .fillin-input-container input {
-  /* width: 95%; */
   width: 75%;
   height: 2rem;
   background: transparent;
@@ -152,7 +151,7 @@
 
 .profile-button-container {
   border: 1px solid white;
-  width: 150px;
+  width: 75%;
   height: 30px;
   border-radius: 5px;
   background-color: #af9177;
@@ -185,11 +184,19 @@
   margin-top: 0;
 }
 
+.upload-error {
+  text-align: left;
+  width: 75%;
+  margin-left: 0;
+  padding: 5px;
+}
+
 /* ===================================================== */
 /* Responsive design */
 
 @media screen and (max-width: 800px) {
   .layout-upload {
+    margin-top: 1vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -198,6 +205,21 @@
       "preview";
     grid-gap: 10px;
     padding: 20px;
+  }
+
+  .fillin-input-container input {
+    width: 100%;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    text-align: left;
+    font-size: large;
+  }
+
+  .profile-button-container {
+    width: 100%;
+    margin-bottom: 10px;
   }
 
   .preview-container img {
@@ -217,19 +239,18 @@
     height: 60px;
   }
   .fillin-container {
-    text-align: center;
-    justify-content: center;
+    text-align: left;
+    justify-content: left;
   }
   /* select conatiner */
   .css-b62m3t-container {
     min-width: 100%;
     max-width: 100%;
   }
-}
 
-.upload-error {
-  text-align: left;
-  width: 75%;
-  margin-left: 0;
-  padding: 5px;
+  .upload-error {
+    text-align: left;
+    width: 100%;
+    padding: 5px;
+  }
 }

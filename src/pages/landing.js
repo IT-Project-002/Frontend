@@ -27,9 +27,7 @@ function Landing() {
         <Gallery autoPlay={false} />
       </div>
       <div className="browse-gird-container">
-        <div className="browse-container">
           <Cards />
-        </div>
       </div>
       {!token && showModal && <Modal className="pop-up" close={Toggle} />}
     </div>

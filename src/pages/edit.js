@@ -273,7 +273,7 @@ export default function Edit() {
               </div>
               <div className="fillin-input-container">
                 <h2>Can you precisely describe your work?</h2>
-                <input
+                <textarea
                   type="text"
                   name="description"
                   value={description}

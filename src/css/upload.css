@@ -137,6 +137,7 @@
 .fillin-input-container textarea {
   width: 75%;
   padding-left: 0;
+  font-size: large;
 }
 
 .fillin-input-container input {

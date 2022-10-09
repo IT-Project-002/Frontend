@@ -28,7 +28,7 @@ export default function Item() {
     })
       .then((res) => {
         // console.log({res});
-        if (res.status === 401) {
+        if (res.status != 200) {
           sessionStorage.removeItem("access_token");
           window.location.href = window.location.origin + "/user/login";
         } else {

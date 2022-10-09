@@ -51,7 +51,7 @@ function Login() {
         if (data.access_token) {
           sessionStorage.setItem("access_token", data.access_token);
           console.log("access_token exist");
-          window.location.href = window.location.origin + "/user/market";
+          window.location.href = window.location.origin + "/user/market/"+data.uuid;
           return data.access_token;
         } else {
           setLoginError("Check out your Account/Password again");

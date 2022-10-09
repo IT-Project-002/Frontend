@@ -97,8 +97,9 @@ export default function Edit() {
     const selectedFilesArray = Array.from(selectedFiles);
 
     // MAXIMUM 3 Photos each time
-    if (selectedFilesArray.length > 3) setWarning("MAXIMUM 3 Photos");
-    const slicedArray = selectedFilesArray.slice(0, 3);
+    if (selectedFilesArray.length > 3 - selectedImages.length)
+      setWarning("MAXIMUM 3 Photos");
+    const slicedArray = selectedFilesArray.slice(0, 3 - selectedImages.length);
 
     const imagesArray = slicedArray.map((file) => {
       return URL.createObjectURL(file);

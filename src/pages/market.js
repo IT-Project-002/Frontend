@@ -21,7 +21,7 @@ export default function Market() {
   const { userID } = useParams();
 
   useEffect(() => {
-    fetch("/users/market" + userID, {
+    fetch("/users/market/" + userID, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -44,7 +44,7 @@ export default function Market() {
         setData(dat);
         setLoading(false);
       });
-  }, [access_token]);
+  }, [access_token, userID]);
 
   return (
     <>

@@ -142,7 +142,7 @@ export default function Upload() {
           />
         </label>
         {warning ? (
-          <Alert severity="warning" className="upload-alert">
+          <Alert severity="warning" className="profile-alert">
             {warning}
           </Alert>
         ) : null}

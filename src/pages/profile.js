@@ -1,8 +1,9 @@
 import "../css/profile.css";
-import female1 from "../image/avatar/female1.png";
-import CircularProgress from "@mui/material/CircularProgress";
 import React from "react";
 import { useState, useEffect } from "react";
+import female1 from "../image/avatar/female1.png";
+import CircularProgress from "@mui/material/CircularProgress";
+import Alert from "@mui/material/Alert";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][A-z0-9-_]{3,14}$/i);
 const PWD_REG = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/i);
@@ -44,7 +45,6 @@ export default function Profile() {
       })
       .then((dat) => {
         console.log(dat);
-        // setData(dat);
         setAvatar(dat.Avatar);
         setEmail(dat.userEmail);
         setName(dat.username);
@@ -95,14 +95,12 @@ export default function Profile() {
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="layout-profile">
-            {/* <div className="profile-photo-container">
-            </div> */}
             <div className="edit-container">
+              {/* Avatar */}
               <img className="edit-avatar" src={female1} alt="female1"></img>
               <div className="edit-left-container">
                 <div className="fillin-input-container">
                   <h2>User Email (ReadOnly) </h2>
-                  {/* <PersonIcon /> */}
                   <input type="text" readOnly value={email}></input>
                 </div>
                 <div className="fillin-input-container">
@@ -112,14 +110,16 @@ export default function Profile() {
                     defaultValue={username}
                     onChange={(e) => setName(e.target.value)}
                   ></input>
+                  {username && !validName(username) ? (
+                    <div className="profile-alert">
+                      <Alert severity="warning">
+                        3 to 14 characters.
+                        <br />
+                        Letters, numbers, underscores, hyphens allowed.
+                      </Alert>
+                    </div>
+                  ) : null}
                 </div>
-                {username && !validName(username) ? (
-                  <p id="uidnote" className="instructions">
-                    3 to 14 characters.
-                    <br />
-                    Letters, numbers, underscores, hyphens allowed.
-                  </p>
-                ) : null}
                 <div className="fillin-input-container">
                   <h2>Want to change the password?</h2>
                   <input
@@ -128,15 +128,16 @@ export default function Profile() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   ></input>
+                  {password && !validPwd(password) ? (
+                    <div className="profile-alert">
+                      <Alert severity="warning">
+                        8 to 24 characters.
+                        <br />
+                        Must include uppercase, lowercase letters and a number.
+                      </Alert>
+                    </div>
+                  ) : null}
                 </div>
-                {password && !validPwd(password) ? (
-                  <p id="uidnote" className="instructions">
-                    8 to 24 characters.
-                    <br />
-                    Must include uppercase, lowercase letters and a number.
-                    <br />
-                  </p>
-                ) : null}
                 <div className="fillin-input-container">
                   <h2>Confirm new password</h2>
                   <input
@@ -145,12 +146,12 @@ export default function Profile() {
                     value={matchPwd}
                     onChange={(e) => setMatchPwd(e.target.value)}
                   ></input>
+                  {password && matchPwd && !validMatch(password, matchPwd) ? (
+                    <div className="profile-alert">
+                      <Alert severity="warning">Password does not match</Alert>
+                    </div>
+                  ) : null}
                 </div>
-                {password && !validMatch(password, matchPwd) ? (
-                  <p id="uidnote" className="instructions">
-                    Passwords did not match
-                  </p>
-                ) : null}
               </div>
               <div className="edit-right-container">
                 <h2>Make Email visible to anyone on the internet?</h2>

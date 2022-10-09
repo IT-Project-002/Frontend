@@ -2,6 +2,11 @@ import "../css/profile.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import female1 from "../image/avatar/female1.png";
+import female2 from "../image/avatar/female2.png";
+import female3 from "../image/avatar/female3.png";
+import male1 from "../image/avatar/male1.png";
+import male2 from "../image/avatar/male2.png";
+import male3 from "../image/avatar/male3.png";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 
@@ -54,7 +59,6 @@ export default function Profile() {
       });
   }, [access_token]);
 
-  /* 上传成功后reload the page*/
   const handleSubmit = (e) => {
     e.preventDefault();
     const updateInfo = {
@@ -96,8 +100,39 @@ export default function Profile() {
         <form onSubmit={handleSubmit}>
           <div className="layout-profile">
             <div className="edit-container">
-              {/* Avatar */}
-              <img className="edit-avatar" src={female1} alt="female1"></img>
+              {/* Aavatar matching */}
+              <>
+                {avatar === "female1" ? (
+                  <img
+                    className="edit-avatar"
+                    src={female1}
+                    alt="female1"
+                  ></img>
+                ) : null}
+                {avatar === "female2" ? (
+                  <img
+                    className="edit-avatar"
+                    src={female2}
+                    alt="female2"
+                  ></img>
+                ) : null}
+                {avatar === "female3" ? (
+                  <img
+                    className="edit-avatar"
+                    src={female3}
+                    alt="female3"
+                  ></img>
+                ) : null}
+                {avatar === "male1" ? (
+                  <img className="edit-avatar" src={male1} alt="male1"></img>
+                ) : null}
+                {avatar === "male2" ? (
+                  <img className="edit-avatar" src={male2} alt="male2"></img>
+                ) : null}
+                {avatar === "male3" ? (
+                  <img className="edit-avatar" src={male3} alt="male3"></img>
+                ) : null}
+              </>
               <div className="edit-left-container">
                 <div className="fillin-input-container">
                   <h2>User Email (ReadOnly) </h2>

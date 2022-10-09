@@ -8,7 +8,7 @@
   display: grid;
   background-color: #fcf9f4;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.6fr 0.5fr;
+  grid-template-rows: 0.5fr 0.5fr;
   row-gap: 3vh;
   grid-template-areas:
     "profile-photo"
@@ -49,6 +49,18 @@
   border: none;
   background: transparent;
   text-decoration: 1px solid underline;
+}
+
+/* Warning */
+.profile-alert {
+  width: 75%;
+  margin: auto;
+  padding: 5px;
+  text-align: left;
+}
+
+.profile-alert svg {
+  width: 22px;
 }
 
 .buttonBox {
@@ -188,14 +200,14 @@
   }
 }
 
-@media screen and (max-width: 550px){
-  .edit-avatar{
+@media screen and (max-width: 550px) {
+  .edit-avatar {
     margin-left: 15%;
   }
 }
 
-@media screen and (max-width: 450px){
-  .edit-avatar{
+@media screen and (max-width: 450px) {
+  .edit-avatar {
     margin-left: 10%;
   }
 }

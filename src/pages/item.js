@@ -28,7 +28,7 @@ export default function Item() {
     })
       .then((res) => {
         // console.log({res});
-        if (res.status === 401) {
+        if (res.status !== 200) {
           sessionStorage.removeItem("access_token");
           window.location.href = window.location.origin + "/user/login";
         } else {
@@ -70,8 +70,17 @@ export default function Item() {
             </div>
             <h1 className="item-price">AU${data["prod_price"]}</h1>
             <p className="item-desc">{data["prod_desc"]}</p>
-            <p className="item-owner">{data["user_name"]}'s Marketplace</p>
-            <p className="item-contact">{data["user_email"]}</p>
+            <a
+              href={`/user/market/${data["user_id"]}`}
+              style={{ textDecoration: "none" }}
+            >
+              <p className="item-owner">{data["user_name"]}'s Marketplace</p>
+            </a>
+            {!data["user_hide_email"] ? (
+              <p className="item-contact">{data["user_email"]}</p>
+            ) : (
+              <p className="item-contact">No public contact information</p>
+            )}
           </div>
         </div>
       )}

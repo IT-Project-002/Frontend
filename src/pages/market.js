@@ -1,6 +1,7 @@
 import "../css/market.css";
 import "../css/itemListB.css";
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import female1 from "../image/avatar/female1background.png";
 import female2 from "../image/avatar/female2background.png";
 import female3 from "../image/avatar/female3background.png";
@@ -17,9 +18,10 @@ export default function Market() {
   const [data, setData] = useState({});
   const avatar = data["Avatar"];
   const [loading, setLoading] = useState(true);
+  const { userID } = useParams();
 
   useEffect(() => {
-    fetch("/users/market", {
+    fetch("/users/market/" + userID, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -42,7 +44,7 @@ export default function Market() {
         setData(dat);
         setLoading(false);
       });
-  }, [access_token]);
+  }, [access_token, userID]);
 
   return (
     <>

@@ -8,19 +8,22 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][A-z0-9-_ ]{3,40}$/i);
 const PRICE_REG = new RegExp(/^[1-9][0-9]{0,7}(\.[0-9]{0,2})?$/);
-const DESC_REG = new RegExp(/^[A-Za-z0-9!@$%^&*(),.?/: ]{10,480}$/);
+const DESC_REG = new RegExp(/^[A-Za-z0-9!-_@$%^&*(),.?/: ]{10,480}$/);
 export const validName = (str = "") => NAME_REG.test(str);
 export const validPrice = (str = "") => PRICE_REG.test(str);
 export const validDesc = (str = "") => DESC_REG.test(str);
-export const validTag = (tag = {}) => tag.length > 0;
+export const validTag = (tag = []) => tag.length < 4;
 
 export default function Upload() {
+  const myId = sessionStorage.getItem("id");
   const access_token = sessionStorage.getItem("access_token");
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setdescription] = useState("");
   const [tags, setTags] = useState([]);
   const [isActive, setIsActive] = useState(false);
+  const [warning, setWarning] = useState("");
+  const [fileLimit, setFileLimit] = useState(false);
 
   const options = [
     { value: "textiles", label: "Textiles" },
@@ -47,25 +50,40 @@ export default function Upload() {
     // form.append('file', file)
     const selectedFiles = e.target.files;
     const selectedFilesArray = Array.from(selectedFiles);
-    // console.log(selectedFiles);
+    // MAXIMUM 3 Photos each
+    if (selectedFilesArray.length > 3 - selectedImages.length)
+      setWarning("MAXIMUM 3 Photos");
+    const slicedArray = selectedFilesArray.slice(0, 3 - selectedImages.length);
+    console.log(selectedFilesArray);
 
-    const imagesArray = selectedFilesArray.map((file) => {
+    const imagesArray = slicedArray.map((file) => {
       return URL.createObjectURL(file);
     });
-    for (var i = 0; i < selectedFiles.length; i++) {
+    for (var i = 0; i < slicedArray.length; i++) {
       filesDict[imagesArray[i]] = e.target.files[i];
     }
-    console.log(filesDict);
     // save the previous selected images
     setSelectedImages((previousImages) => previousImages.concat(imagesArray));
     // FOR BUG IN CHROME
     e.target.value = "";
-    // setSelectedFile(e.target.files[0]);
   };
+
+  // MAXIMUM 3 Photos in total
+  useEffect(() => {
+    if (selectedImages.length === 3) {
+      setFileLimit(true);
+      setWarning("MAXIMUM 3 Photos");
+    }
+    console.log(fileLimit);
+  }, [selectedImages, fileLimit]);
 
   const deleteImage = (image) => {
     setSelectedImages(selectedImages.filter((e) => e !== image));
     URL.revokeObjectURL(image);
+    if (selectedImages.length <= 3) {
+      setFileLimit(false);
+      setWarning("");
+    }
   };
 
   const handleSubmit = (e) => {
@@ -82,23 +100,28 @@ export default function Upload() {
       data.append(i, filesArray[i]);
     }
     console.log(filesArray);
-    fetch("/users/upload", {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        Authorization: "Bearer " + access_token,
-      },
-      method: "POST",
-      mode: "cors",
-      body: data,
-    })
-      .then((res) => {
-        console.log(res);
-        // window.location.reload();
-        window.location.href = window.location.origin + "/user/market";
+    // at least one image
+    if (filesArray.length !== 0) {
+      fetch("/users/upload", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          Authorization: "Bearer " + access_token,
+        },
+        method: "POST",
+        mode: "cors",
+        body: data,
       })
-      .then((itemInfo) => {
-        console.log("Success:", itemInfo);
-      });
+        .then((res) => {
+          console.log(res);
+          window.location.href =
+            window.location.origin + "/user/market/" + myId;
+        })
+        .then((itemInfo) => {
+          console.log("Success:", itemInfo);
+        });
+    } else {
+      setWarning("1-3 photos requried");
+    }
   };
 
   useEffect(() => {
@@ -133,11 +156,14 @@ export default function Upload() {
             multiple
             accept="image/*"
             onChange={onSelectFile}
+            disabled={fileLimit}
           />
         </label>
-        <Alert severity="warning" className="upload-alert">
-          Maximum 3 photos
-        </Alert>
+        {warning ? (
+          <Alert severity="warning" className="profile-alert">
+            {warning}
+          </Alert>
+        ) : null}
       </div>
 
       <div className="preview-container">
@@ -215,7 +241,7 @@ export default function Upload() {
           </div>
           <div className="fillin-input-container">
             <h2>Can you precisely describe your work?</h2>
-            <input
+            <textarea
               type="textarea"
               name="description"
               value={description}
@@ -224,9 +250,7 @@ export default function Upload() {
             />
             {description && !validDesc(description) ? (
               <div className="upload-error">
-                <Alert severity="warning">
-                  10 to 480 characters.
-                </Alert>
+                <Alert severity="warning">10 to 480 characters.</Alert>
               </div>
             ) : null}
           </div>
@@ -253,9 +277,7 @@ export default function Upload() {
             />
             {tags && !validTag(tags) ? (
               <div className="upload-error">
-                <Alert severity="warning">
-                  Must select at least one category.
-                </Alert>
+                <Alert severity="warning">Maximum 3 categories</Alert>
               </div>
             ) : null}
           </div>

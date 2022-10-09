@@ -41,16 +41,14 @@
   flex-grow: 1;
 }
 .card-title {
+  font-size: larger;
   line-height: 1.4rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 0.1rem;
+  /* white-space: normal;*/
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  word-break: break-word;
   font-size: 1.2rem;
 }
-/* .card-title:hover {
-  overflow: visible;
-} */
 .card-description {
   line-height: 1.2rem;
 }

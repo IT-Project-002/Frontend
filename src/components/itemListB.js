@@ -4,13 +4,14 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export default function ItemList(props) {
-  //   console.log(props);
+  // console.log(props);
   // console.log(props.data.item_names);
   const items = props.data.item_names;
   const links = props.data.item_links;
   const prices = props.data.item_price;
   const tags = props.data.item_tags;
   const prodId = props.data.item_id;
+  const ownerID = props.data.userID;
   // const access_token = sessionStorage.getItem("access_token");
   return (
     <>
@@ -26,6 +27,7 @@ export default function ItemList(props) {
                 title={item}
                 description={tags[index]}
                 price={prices[index]}
+                owner_id={ownerID}
               />
             </div>
           ))}
@@ -36,6 +38,8 @@ export default function ItemList(props) {
 }
 
 function Card(props) {
+  const myID = sessionStorage.getItem("id");
+  const ownerID = props.owner_id;
   const access_token = sessionStorage.getItem("access_token");
 
   const deleteItem = (item) => {
@@ -60,23 +64,23 @@ function Card(props) {
   return (
     <div className="card">
       {/* navigate to item page */}
-      {/* <a href={`/user/item/${item._id}`}> */}
       <a href={`/user/item/${props.prod_id}`}>
         <img src={props.img} alt="item" className="card-img" />
       </a>
       <div className="card-body">
         <h2 className="card-title">{props.title}</h2>
         <h3 className="card-price">{props.price}</h3>
-        <div className="icon-container">
-          <a href={`/user/item/edit/${props.prod_id}`}>
-            <EditIcon className="edit-icon" />
-          </a>
-          <DeleteForeverIcon
-            className="delete-icon"
-            onClick={() => deleteItem(props)}
-          />
-          {/* <DeleteForeverIcon className="delete-icon" onClick={deleteItem(props)}/> */}
-        </div>
+        {myID === ownerID ? (
+          <div className="icon-container">
+            <a href={`/user/item/edit/${props.prod_id}`}>
+              <EditIcon className="edit-icon" />
+            </a>
+            <DeleteForeverIcon
+              className="delete-icon"
+              onClick={() => deleteItem(props)}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );

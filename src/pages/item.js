@@ -76,7 +76,11 @@ export default function Item() {
             >
               <p className="item-owner">{data["user_name"]}'s Marketplace</p>
             </a>
-            <p className="item-contact">{data["user_email"]}</p>
+            {!data["user_hide_email"] ? (
+              <p className="item-contact">{data["user_email"]}</p>
+            ) : (
+              <p className="item-contact">No public contact information</p>
+            )}
           </div>
         </div>
       )}

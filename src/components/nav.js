@@ -11,6 +11,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HomeIcon from "../image/home.png";
 
 export default function Navbar() {
+  const id =sessionStorage.getItem("id");
   const token = sessionStorage.getItem("access_token");
   //  console.log("NavBar:" + token)
   let location = useLocation();

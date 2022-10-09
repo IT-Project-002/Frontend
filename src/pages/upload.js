@@ -8,7 +8,7 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][A-z0-9-_ ]{3,40}$/i);
 const PRICE_REG = new RegExp(/^[1-9][0-9]{0,7}(\.[0-9]{0,2})?$/);
-const DESC_REG = new RegExp(/^[A-Za-z0-9!@$%^&*(),.?/: ]{10,480}$/);
+const DESC_REG = new RegExp(/^[A-Za-z0-9!-_@$%^&*(),.?/: ]{10,480}$/);
 export const validName = (str = "") => NAME_REG.test(str);
 export const validPrice = (str = "") => PRICE_REG.test(str);
 export const validDesc = (str = "") => DESC_REG.test(str);
@@ -241,7 +241,7 @@ export default function Upload() {
           </div>
           <div className="fillin-input-container">
             <h2>Can you precisely describe your work?</h2>
-            <input
+            <textarea
               type="textarea"
               name="description"
               value={description}

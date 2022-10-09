@@ -134,6 +134,11 @@
   outline: none;
 }
 
+.fillin-input-container textarea {
+  width: 75%;
+  padding-left: 0;
+}
+
 .fillin-input-container input {
   width: 75%;
   height: 2rem;

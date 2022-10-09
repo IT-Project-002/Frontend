@@ -14,6 +14,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Cards from "../components/itemListB";
 
 export default function Market() {
+  const myID = sessionStorage.getItem("id");
   const access_token = sessionStorage.getItem("access_token");
   const [data, setData] = useState({});
   const avatar = data["Avatar"];
@@ -76,11 +77,16 @@ export default function Market() {
 
           {/* User Intro & Upload button */}
           <div className="user-intro-container">
-            <a href="/user/upload">
-              <AddAPhotoOutlinedIcon />
-            </a>
-            <p>Click to upload more items.</p>
-            <hr className="divider"></hr>
+            {myID === data["userID"] ? (
+              <>
+                <a href="/user/upload">
+                  <AddAPhotoOutlinedIcon />
+                </a>
+                <p>Click to upload more items.</p>
+                <hr className="divider"></hr>
+              </>
+            ) : null}
+
             <h1>{data["username"]}'s</h1>
             <h1>Marketplace</h1>
             <p>{data["Bio"]}</p>

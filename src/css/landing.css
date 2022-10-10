@@ -1,15 +1,19 @@
 /* ===================================================== */
 /* Grid template */
-
+html,
+body {
+  overflow-x: hidden;
+}
 .layout-landing {
-  margin:2.5%;
+  /* margin: 2.5%; */
+  padding: 2.5%;
   grid-area: main;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
     "slider"
     "browse";
-  gap:50px;
+  gap: 50px;
 }
 
 /* ===================================================== */
@@ -19,9 +23,9 @@
   grid-area: slider;
   display: grid;
   width: 80%;
-  margin-top:5px;
-  margin-left:10%;
-  margin-right:10%;
+  margin-top: 5px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .layout-landing .thumbs-wrapper {
@@ -39,8 +43,7 @@
 
 /* ===================================================== */
 /* Browse Items */
-
-.browse-grid-container {
+.browse-gird-container {
   grid-area: browse;
   display: grid;
 }

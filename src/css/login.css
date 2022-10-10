@@ -129,6 +129,7 @@ input[type="text"]:focus {
     grid-gap: 10px;
     padding: 10px;
     text-align: left;
+    margin-top: 0;
   }
 
   .today-container img {

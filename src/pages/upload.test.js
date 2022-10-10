@@ -76,9 +76,4 @@ describe("Upload/Edit item tags", () => {
       const text = [{value:"class",label:"Glass"}];
       expect(validTag(text)).toBe(true);
     });
-
-    test("validTag function should pass on incorrect input", () => {
-        const text = [];
-        expect(validTag(text)).toBe(false);
-      });
 });

@@ -17,16 +17,16 @@
   width: 100px;
   height: 30px;
   border-radius: 5px;
-  background-color: #AF9177;
-  color:white;
+  background-color: #af9177;
+  color: white;
   font-size: 16px;
-  margin:20px;
+  margin: 20px;
 }
 
 .register-signin {
-  font-family:Arial;
-  font-size:15px;
-  color:#0047AB;
+  font-family: Arial;
+  font-size: 15px;
+  color: #0047ab;
 }
 
 /* ===================================================== */
@@ -35,7 +35,7 @@
 .register-container {
   grid-area: register;
   text-align: center;
-  margin-top: 70px;
+  margin-top:25%;
 }
 
 .register-alert {
@@ -63,7 +63,7 @@
   border-bottom: 1px solid black;
   box-sizing: border-box;
   text-align: left;
-  font-size:15px;
+  font-size: 15px;
 }
 
 .register-container .input-container input[type="email"]:focus,
@@ -88,14 +88,30 @@ input[type="text"]:focus {
     "title-bottom title-bottom title-bottom";
 }
 
-#female1 {grid-area: female1;}
-#female2 {grid-area: female2;}
-#female3 {grid-area: female3;}
-#male1 {grid-area: male1;}
-#male2 {grid-area: male2;}
-#male3 {grid-area: male3;}
-.avatar-remindar {grid-area: title;}
-.avatar-setup-msg {grid-area: title-bottom}
+#female1 {
+  grid-area: female1;
+}
+#female2 {
+  grid-area: female2;
+}
+#female3 {
+  grid-area: female3;
+}
+#male1 {
+  grid-area: male1;
+}
+#male2 {
+  grid-area: male2;
+}
+#male3 {
+  grid-area: male3;
+}
+.avatar-remindar {
+  grid-area: title;
+}
+.avatar-setup-msg {
+  grid-area: title-bottom;
+}
 
 /* ===================================================== */
 /* Avatar size */
@@ -130,8 +146,8 @@ input[type="text"]:focus {
 .avatar-alert {
   grid-area: alert;
   width: 220px;
-  margin-top:10px;
-  margin-left:10%;
+  margin-top: 10px;
+  margin-left: 10%;
 }
 
 /* ===================================================== */
@@ -189,6 +205,10 @@ input[type="text"]:focus {
     text-align: left;
   }
 
+  .register-container {
+    margin-top: 0;
+  }
+
   .bubble-container {
     grid-area: avatar-selection;
     place-items: center;
@@ -205,7 +225,7 @@ input[type="text"]:focus {
   .avatar-alert {
     grid-area: alert;
     width: 270px;
-    margin-top:0px;
-    margin-left:0px;
+    margin-top: 0px;
+    margin-left: 0px;
   }
 }

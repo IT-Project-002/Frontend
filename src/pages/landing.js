@@ -1,6 +1,6 @@
 import "../css/landing.css";
 import "../css/modal.css";
-import "../css/itemListA.css";
+import "../css/myFav.css";
 import Modal from "../components/modal";
 import Gallery from "../components/carousel";
 import Cards from "../components/itemListA";

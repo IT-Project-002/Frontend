@@ -202,12 +202,28 @@
 
 @media screen and (max-width: 550px) {
   .edit-avatar {
-    margin-left: 15%;
+    margin-left: 23%;
   }
 }
 
 @media screen and (max-width: 450px) {
+  .layout-profile {
+    grid-area: main;
+    margin-top: 60px;
+    padding: 1.5vh;
+    display: grid;
+    background-color: #fcf9f4;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.25fr 0.4fr;
+    grid-template-areas:
+      "profile-photo"
+      "edit";
+    text-align: center;
+  }
   .edit-avatar {
-    margin-left: 10%;
+    width: 150px;
+    height: 150px;
+    margin-left: 26%;
+    margin-top: -80px;
   }
 }

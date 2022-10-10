@@ -34,6 +34,8 @@ function Registration() {
   const [bio, setBio] = useState("");
   const [avatar, setAvatar] = useState("");
   const [isActive, setIsActive] = useState(false);
+  const [warning, setWarning] = useState("");
+  const [avatarWarning, setAvatarWarning] = useState("");
 
   // setting a focus on username input when the component loads
   useEffect(() => {
@@ -71,9 +73,10 @@ function Registration() {
           console.log("hi:", response);
           if (response.status !== 200) {
             //这里写弹窗？
+            setWarning("Email has already been registered");
             console.log("出错了");
-          } else {
-            history("/user/login");
+            // } else {
+            //   history("/user/login");
           }
         })
         .then((userInfo) => {
@@ -82,6 +85,8 @@ function Registration() {
         .catch((error) => {
           console.error("Error:", error);
         });
+    } else {
+      setAvatarWarning("Must pick profile picture");
     }
   };
 
@@ -198,6 +203,15 @@ function Registration() {
               onChange={(e) => setBio(e.target.value)}
             />
           </div>
+          {warning ? (
+            <Alert
+              className="register-alert"
+              severity="warning"
+              variant="outlined"
+            >
+              {warning}
+            </Alert>
+          ) : null}
           <button
             className="register-button"
             type="submit"
@@ -217,9 +231,9 @@ function Registration() {
       {/* Avatar */}
       <div className="bubble-container">
         <h2 className="avatar-remindar">Pick your profile picture…</h2>
-        {!avatar ? (
+        {avatarWarning ? (
           <Alert className="avatar-alert" severity="warning" variant="outlined">
-            Must pick profile picture
+            {avatarWarning}
           </Alert>
         ) : null}
         <img
@@ -284,6 +298,7 @@ function Registration() {
         ></img>
         <h2 className="avatar-setup-msg">Now…Let's set up your own space!</h2>
       </div>
+
       <img className="login-background" src={background} alt=""></img>
     </div>
   );

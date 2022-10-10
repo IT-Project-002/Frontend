@@ -1,14 +1,40 @@
 import "../css/myFav.css";
 import backgroundTop from "../image/background/myfav1.png";
 import backgroundBottom from "../image/background/myfav2.png";
-import item1 from "../image/items/item1.png";
-import item2 from "../image/items/item2.png";
-import item3 from "../image/items/item3.png";
-import item4 from "../image/items/item4.png";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export default function MyFav() {
+  const userID = sessionStorage.getItem("id");
+  const access_token = sessionStorage.getItem("access_token");
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    fetch("/users/myfav/" + userID, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: "Bearer " + access_token,
+      },
+      method: "GET",
+      mode: "cors",
+    })
+      .then((res) => {
+        // console.log({res});
+        if (res.status === 401) {
+          sessionStorage.removeItem("access_token");
+          window.location.href = window.location.origin + "/user/login";
+        } else {
+          return res.json();
+        }
+      })
+      .then((dat) => {
+        console.log(dat);
+        setItems(dat);
+        setLoading(false);
+      });
+  }, [access_token, userID]);
   return (
     <div>
     <div className="layout-like">
@@ -17,21 +43,18 @@ export default function MyFav() {
       </div>
       <div className="myfav-items-container">
         <div className="wrapper">
-          <Card img={item1} price={20.2} title="Tie Up Boots" />
-          <Card img={item2} price={20.2} title="Tie Up Boots" />
-          <Card img={item3} price={20.2} title="Tie Up Boots Boots AA" />
-          <Card img={item4} price={20.2} title="Tie Up Boots" />
-          <Card img={item1} price={20.2} title="Tie Up Boots" />
-          <Card img={item1} price={20.2} title="Tie Up Boots" />
-          <Card img={item2} price={20.2} title="Tie Up Boots" />
-          <Card img={item3} price={20.2} title="Tie Up Boots Boots AA" />
-          <Card img={item4} price={20.2} title="Tie Up Boots" />
-          <Card img={item1} price={20.2} title="Tie Up Boots" />
-          {/* <Card img={item1} price={20.2} title="Tie Up Boots" />
-          <Card img={item2} price={20.2} title="Tie Up Boots" />
-          <Card img={item3} price={20.2} title="Tie Up Boots Boots AA" />
-          <Card img={item4} price={20.2} title="Tie Up Boots" />
-          <Card img={item1} price={20.2} title="Tie Up Boots" /> */}
+          {items.map((item, index) => (
+              <div key={item.uuid}>
+                <Card
+                  prod_id={item.uuid}
+                  img={item.image}
+                  title={item.name}
+                  description={item.tags}
+                  price={item.price}
+                  active={true}
+                />
+              </div>
+            ))}
         </div>
       </div>
     </div>
@@ -41,12 +64,24 @@ export default function MyFav() {
   );
 }
 
-function Card(props, active) {
-  const [isActive, setIsActive] = useState(active);
+function Card(props) {
+  const [isActive, setIsActive] = useState(props.active);
+  const access_token = sessionStorage.getItem("access_token");
 
   const toggleButton = () => {
+    fetch("/users/like", {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: "Bearer " + access_token,
+      },
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify({"item": props.prod_id})
+    })
     setIsActive((current) => !current);
   };
+
   return (
     <div className="card">
       <a href={`/user/item/${props.prod_id}`}>
@@ -58,7 +93,7 @@ function Card(props, active) {
           <FavoriteBorderIcon
             onClick={toggleButton}
             style={{
-              backgroundColor: isActive ? "#bcb4a7" : "",
+              backgroundColor: isActive ? "#f48b8b" : "#bcb4a7",
             }}
           />
         </div>

@@ -2,7 +2,7 @@
 /* Grid template */
 
 .layout-landing {
-  margin: 2.5%;
+  margin: 3%;
   grid-area: main;
   display: grid;
   grid-template-columns: 1fr;
@@ -18,10 +18,12 @@
 .slider-container {
   grid-area: slider;
   display: grid;
-  width: 80%;
+  width: 90%;
   margin-top: 5px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-left:10px;
+  padding-left:10px;
 }
 
 .layout-landing .thumbs-wrapper {
@@ -34,8 +36,14 @@
 
 .slider-container img {
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 20px;
 }
+
+.control-arrow {
+  display: none;
+}
+
+
 
 /* ===================================================== */
 /* Browse Items */
@@ -49,10 +57,14 @@
     grid-area: main;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-areas: "browse";
+    grid-template-areas: 
+      "slider"
+      "browse";
+    gap:0;
   }
 
   .slider-container {
     display: none;
   }
+
 }

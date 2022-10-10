@@ -121,15 +121,15 @@ input[type="text"]:focus {
 
 @media screen and (max-width: 800px) {
   .layout-login {
+    margin: 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
       "today"
       "login";
-    grid-gap: 10px;
+    grid-gap: 5px;
     padding: 10px;
     text-align: left;
-    margin-top: 0;
   }
 
   .today-container img {

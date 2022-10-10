@@ -135,3 +135,13 @@
   color: #383531;
   box-shadow: #bcb4a7 0 5px;
 }
+
+.loading {
+  position: fixed;
+  left: 50%;
+  top: 35%;
+}
+.loading svg {
+  width: 40px;
+  height: 40px;
+}

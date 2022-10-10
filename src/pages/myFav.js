@@ -10,12 +10,18 @@ import React, { useState, useEffect } from "react";
 
 export default function MyFav() {
   return (
+    <div>
     <div className="layout-like">
       <div className="myfav-title">
         <h1>My Favourite</h1>
       </div>
       <div className="myfav-items-container">
         <div className="wrapper">
+          <Card img={item1} price={20.2} title="Tie Up Boots" />
+          <Card img={item2} price={20.2} title="Tie Up Boots" />
+          <Card img={item3} price={20.2} title="Tie Up Boots Boots AA" />
+          <Card img={item4} price={20.2} title="Tie Up Boots" />
+          <Card img={item1} price={20.2} title="Tie Up Boots" />
           <Card img={item1} price={20.2} title="Tie Up Boots" />
           <Card img={item2} price={20.2} title="Tie Up Boots" />
           <Card img={item3} price={20.2} title="Tie Up Boots Boots AA" />
@@ -28,6 +34,7 @@ export default function MyFav() {
           <Card img={item1} price={20.2} title="Tie Up Boots" /> */}
         </div>
       </div>
+    </div>
       <img className="itemhead" src={backgroundTop} alt="item1"></img>
       <img className="itemfoot" src={backgroundBottom} alt="item2"></img>
     </div>

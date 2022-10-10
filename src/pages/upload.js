@@ -159,7 +159,7 @@ export default function Upload() {
       ) : (
         <>
           {submit ? (
-            <div className="layout-upload" />
+            <div className="loading" />
           ) : (
             <div className="layout-upload">
               <div className="upload-container">

@@ -34,6 +34,8 @@ function Registration() {
   const [bio, setBio] = useState("");
   const [avatar, setAvatar] = useState("");
   const [isActive, setIsActive] = useState(false);
+  const [warning, setWarning] = useState("");
+  const [avatarWarning, setAvatarWarning] = useState("");
 
   // setting a focus on username input when the component loads
   useEffect(() => {
@@ -71,9 +73,10 @@ function Registration() {
           console.log("hi:", response);
           if (response.status !== 200) {
             //这里写弹窗？
+            setWarning("Email has already been registered");
             console.log("出错了");
-          } else {
-            history("/user/login");
+            // } else {
+            //   history("/user/login");
           }
         })
         .then((userInfo) => {
@@ -82,6 +85,8 @@ function Registration() {
         .catch((error) => {
           console.error("Error:", error);
         });
+    } else {
+      setAvatarWarning("Must pick profile picture");
     }
   };
 
@@ -198,6 +203,91 @@ function Registration() {
               onChange={(e) => setBio(e.target.value)}
             />
           </div>
+          {warning ? (
+            <Alert
+              className="register-alert"
+              severity="warning"
+              variant="outlined"
+            >
+              {warning}
+            </Alert>
+          ) : null}
+          {/* Avatar */}
+          <div className="bubble-container">
+            <h2 className="avatar-remindar">Pick your profile picture…</h2>
+            {avatarWarning ? (
+              <Alert
+                className="avatar-alert"
+                severity="warning"
+                variant="outlined"
+              >
+                {avatarWarning}
+              </Alert>
+            ) : null}
+            <img
+              id="female1"
+              src={female1}
+              alt="female1"
+              className="avatar2"
+              onClick={handleClick}
+              style={{
+                backgroundColor: avatar === "female1" ? "#bcb4a7" : "",
+              }}
+            ></img>
+            <img
+              id="female2"
+              src={female2}
+              alt="female2"
+              className="avatar1"
+              onClick={handleClick}
+              style={{
+                backgroundColor: avatar === "female2" ? "#bcb4a7" : "",
+              }}
+            ></img>
+            <img
+              id="female3"
+              src={female3}
+              alt="female3"
+              className="avatar2"
+              onClick={handleClick}
+              style={{
+                backgroundColor: avatar === "female3" ? "#bcb4a7" : "",
+              }}
+            ></img>
+            <img
+              id="male1"
+              src={male1}
+              alt="male1"
+              className="avatar1"
+              onClick={handleClick}
+              style={{
+                backgroundColor: avatar === "male1" ? "#bcb4a7" : "",
+              }}
+            ></img>
+            <img
+              id="male2"
+              src={male2}
+              alt="male2"
+              className="avatar2"
+              onClick={handleClick}
+              style={{
+                backgroundColor: avatar === "male2" ? "#bcb4a7" : "",
+              }}
+            ></img>
+            <img
+              id="male3"
+              src={male3}
+              alt="male3"
+              className="avatar1"
+              onClick={handleClick}
+              style={{
+                backgroundColor: avatar === "male3" ? "#bcb4a7" : "",
+              }}
+            ></img>
+            <h2 className="avatar-setup-msg">
+              Now…Let's set up your own space!
+            </h2>
+          </div>
           <button
             className="register-button"
             type="submit"
@@ -214,76 +304,7 @@ function Registration() {
           Already has an account?
         </a>
       </div>
-      {/* Avatar */}
-      <div className="bubble-container">
-        <h2 className="avatar-remindar">Pick your profile picture…</h2>
-        {!avatar ? (
-          <Alert className="avatar-alert" severity="warning" variant="outlined">
-            Must pick profile picture
-          </Alert>
-        ) : null}
-        <img
-          id="female1"
-          src={female1}
-          alt="female1"
-          className="avatar2"
-          onClick={handleClick}
-          style={{
-            backgroundColor: avatar === "female1" ? "#bcb4a7" : "",
-          }}
-        ></img>
-        <img
-          id="female2"
-          src={female2}
-          alt="female2"
-          className="avatar1"
-          onClick={handleClick}
-          style={{
-            backgroundColor: avatar === "female2" ? "#bcb4a7" : "",
-          }}
-        ></img>
-        <img
-          id="female3"
-          src={female3}
-          alt="female3"
-          className="avatar2"
-          onClick={handleClick}
-          style={{
-            backgroundColor: avatar === "female3" ? "#bcb4a7" : "",
-          }}
-        ></img>
-        <img
-          id="male1"
-          src={male1}
-          alt="male1"
-          className="avatar1"
-          onClick={handleClick}
-          style={{
-            backgroundColor: avatar === "male1" ? "#bcb4a7" : "",
-          }}
-        ></img>
-        <img
-          id="male2"
-          src={male2}
-          alt="male2"
-          className="avatar2"
-          onClick={handleClick}
-          style={{
-            backgroundColor: avatar === "male2" ? "#bcb4a7" : "",
-          }}
-        ></img>
-        <img
-          id="male3"
-          src={male3}
-          alt="male3"
-          className="avatar1"
-          onClick={handleClick}
-          style={{
-            backgroundColor: avatar === "male3" ? "#bcb4a7" : "",
-          }}
-        ></img>
-        <h2 className="avatar-setup-msg">Now…Let's set up your own space!</h2>
-      </div>
+
       <img className="login-background" src={background} alt=""></img>
     </div>
   );

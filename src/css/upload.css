@@ -94,11 +94,6 @@
   margin-top: 100px;
 }
 
-.upload-alert {
-  width: 200px;
-  margin: auto;
-}
-
 .upload-container img {
   max-width: 60%;
 }
@@ -119,6 +114,17 @@
 
 .upload-input {
   display: none;
+}
+
+.upload-alert {
+  width: 220px;
+  margin: auto;
+  padding: 5px;
+  text-align: left;
+}
+
+.upload-alert svg {
+  width: 22px;
 }
 
 /* ===================================================== */
@@ -223,6 +229,10 @@
     font-size: large;
   }
 
+  .fillin-input-container textarea {
+    width: 100%;
+  }
+
   .profile-button-container {
     width: 100%;
     margin-bottom: 10px;
@@ -246,7 +256,6 @@
   }
   .fillin-container {
     text-align: left;
-    justify-content: left;
   }
   /* select conatiner */
   .css-b62m3t-container {

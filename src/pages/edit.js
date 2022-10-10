@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][[A-z0-9-_ ]{3,20}$/i);
 const PRICE_REG = new RegExp(/^[1-9][0-9]{0,7}(\.[0-9]{0,2})?$/);
-const DESC_REG = new RegExp(/^[A-Za-z0-9!@$%^&*(),.?/: ]{10,480}$/);
+const DESC_REG = new RegExp(/^[\s\S]{10,480}$/);
 export const validName = (str = "") => NAME_REG.test(str);
 export const validPrice = (str = "") => PRICE_REG.test(str);
 export const validDesc = (str = "") => DESC_REG.test(str);
@@ -26,6 +26,7 @@ export default function Edit() {
   const [tags, setTags] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [submit, setSubmit] = useState(false);
   const [warning, setWarning] = useState("");
   const [fileLimit, setFileLimit] = useState(false);
 
@@ -138,6 +139,8 @@ export default function Edit() {
     console.log(selectedImages);
     // prevent page being refresh
     e.preventDefault();
+    setLoading(true);
+    setSubmit(true);
     const data = new FormData(formRef.current);
     data.append("tags", JSON.stringify(tagValue));
     data.append("images", JSON.stringify(selectedImages));
@@ -160,7 +163,8 @@ export default function Edit() {
       })
         .then((res) => {
           console.log(res);
-          window.location.reload();
+          // window.location.reload();
+          setLoading(false);
           window.location.href =
             window.location.origin + "/user/market/" + myId;
         })
@@ -177,158 +181,164 @@ export default function Edit() {
       {loading ? (
         <CircularProgress className="loading" />
       ) : (
-        <div className="layout-upload">
-          <div className="upload-container">
-            <label>
-              <CameraAltRoundedIcon className="upload-icon" />
-              <input
-                className="upload-input"
-                type="file"
-                name="itemImages"
-                multiple
-                accept="image/*"
-                onChange={onSelectFile}
-                disabled={fileLimit}
-              />
-            </label>
-            {warning ? (
-              <Alert severity="warning" className="profile-alert">
-                {warning}
-              </Alert>
-            ) : null}
-          </div>
-
-          <div className="preview-container">
-            {selectedImages &&
-              selectedImages.map((image) => {
-                return (
-                  <div key={image} className="image-wrapper">
-                    <HighlightOffIcon
-                      className="preview-close"
-                      onClick={() => deleteImage(image)}
-                    />
-                    <img src={image} alt="file" />
-                  </div>
-                );
-              })}
-            {selectedImages.length < 3 ? (
-              <div className="image-wrapper-2">
-                <PhotoIcon />
-              </div>
-            ) : null}
-            {selectedImages.length < 2 ? (
-              <div className="image-wrapper-2">
-                <PhotoIcon />
-              </div>
-            ) : null}
-            {selectedImages.length === 0 ? (
-              <div className="image-wrapper-2">
-                <PhotoIcon />
-              </div>
-            ) : null}
-          </div>
-
-          <div className="fillin-container">
-            <form
-              method="post"
-              onSubmit={handleSubmit}
-              encType="multipart/form-data"
-              ref={formRef}
-            >
-              <div className="fillin-input-container">
-                <h2>Name your cute work?</h2>
-                <input
-                  name="itemName"
-                  type="text"
-                  value={itemName}
-                  onChange={(e) => setItemName(e.target.value)}
-                  required
-                />
-                {itemName && !validName(itemName) ? (
-                  <div className="upload-error">
-                    <Alert severity="warning">
-                      3 to 40 characters. Must start with letters.
-                      <br />
-                      Letters, numbers, underscores, space, hyphens allowed.
-                    </Alert>
-                  </div>
-                ) : null}
-              </div>
-              <div className="fillin-input-container">
-                <h2>Price your work?</h2>
-                <input
-                  type="texts"
-                  name="price"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                  required
-                />
-                {price && !validPrice(price) ? (
-                  <div className="upload-error">
-                    <Alert severity="warning">
-                      Price ranged between 0 to 99,999,999.
-                    </Alert>
-                  </div>
-                ) : null}
-              </div>
-              <div className="fillin-input-container">
-                <h2>Can you precisely describe your work?</h2>
-                <textarea
-                  type="text"
-                  name="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  required
-                />
-                {description && !validDesc(description) ? (
-                  <div className="upload-error">
-                    <Alert severity="warning">10 to 480 characters.</Alert>
-                  </div>
-                ) : null}
-              </div>
-              <div className="fillin-input-container">
-                <h2>Tag your work with its category.</h2>
-                {tags.length > 0 ? (
-                  <Select
-                    isMulti
-                    placeholder="Category"
-                    options={options}
-                    defaultValue={tags}
-                    onChange={(item) => setTagValue(item)}
-                    isClearable={true}
-                    isSearchable={true}
-                    isDisabled={false}
-                    isLoading={false}
-                    isRtl={false}
-                    closeMenuOnSelect={false}
+        <>
+          {submit ? (
+            <div className="layout-upload" />
+          ) : (
+            <div className="layout-upload">
+              <div className="upload-container">
+                <label>
+                  <CameraAltRoundedIcon className="upload-icon" />
+                  <input
+                    className="upload-input"
+                    type="file"
+                    name="itemImages"
+                    multiple
+                    accept="image/*"
+                    onChange={onSelectFile}
+                    disabled={fileLimit}
                   />
+                </label>
+                {warning ? (
+                  <Alert severity="warning" className="profile-alert">
+                    {warning}
+                  </Alert>
                 ) : null}
-                <input
-                  tabIndex={-1}
-                  autoComplete="off"
-                  style={{ opacity: 0, height: 0 }}
-                  value={tagValue}
-                  required
-                />
-                {!validTag(tagValue) ? (
-                  <div className="upload-error">
-                    <Alert severity="warning">Maximum 3 categories</Alert>
+              </div>
+
+              <div className="preview-container">
+                {selectedImages &&
+                  selectedImages.map((image) => {
+                    return (
+                      <div key={image} className="image-wrapper">
+                        <HighlightOffIcon
+                          className="preview-close"
+                          onClick={() => deleteImage(image)}
+                        />
+                        <img src={image} alt="file" />
+                      </div>
+                    );
+                  })}
+                {selectedImages.length < 3 ? (
+                  <div className="image-wrapper-2">
+                    <PhotoIcon />
+                  </div>
+                ) : null}
+                {selectedImages.length < 2 ? (
+                  <div className="image-wrapper-2">
+                    <PhotoIcon />
+                  </div>
+                ) : null}
+                {selectedImages.length === 0 ? (
+                  <div className="image-wrapper-2">
+                    <PhotoIcon />
                   </div>
                 ) : null}
               </div>
-              <button
-                className="profile-button-container"
-                type="submit"
-                style={{
-                  backgroundColor: isActive ? "#c5c1a4" : "",
-                }}
-                onClick={toggleButton}
-              >
-                Save Changes
-              </button>
-            </form>
-          </div>
-        </div>
+
+              <div className="fillin-container">
+                <form
+                  method="post"
+                  onSubmit={handleSubmit}
+                  encType="multipart/form-data"
+                  ref={formRef}
+                >
+                  <div className="fillin-input-container">
+                    <h2>Name your cute work?</h2>
+                    <input
+                      name="itemName"
+                      type="text"
+                      value={itemName}
+                      onChange={(e) => setItemName(e.target.value)}
+                      required
+                    />
+                    {itemName && !validName(itemName) ? (
+                      <div className="upload-error">
+                        <Alert severity="warning">
+                          3 to 40 characters. Must start with letters.
+                          <br />
+                          Letters, numbers, underscores, space, hyphens allowed.
+                        </Alert>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="fillin-input-container">
+                    <h2>Price your work?</h2>
+                    <input
+                      type="texts"
+                      name="price"
+                      value={price}
+                      onChange={(e) => setPrice(e.target.value)}
+                      required
+                    />
+                    {price && !validPrice(price) ? (
+                      <div className="upload-error">
+                        <Alert severity="warning">
+                          Price ranged between 0 to 99,999,999.
+                        </Alert>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="fillin-input-container">
+                    <h2>Can you precisely describe your work?</h2>
+                    <textarea
+                      type="text"
+                      name="description"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                      required
+                    />
+                    {description && !validDesc(description) ? (
+                      <div className="upload-error">
+                        <Alert severity="warning">10 to 480 characters.</Alert>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="fillin-input-container">
+                    <h2>Tag your work with its category.</h2>
+                    {tags.length > 0 ? (
+                      <Select
+                        isMulti
+                        placeholder="Category"
+                        options={options}
+                        defaultValue={tags}
+                        onChange={(item) => setTagValue(item)}
+                        isClearable={true}
+                        isSearchable={true}
+                        isDisabled={false}
+                        isLoading={false}
+                        isRtl={false}
+                        closeMenuOnSelect={false}
+                      />
+                    ) : null}
+                    <input
+                      tabIndex={-1}
+                      autoComplete="off"
+                      style={{ opacity: 0, height: 0 }}
+                      value={tagValue}
+                      required
+                    />
+                    {!validTag(tagValue) ? (
+                      <div className="upload-error">
+                        <Alert severity="warning">Maximum 3 categories</Alert>
+                      </div>
+                    ) : null}
+                  </div>
+                  <button
+                    className="profile-button-container"
+                    type="submit"
+                    style={{
+                      backgroundColor: isActive ? "#c5c1a4" : "",
+                    }}
+                    onClick={toggleButton}
+                  >
+                    Save Changes
+                  </button>
+                </form>
+              </div>
+            </div>
+          )}
+        </>
       )}
     </>
   );

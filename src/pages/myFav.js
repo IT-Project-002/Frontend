@@ -36,6 +36,7 @@ export default function MyFav() {
       });
   }, [access_token, userID]);
   return (
+    <div>
     <div className="layout-like">
       <div className="myfav-title">
         <h1>My Favourite</h1>
@@ -56,6 +57,7 @@ export default function MyFav() {
             ))}
         </div>
       </div>
+    </div>
       <img className="itemhead" src={backgroundTop} alt="item1"></img>
       <img className="itemfoot" src={backgroundBottom} alt="item2"></img>
     </div>

@@ -1,36 +1,4 @@
 /* ===================================================== */
-/* Input styles */
-
-/* .input-container {
-  display: -ms-flexbox;
-  display: flex;
-  width: 70%;
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-bottom: 10px;
-}
-
-.input-container input {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 5px 0;
-  display: inline-block;
-  border: none;
-  background: transparent;
-  border-bottom: 1px solid black;
-  box-sizing: border-box;
-  text-align: left;
-  font-size:15px;
-}
-
-.input-container input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="text"]:focus {
-  background: transparent;
-  outline: none;
-} */
-
-/* ===================================================== */
 /* Auto-fill css */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

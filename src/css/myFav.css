@@ -9,10 +9,12 @@
     "myfav-title"
     "like-items";
   grid-gap: 40px;
+  padding:5%;
 }
 
 .itemhead {
-  width: 60%;
+  top:0;
+  width: 50%;
   position: fixed;
   z-index: -1;
 }
@@ -49,11 +51,6 @@
 }
 
 .layout-like svg {
-  /* position: absolute; */
-  /* background-color: white; */
-  /* z-index: 98; */
-  /* margin-left: 240px;
-  margin-top: 150px; */
   background-color: #f48b8b;
   fill: white;
   width: 30px;
@@ -62,6 +59,8 @@
   border-radius: 50%;
   margin-top: 10px;
 }
+
+/* ===================================================== */
 
 .wrapper {
   margin: 1rem;
@@ -72,9 +71,7 @@
 }
 
 .card {
-  /* box-shadow: 0 0 10px 10px rgb(244, 244, 247); */
   border-radius: 20px;
-  /* min-width: 28rem; */
   display: flex;
   background-color: #e6ded0;
 }
@@ -144,7 +141,6 @@
   .myfav-title h1 {
     font-weight: 500;
     position: absolute;
-    /* margin-top: 8%; */
     z-index: 3;
     margin-left: 10%;
     font-size: 58px;
@@ -170,8 +166,6 @@
   }
 
   .layout-like svg {
-    /* position: absolute; */
-    /* z-index: 98; */
     margin-top: 10px;
     background-color: #f48b8b;
     fill: white;

@@ -95,7 +95,6 @@
 .card-title-like {
   display: flex;
   gap: 0.5rem;
-  /* justify-content: center; */
 }
 
 .card-title {

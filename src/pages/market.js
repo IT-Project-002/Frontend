@@ -1,5 +1,5 @@
 import "../css/market.css";
-import "../css/itemListB.css";
+import "../css/itemList.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import female1 from "../image/avatar/female1background.png";

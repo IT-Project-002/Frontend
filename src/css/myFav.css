@@ -74,13 +74,13 @@
 .card {
   /* box-shadow: 0 0 10px 10px rgb(244, 244, 247); */
   border-radius: 20px;
-  min-width: 28rem;
+  /* min-width: 28rem; */
   display: flex;
   background-color: #e6ded0;
 }
 
 .card-img {
-  width: 14rem;
+  width: 11.5rem;
   height: 11rem;
   object-fit: cover;
   border-top-left-radius: 20px;

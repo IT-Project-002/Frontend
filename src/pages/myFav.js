@@ -21,6 +21,11 @@ export default function MyFav() {
           <Card img={item3} price={20.2} title="Tie Up Boots Boots AA" />
           <Card img={item4} price={20.2} title="Tie Up Boots" />
           <Card img={item1} price={20.2} title="Tie Up Boots" />
+          {/* <Card img={item1} price={20.2} title="Tie Up Boots" />
+          <Card img={item2} price={20.2} title="Tie Up Boots" />
+          <Card img={item3} price={20.2} title="Tie Up Boots Boots AA" />
+          <Card img={item4} price={20.2} title="Tie Up Boots" />
+          <Card img={item1} price={20.2} title="Tie Up Boots" /> */}
         </div>
       </div>
       <img className="itemhead" src={backgroundTop} alt="item1"></img>

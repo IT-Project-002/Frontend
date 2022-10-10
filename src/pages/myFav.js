@@ -34,15 +34,17 @@ export default function MyFav() {
   );
 }
 
-function Card(props) {
-  const [isActive, setIsActive] = useState(false);
+function Card(props, active) {
+  const [isActive, setIsActive] = useState(active);
 
   const toggleButton = () => {
     setIsActive((current) => !current);
   };
   return (
     <div className="card">
-      <img src={props.img} alt="item" className="card-img" />
+      <a href={`/user/item/${props.prod_id}`}>
+        <img src={props.img} alt="item" className="card-img" />
+      </a>
       <div className="card-body">
         <div className="card-title-like">
           <h2 className="card-title">{props.title}</h2>

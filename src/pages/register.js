@@ -212,82 +212,6 @@ function Registration() {
               {warning}
             </Alert>
           ) : null}
-          {/* Avatar */}
-          <div className="bubble-container">
-            <h2 className="avatar-remindar">Pick your profile picture…</h2>
-            {avatarWarning ? (
-              <Alert
-                className="avatar-alert"
-                severity="warning"
-                variant="outlined"
-              >
-                {avatarWarning}
-              </Alert>
-            ) : null}
-            <img
-              id="female1"
-              src={female1}
-              alt="female1"
-              className="avatar2"
-              onClick={handleClick}
-              style={{
-                backgroundColor: avatar === "female1" ? "#bcb4a7" : "",
-              }}
-            ></img>
-            <img
-              id="female2"
-              src={female2}
-              alt="female2"
-              className="avatar1"
-              onClick={handleClick}
-              style={{
-                backgroundColor: avatar === "female2" ? "#bcb4a7" : "",
-              }}
-            ></img>
-            <img
-              id="female3"
-              src={female3}
-              alt="female3"
-              className="avatar2"
-              onClick={handleClick}
-              style={{
-                backgroundColor: avatar === "female3" ? "#bcb4a7" : "",
-              }}
-            ></img>
-            <img
-              id="male1"
-              src={male1}
-              alt="male1"
-              className="avatar1"
-              onClick={handleClick}
-              style={{
-                backgroundColor: avatar === "male1" ? "#bcb4a7" : "",
-              }}
-            ></img>
-            <img
-              id="male2"
-              src={male2}
-              alt="male2"
-              className="avatar2"
-              onClick={handleClick}
-              style={{
-                backgroundColor: avatar === "male2" ? "#bcb4a7" : "",
-              }}
-            ></img>
-            <img
-              id="male3"
-              src={male3}
-              alt="male3"
-              className="avatar1"
-              onClick={handleClick}
-              style={{
-                backgroundColor: avatar === "male3" ? "#bcb4a7" : "",
-              }}
-            ></img>
-            <h2 className="avatar-setup-msg">
-              Now…Let's set up your own space!
-            </h2>
-          </div>
           <button
             className="register-button"
             type="submit"
@@ -303,6 +227,76 @@ function Registration() {
         <a className="register-signin" href="/user/login">
           Already has an account?
         </a>
+      </div>
+      {/* Avatar */}
+      <div className="bubble-container">
+        <h2 className="avatar-remindar">Pick your profile picture…</h2>
+        {avatarWarning ? (
+          <Alert className="avatar-alert" severity="warning" variant="outlined">
+            {avatarWarning}
+          </Alert>
+        ) : null}
+        <img
+          id="female1"
+          src={female1}
+          alt="female1"
+          className="avatar2"
+          onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "female1" ? "#bcb4a7" : "",
+          }}
+        ></img>
+        <img
+          id="female2"
+          src={female2}
+          alt="female2"
+          className="avatar1"
+          onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "female2" ? "#bcb4a7" : "",
+          }}
+        ></img>
+        <img
+          id="female3"
+          src={female3}
+          alt="female3"
+          className="avatar2"
+          onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "female3" ? "#bcb4a7" : "",
+          }}
+        ></img>
+        <img
+          id="male1"
+          src={male1}
+          alt="male1"
+          className="avatar1"
+          onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "male1" ? "#bcb4a7" : "",
+          }}
+        ></img>
+        <img
+          id="male2"
+          src={male2}
+          alt="male2"
+          className="avatar2"
+          onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "male2" ? "#bcb4a7" : "",
+          }}
+        ></img>
+        <img
+          id="male3"
+          src={male3}
+          alt="male3"
+          className="avatar1"
+          onClick={handleClick}
+          style={{
+            backgroundColor: avatar === "male3" ? "#bcb4a7" : "",
+          }}
+        ></img>
+        <h2 className="avatar-setup-msg">Now…Let's set up your own space!</h2>
       </div>
 
       <img className="login-background" src={background} alt=""></img>

@@ -1,12 +1,8 @@
 /* ===================================================== */
 /* Grid template */
-html,
-body {
-  overflow-x: hidden;
-}
+
 .layout-landing {
-  /* margin: 2.5%; */
-  padding: 2.5%;
+  margin: 2.5%;
   grid-area: main;
   display: grid;
   grid-template-columns: 1fr;

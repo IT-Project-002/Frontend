@@ -8,7 +8,7 @@ export default function ItemList(props) {
   const tags = props.data.tags;
   const prodId = props.data.uuid;
   // console.log(props);
-  console.log(links);
+  // console.log(links);
   return (
     <>
       {!items ? (

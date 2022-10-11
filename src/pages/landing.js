@@ -10,6 +10,14 @@ function Landing() {
   const token = sessionStorage.getItem("access_token");
   const [data, setData] = useState({});
   const [showModal, setShowModal] = useState(false);
+  const [search, setSearch] = useState("");
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(search);
+    setSearch("");
+  };
+
   /* appear after 5 seconds */
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -43,6 +51,21 @@ function Landing() {
 
   return (
     <div className="layout-landing">
+      {/* Search */}
+      <form onSubmit={onSubmit}>
+        <div className="search-wrapper">
+          <input
+            type="text"
+            name="text"
+            placeholder="  Search items..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button type="submit" className="search-button">
+            Search
+          </button>
+        </div>
+      </form>
       <div className="slider-container">
         <Gallery autoPlay={false} />
       </div>

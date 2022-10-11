@@ -15,6 +15,7 @@ export const validateEmailInput = (str = "") => EMAIL_REG.test(str);
 function Forget() {
   const userRef = useRef();
   const [email, setEmail] = useState("");
+  const [emailVerify, setEmailVerify] = useState("");
   const [password, setPassword] = useState("");
   const [isShown, setIsSHown] = useState(false);
   const [loginError, setLoginError] = useState("");
@@ -58,6 +59,7 @@ function Forget() {
       .then((data) => {
         console.log(data.captcha)
         setCode(data.captcha)
+        setEmailVerify(data.email)
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -66,7 +68,7 @@ function Forget() {
 
   const handleVerificationCode =(e)=>{
     e.preventDefault();
-    const userInfo = { email, code, password };
+    const userInfo = { email, code, password, emailVerify };
     console.log(userInfo);
 
     fetch("/users/emailLogin", {

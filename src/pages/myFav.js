@@ -11,7 +11,7 @@ export default function MyFav() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("/users/myfav/" + userID, {
+    fetch("/users/myfav", {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",

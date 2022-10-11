@@ -35,7 +35,7 @@
 .register-container {
   grid-area: register;
   text-align: center;
-  margin-top:25%;
+  margin-top: 25%;
 }
 
 .register-alert {

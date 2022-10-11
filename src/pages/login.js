@@ -7,7 +7,6 @@ import { AiFillEyeInvisible, AiFillEye, AiTwotoneMail } from "react-icons/ai";
 import React from "react";
 import background from "../image/background/login.png";
 import Alert from "@mui/material/Alert";
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 export const validateEmailInput = (str = "") => EMAIL_REG.test(str);
@@ -72,10 +71,10 @@ function Login() {
       <div className="layout-login" id="login-page">
         <div className="login-container">
           <h1>
-              Welcome
-              <br/>
-              <br/>
-              Login to unlock more features!
+            Welcome
+            <br />
+            <br />
+            Login to unlock more features!
           </h1>
           <form onSubmit={handleSubmit}>
             <div className="input-container">

@@ -21,8 +21,8 @@ export default function Item() {
       },
       method: "POST",
       mode: "cors",
-      body: JSON.stringify({"item": itemId})
-    })
+      body: JSON.stringify({ item: itemId }),
+    });
     setIsActive((current) => !current);
   };
 

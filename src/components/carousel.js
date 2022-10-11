@@ -3,6 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import image1 from "../image/pages/landingSlider1.png";
 import image2 from "../image/pages/landingSlider2.png";
+import image3 from "../image/pages/landingSlider3.png";
 
 
 class Gallery extends React.Component {
@@ -17,7 +18,7 @@ class Gallery extends React.Component {
                         <img src={image2} alt="" />
                     </div>
                     <div>
-                        <img src="https://uptoncountrypark.com/wp-content/uploads/2018/02/1300-x-400-IMG_95954.jpg" alt="" />
+                        <img src={image3} alt="" />
                     </div>
                 </Carousel>
             </div>

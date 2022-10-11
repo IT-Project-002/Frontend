@@ -7,9 +7,6 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "login today";
-  /* background-image: url(../image/background/login.png);
-  background-repeat: none;
-  background-position: fixed; */
 }
 
 .login-background {
@@ -24,6 +21,11 @@
 
 /* ===================================================== */
 /* Left section: Login */
+
+/* .login-container h1 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+} */
 
 .login-container {
   grid-area: login;

@@ -124,6 +124,11 @@ function Login() {
               </Alert>
             ) : null}
             <div>
+                <a className="signup-link" href="/user/forgetPwd">
+                    forget your password
+                </a>
+            </div>
+            <div>
               <button
                 type="submit"
                 style={{

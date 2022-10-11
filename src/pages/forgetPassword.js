@@ -102,7 +102,7 @@ function Forget() {
     return (
       <div className="layout-login" id="login-page">
         <div className="login-container">
-          <h1>Log In Via Email</h1>
+          <h1>Email Verification</h1>
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <AiTwotoneMail />

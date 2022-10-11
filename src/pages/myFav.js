@@ -31,7 +31,7 @@ export default function MyFav() {
       })
       .then((dat) => {
         console.log(dat);
-        setItems(dat.out);
+        setItems(dat);
         setLoading(false);
       });
   }, [access_token, userID]);

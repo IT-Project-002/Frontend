@@ -37,27 +37,27 @@ export default function MyFav() {
   }, [access_token, userID]);
   return (
     <div>
-    <div className="layout-like">
-      <div className="myfav-title">
-        <h1>My Favourite</h1>
-      </div>
-      <div className="myfav-items-container">
-        <div className="wrapper">
-          {items.map((item, index) => (
-              <div key={item.uuid}>
-                <Card
-                  prod_id={item.uuid}
-                  img={item.image}
-                  title={item.name}
-                  description={item.tags}
-                  price={item.price}
-                  active={true}
-                />
-              </div>
-            ))}
+      <div className="layout-like">
+        <div className="myfav-title">
+          <h1>My Favourite</h1>
+        </div>
+        <div className="myfav-items-container">
+          <div className="wrapper">
+            {items.map((item, index) => (
+                <div key={item.uuid}>
+                  <Card
+                    prod_id={item.uuid}
+                    img={item.image}
+                    title={item.name}
+                    description={item.tags}
+                    price={item.price}
+                    active={true}
+                  />
+                </div>
+              ))}
+          </div>
         </div>
       </div>
-    </div>
       <img className="itemhead" src={backgroundTop} alt="item1"></img>
       <img className="itemfoot" src={backgroundBottom} alt="item2"></img>
     </div>

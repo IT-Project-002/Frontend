@@ -71,12 +71,8 @@ function Login() {
     return (
       <div className="layout-login" id="login-page">
         <div className="login-container">
-          <h1>
-              Welcome
-              <br/>
-              <br/>
-              Login to unlock more features!
-          </h1>
+          <h1>Welcome</h1>
+          <h2>Log in to unlock more features!</h2>
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <AiTwotoneMail />

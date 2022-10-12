@@ -13,6 +13,16 @@ export default function Item() {
   const [isActive, setIsActive] = useState(false);
 
   const toggleButton = () => {
+    fetch("/users/like", {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: "Bearer " + access_token,
+      },
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify({"item": itemId})
+    })
     setIsActive((current) => !current);
   };
 
@@ -38,6 +48,7 @@ export default function Item() {
       .then((dat) => {
         console.log(dat);
         setData(dat);
+        setIsActive(dat.liked);
         setLoading(false);
       });
   }, [access_token, itemId]);

@@ -1,6 +1,4 @@
 import "../css/myFav.css";
-import backgroundTop from "../image/background/myfav1.png";
-import backgroundBottom from "../image/background/myfav2.png";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -11,7 +9,7 @@ export default function MyFav() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("/users/myfav/" + userID, {
+    fetch("/users/favourite", {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -31,7 +29,7 @@ export default function MyFav() {
       })
       .then((dat) => {
         console.log(dat);
-        setItems(dat);
+        setItems(dat.out);
         setLoading(false);
       });
   }, [access_token, userID]);
@@ -58,8 +56,8 @@ export default function MyFav() {
         </div>
       </div>
     </div>
-      <img className="itemhead" src={backgroundTop} alt="item1"></img>
-      <img className="itemfoot" src={backgroundBottom} alt="item2"></img>
+      <img className="itemhead" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav1.png" alt="item1"></img>
+      <img className="itemfoot" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav2.png" alt="item2"></img>
     </div>
   );
 }

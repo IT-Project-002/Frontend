@@ -4,7 +4,7 @@ module.exports = function (app) {
     "/users/**",
     createProxyMiddleware({
       target: 'https://handicraft-002.herokuapp.com/',
-      // target: "http://localhost:9000/",
+//       target: "http://localhost:9000/",
       changeOrigin: true,
     })
   );

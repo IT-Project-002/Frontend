@@ -8,7 +8,6 @@ import female3 from "../image/avatar/female3background.png";
 import male1 from "../image/avatar/male1background.png";
 import male2 from "../image/avatar/male2backgound.png";
 import male3 from "../image/avatar/male3background.png";
-import background from "../image/background/marketplace.png";
 import AddAPhotoOutlinedIcon from "@mui/icons-material/AddAPhotoOutlined";
 import CircularProgress from "@mui/material/CircularProgress";
 import Cards from "../components/itemListB";
@@ -92,7 +91,7 @@ export default function Market() {
             <p>{data["Bio"]}</p>
             <img
               className="user-avatar-bg"
-              src={background}
+              src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/marketplace.png"
               alt="background"
             ></img>
           </div>

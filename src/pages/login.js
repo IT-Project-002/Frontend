@@ -2,10 +2,8 @@ import { useState, useRef } from "react";
 import { Navigate } from "react-router-dom";
 import "../css/login.css";
 import "../css/form.css";
-import d1 from "../image/pages/loginDrawer.png";
 import { AiFillEyeInvisible, AiFillEye, AiTwotoneMail } from "react-icons/ai";
 import React from "react";
-import background from "../image/background/login.png";
 import Alert from "@mui/material/Alert";
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
@@ -71,9 +69,13 @@ function Login() {
     return (
       <div className="layout-login" id="login-page">
         <div className="login-container">
-          <h1>Welcome</h1>
-          <h2>Log in to unlock more features!</h2>
-          <form onSubmit={handleSubmit}>
+          <h1>
+              Welcome
+              <br/>
+              <br/>
+              Login to unlock more features!
+          </h1>
+           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <AiTwotoneMail />
               <input
@@ -141,9 +143,9 @@ function Login() {
         <div className="today-container">
           <h1>“Creativity takes courage.”</h1>
           <h4>- Henri Matisse</h4>
-          <img src={d1} alt="d1"></img>
+          <img src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/pages/loginDrawer.png" alt="d1"></img>
         </div>
-        <img className="login-background" src={background} alt=""></img>
+        <img className="login-background" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/login.png" alt=""></img>
       </div>
     );
   }

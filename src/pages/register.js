@@ -13,7 +13,6 @@ import female3 from "../image/avatar/female3.png";
 import male1 from "../image/avatar/male1.png";
 import male2 from "../image/avatar/male2.png";
 import male3 from "../image/avatar/male3.png";
-import background from "../image/background/login.png";
 
 const NAME_REG = new RegExp(/^[A-Z0-9][A-z0-9-_]{3,14}$/i);
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
@@ -299,7 +298,7 @@ function Registration() {
         <h2 className="avatar-setup-msg">Now…Let's set up your own space!</h2>
       </div>
 
-      <img className="login-background" src={background} alt=""></img>
+      <img className="login-background" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/login.png" alt=""></img>
     </div>
   );
 }

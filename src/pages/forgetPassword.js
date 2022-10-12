@@ -7,7 +7,7 @@ import { AiFillEyeInvisible, AiFillEye, AiTwotoneMail } from "react-icons/ai";
 import React from "react";
 import background from "../image/background/login.png";
 import Alert from "@mui/material/Alert";
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 export const validateEmailInput = (str = "") => EMAIL_REG.test(str);
@@ -21,6 +21,7 @@ function Forget() {
   const [loginError, setLoginError] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [isActive1, setIsActive1] = useState(false);
+  const [isSubmmit, setIsSubmmit] = useState(false);
   const [code, setCode] = useState({});
 
   const toggleButton = () => {
@@ -37,6 +38,7 @@ function Forget() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmmit(true);
     const userInfo = { email };
     console.log(userInfo);
 
@@ -50,23 +52,23 @@ function Forget() {
       body: JSON.stringify(userInfo),
     })
       .then((response) => {
-        if (response.status===600){
-            //这边是email不存在
+        if (response.status === 600) {
+          //这边是email不存在
         }
         console.log(response);
         return response.json();
       })
       .then((data) => {
-        console.log(data.captcha)
-        setCode(data.captcha)
-        setEmailVerify(data.email)
+        console.log(data.captcha);
+        setCode(data.captcha);
+        setEmailVerify(data.email);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
 
-  const handleVerificationCode =(e)=>{
+  const handleVerificationCode = (e) => {
     e.preventDefault();
     const userInfo = { email, code, password, emailVerify };
     console.log(userInfo);
@@ -81,8 +83,8 @@ function Forget() {
       body: JSON.stringify(userInfo),
     })
       .then((response) => {
-       if (response.status===601){
-            //这边是验证码不通过
+        if (response.status === 601) {
+          //这边是验证码不通过
         }
         console.log(response);
         return response.json();
@@ -93,21 +95,25 @@ function Forget() {
           console.log("access_token exist");
           sessionStorage.setItem("id", data.uuid);
           window.location.href =
-          window.location.origin + "/user/market/" + data.uuid;
+            window.location.origin + "/user/market/" + data.uuid;
           return data.access_token;
-         }
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-  }
-    return (
-      <div className="layout-login" id="login-page">
-        <div className="login-container">
-          <h1>Email Verification</h1>
+  };
+  return (
+    <div className="layout-login" id="login-page">
+      <div className="login-container">
+        <h1>Email Verification</h1>
+        <h3> </h3>
+        <div>
           <form onSubmit={handleSubmit}>
             <div className="input-container">
-              <AiTwotoneMail />
+              <label className="login-icon">
+                <AiTwotoneMail />
+              </label>
               <input
                 type="email"
                 ref={userRef}
@@ -116,25 +122,15 @@ function Forget() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-            </div>
-            {email && !validateEmailInput(email) ? (
-              <Alert
-                className="login-alert"
-                severity="warning"
-                variant="outlined"
-              >
-                Email not valid
-              </Alert>
-            ) : null}
-            <div>
               <button
                 type="submit"
                 style={{
                   backgroundColor: isActive ? "#c5c1a4" : "",
                 }}
                 onClick={toggleButton}
+                disabled={isSubmmit}
               >
-                Send Code
+                Send
               </button>
             </div>
           </form>
@@ -154,8 +150,6 @@ function Forget() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-            </div>
-            <div>
               <button
                 type="submit"
                 style={{
@@ -167,18 +161,17 @@ function Forget() {
               </button>
             </div>
           </form>
-
         </div>
-
-        <div className="today-container">
-          <h1>“Creativity takes courage.”</h1>
-          <h4>- Henri Matisse</h4>
-          <img src={d1} alt="d1"></img>
-        </div>
-        <img className="login-background" src={background} alt=""></img>
       </div>
-    );
-}
 
+      <div className="today-container">
+        <h1>“Creativity takes courage.”</h1>
+        <h4>- Henri Matisse</h4>
+        <img src={d1} alt="d1"></img>
+      </div>
+      <img className="login-background" src={background} alt=""></img>
+    </div>
+  );
+}
 
 export default Forget;

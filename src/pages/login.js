@@ -7,7 +7,6 @@ import { AiFillEyeInvisible, AiFillEye, AiTwotoneMail } from "react-icons/ai";
 import React from "react";
 import background from "../image/background/login.png";
 import Alert from "@mui/material/Alert";
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 export const validateEmailInput = (str = "") => EMAIL_REG.test(str);
@@ -71,12 +70,8 @@ function Login() {
     return (
       <div className="layout-login" id="login-page">
         <div className="login-container">
-          <h1>
-              Welcome
-              <br/>
-              <br/>
-              Login to unlock more features!
-          </h1>
+          <h1>Welcome</h1>
+          <h3 style={{ marginTop: "-5px" }}>Login to unlock more features!</h3>
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <AiTwotoneMail />
@@ -123,10 +118,17 @@ function Login() {
                 {loginError}
               </Alert>
             ) : null}
-            <div>
-                <a className="signup-link" href="/user/forgetPwd">
-                    forget your password
-                </a>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                width: "85%",
+                marginTop: "-10px",
+              }}
+            >
+              <a className="password-link" href="/user/forgetPwd">
+                Forgot Password?
+              </a>
             </div>
             <div>
               <button

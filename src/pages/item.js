@@ -80,7 +80,7 @@ export default function Item() {
               />
             </div>
             <h1 className="item-price">AU${data["prod_price"]}</h1>
-            <p className="item-desc">{data["prod_desc"]}</p>
+            <p className="item-desc" style={{whiteSpace: "pre-line"}}>{data["prod_desc"]}</p>
             <a
               href={`/user/market/${data["user_id"]}`}
               style={{ textDecoration: "none" }}

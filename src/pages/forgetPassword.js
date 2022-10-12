@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import { Navigate } from "react-router-dom";
 import "../css/login.css";
 import "../css/form.css";
 import d1 from "../image/pages/loginDrawer.png";
@@ -7,7 +6,6 @@ import { AiFillEyeInvisible, AiFillEye, AiTwotoneMail } from "react-icons/ai";
 import React from "react";
 import background from "../image/background/login.png";
 import Alert from "@mui/material/Alert";
-import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 
 const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 export const validateEmailInput = (str = "") => EMAIL_REG.test(str);
@@ -18,7 +16,7 @@ function Forget() {
   const [emailVerify, setEmailVerify] = useState("");
   const [password, setPassword] = useState("");
   const [isShown, setIsSHown] = useState(false);
-  const [loginError, setLoginError] = useState("");
+  const [error, setError] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [isActive1, setIsActive1] = useState(false);
   const [isSubmmit, setIsSubmmit] = useState(false);
@@ -31,6 +29,7 @@ function Forget() {
   const toggleButton1 = () => {
     setIsActive1((current) => !current);
   };
+
   // show password or not
   const togglePassword = () => {
     setIsSHown((isShown) => !isShown);
@@ -54,6 +53,7 @@ function Forget() {
       .then((response) => {
         if (response.status === 600) {
           //这边是email不存在
+          setError("Email not exist");
         }
         console.log(response);
         return response.json();
@@ -85,6 +85,7 @@ function Forget() {
       .then((response) => {
         if (response.status === 601) {
           //这边是验证码不通过
+          setError("Incorrect code");
         }
         console.log(response);
         return response.json();
@@ -161,6 +162,15 @@ function Forget() {
               </button>
             </div>
           </form>
+          {error ? (
+            <Alert
+              className="login-alert"
+              severity="warning"
+              variant="outlined"
+            >
+              {error}
+            </Alert>
+          ) : null}
         </div>
       </div>
 

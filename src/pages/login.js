@@ -18,6 +18,7 @@ function Login() {
   const [isShown, setIsSHown] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [isActive, setIsActive] = useState(false);
+  const [isSubmmit, setIsSubmmit] = useState(false);
   const token = sessionStorage.getItem("access_token");
 
   const toggleButton = () => {
@@ -31,6 +32,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmmit(true);
     const userInfo = { email, password };
     console.log(userInfo);
 
@@ -57,6 +59,7 @@ function Login() {
           return data.access_token;
         } else {
           setLoginError("Check out your Account/Password again");
+          setIsSubmmit(false);
         }
       })
       .catch((error) => {
@@ -123,7 +126,6 @@ function Login() {
                 display: "flex",
                 justifyContent: "flex-end",
                 width: "85%",
-                marginTop: "-10px",
               }}
             >
               <a className="password-link" href="/user/forgetPwd">
@@ -137,6 +139,7 @@ function Login() {
                   backgroundColor: isActive ? "#c5c1a4" : "",
                 }}
                 onClick={toggleButton}
+                disabled={isSubmmit}
               >
                 Log in
               </button>

@@ -8,8 +8,6 @@ import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
-import HomeIcon from "../image/home.png";
-
 export default function Navbar() {
   const id = sessionStorage.getItem("id");
   const token = sessionStorage.getItem("access_token");
@@ -51,7 +49,7 @@ export default function Navbar() {
         <img
           className="home-icon"
           alt="homebutton"
-          src={HomeIcon}
+          src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/home.png"
           text={"Hi"}
           onClick={toggleMenu}
         ></img>

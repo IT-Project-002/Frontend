@@ -43,6 +43,7 @@
   width: 100px;
   height: 30px;
   border-radius: 5px;
+  grid-template-rows: 0.2fr 0.5fr 2fr;
   background-color: #af9177;
   color: white;
   font-size: 16px;
@@ -52,6 +53,12 @@
 .signup-link {
   font-family: Arial;
   font-size: 15px;
+  color: #0047ab;
+}
+
+.password-link {
+  font-family: Arial;
+  font-size: 12px;
   color: #0047ab;
 }
 

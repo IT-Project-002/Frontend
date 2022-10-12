@@ -10,11 +10,11 @@ function Landing() {
   const token = sessionStorage.getItem("access_token");
   const [data, setData] = useState({});
   const [showModal, setShowModal] = useState(false);
-  /* appear after 5 seconds */
+  /* appear after 30 seconds */
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(true);
-    }, [5000]);
+    }, [30000]);
     return () => clearTimeout(timer);
   }, []);
 

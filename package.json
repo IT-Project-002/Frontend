@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://handicraft-002.herokuapp.com/",
   "dependencies": {
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.3",

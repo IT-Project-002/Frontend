@@ -1,47 +1,29 @@
+import "../css/modal.css";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import flowerBasket from "../image/pages/modalPlants.png";
 import React from "react";
-import CircularProgress from "@mui/material/CircularProgress";
 
-export default function ItemList(props) {
-  const items = props.data.name;
-  const links = props.data.img;
-  const prices = props.data.price;
-  const tags = props.data.tags;
-  const prodId = props.data.uuid;
-  // console.log(props);
-  console.log(links);
+export default function Modal({ close }) {
   return (
-    <>
-      {!items ? (
-        <CircularProgress className="wrapper" />
-      ) : (
-        <div className="wrapper">
-          {items.map((item, index) => (
-            <div key={prodId[index]}>
-              <Card
-                prod_id={prodId[index]}
-                img={links[index][0]}
-                title={item}
-                description={tags[index]}
-                price={prices[index]}
-              />
-            </div>
-          ))}
+    <div className="layout-model">
+      <div className="modal-container">
+        <HighlightOffIcon onClick={() => close()} />
+        <div className="text-container">
+          <h1>Haven't Sign up?</h1>
+          <p>Let's get you started!</p>
+          <a href="/user/register" className="button">
+            Sign Up
+          </a>
+          <p>Already have an account?</p>
+          <a href="/user/login" className="button">
+            Log In
+          </a>
         </div>
-      )}
-    </>
-  );
-}
-
-function Card(props) {
-  return (
-    <div className="card">
-      {/* navigate to item page */}
-      <a href={`/user/item/${props.prod_id}`}>
-        <img src={props.img} alt="item" className="card-img" />
-      </a>
-      <div className="card-body">
-        <h2 className="card-title">{props.title}</h2>
-        <h3 className="card-price">{props.price}</h3>
+        <img
+          className="modal-flower-basket"
+          src={flowerBasket}
+          alt="flowerBasket"
+        ></img>
       </div>
     </div>
   );

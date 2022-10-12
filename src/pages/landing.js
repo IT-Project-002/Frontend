@@ -14,7 +14,7 @@ function Landing() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(true);
-    }, [5000]);
+    }, [30000]);
     return () => clearTimeout(timer);
   }, []);
 

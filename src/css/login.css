@@ -7,9 +7,6 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "login today";
-  /* background-image: url(../image/background/login.png);
-  background-repeat: none;
-  background-position: fixed; */
 }
 
 .login-background {
@@ -28,6 +25,7 @@
 .login-container {
   grid-area: login;
   display: grid;
+  grid-template-rows: 0.2fr 0.5fr 2fr;
   padding: 5%;
   text-align: center;
 }
@@ -47,6 +45,12 @@
   color: white;
   font-size: 16px;
   margin: 15px;
+}
+
+.password-link {
+  font-family: Arial;
+  font-size: 12px;
+  color: #0047ab;
 }
 
 .signup-link {

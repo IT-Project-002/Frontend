@@ -90,37 +90,9 @@ function Landing() {
             ></input>
             {search ? <ClearIcon onClick={handleClick} /> : null}
           </div>
-          {/* <div className="search-wrapper">
-          <TextField
-            type="text"
-            name="text"
-            placeholder="  Search items..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            variant="outlined"
-            InputProps={{
-              endAdornment: (
-                <IconButton
-                  sx={{ visibility: search ? "visible" : "hidden" }}
-                  onClick={handleClick}
-                >
-                  <ClearIcon />
-                </IconButton>
-              ),
-            }}
-            sx={{
-              m: 2,
-              "& .Mui-focused .MuiIconButton-root": {
-                color: "primary.main",
-              },
-            }}
-          ></TextField> */}
           <button type="submit" className="search-button">
             Search
           </button>
-          {/* <button type="button" className="search-button" onClick={handleClick}>
-            Clear
-          </button> */}
         </div>
       </form>
       <div className="slider-container">

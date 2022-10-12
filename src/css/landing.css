@@ -53,15 +53,6 @@
   z-index: 10;
 }
 
-/* textfield */
-.css-iuefn0-MuiFormControl-root-MuiTextField-root {
-  margin: 0;
-  border: solid 2px;
-  border-color: #af9177;
-  width: 78%;
-  border-radius: 5px;
-}
-
 .search-button {
   border: 1px solid white;
   width: 100px;

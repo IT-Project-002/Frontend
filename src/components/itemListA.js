@@ -1,6 +1,5 @@
 import "../css/modal.css";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import flowerBasket from "../image/pages/modalPlants.png";
 import React from "react";
 
 export default function Modal({ close }) {
@@ -21,7 +20,7 @@ export default function Modal({ close }) {
         </div>
         <img
           className="modal-flower-basket"
-          src={flowerBasket}
+          src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/pages/modalPlants.png"
           alt="flowerBasket"
         ></img>
       </div>

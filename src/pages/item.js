@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Slider from "../components/imageSlider";
 import CircularProgress from "@mui/material/CircularProgress";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default function Item() {
   const access_token = sessionStorage.getItem("access_token");
@@ -21,8 +22,8 @@ export default function Item() {
       },
       method: "POST",
       mode: "cors",
-      body: JSON.stringify({"item": itemId})
-    })
+      body: JSON.stringify({ item: itemId }),
+    });
     setIsActive((current) => !current);
   };
 
@@ -88,7 +89,19 @@ export default function Item() {
               <p className="item-owner">{data["user_name"]}'s Marketplace</p>
             </a>
             {!data["user_hide_email"] ? (
-              <p className="item-contact">{data["user_email"]}</p>
+              <>
+                {/* <p className="item-contact">{data["user_email"]}</p> */}
+                <div>
+                  <CopyToClipboard
+                    text={data["user_email"]}
+                    onCopy={() => {
+                      alert("Successfully copied to clipboard.");
+                    }}
+                  >
+                    <p className="item-contact">{data["user_email"]}</p>
+                  </CopyToClipboard>
+                </div>
+              </>
             ) : (
               <p className="item-contact">No public contact information</p>
             )}

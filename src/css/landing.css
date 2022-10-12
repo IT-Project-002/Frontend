@@ -7,9 +7,41 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
+    "search"
     "slider"
     "browse";
   gap: 50px;
+}
+
+/* ===================================================== */
+/* Search box */
+
+.search-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-wrapper input {
+  border: solid 2px;
+  border-color: #af9177;
+  width: 80%;
+  height: 40px;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 12px 20px;
+}
+
+.search-button {
+  border: 1px solid white;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #af9177;
+  color: white;
+  font-size: 16px;
 }
 
 /* ===================================================== */

@@ -95,11 +95,22 @@ export default function Item() {
                   <CopyToClipboard
                     text={data["user_email"]}
                     onCopy={() => {
-                      alert("Successfully copied to clipboard.");
+                      alert("Successfully copied");
+                      // setCopy("Successfully copied");
                     }}
                   >
                     <p className="item-contact">{data["user_email"]}</p>
                   </CopyToClipboard>
+                  {/* {copy ? (
+                    <p
+                      style={{
+                        display: "table",
+                        margin: "auto",
+                      }}
+                    >
+                      {copy}
+                    </p>
+                  ) : null} */}
                 </div>
               </>
             ) : (

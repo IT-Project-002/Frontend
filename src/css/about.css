@@ -125,7 +125,7 @@ p {
   grid-area: aboutUsContent;
 }
 
-@media screen and (max-width: 1485px){
+@media screen and (max-width: 1485px) {
   .about-us-container {
     grid-template-rows: 0.3fr 1fr 1fr;
   }

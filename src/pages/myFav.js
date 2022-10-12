@@ -44,17 +44,17 @@ export default function MyFav() {
         <div className="myfav-items-container">
           <div className="wrapper">
             {items.map((item, index) => (
-                <div key={item.uuid}>
-                  <Card
-                    prod_id={item.uuid}
-                    img={item.image}
-                    title={item.name}
-                    description={item.tags}
-                    price={item.price}
-                    active={true}
-                  />
-                </div>
-              ))}
+              <div key={item.uuid}>
+                <Card
+                  prod_id={item.uuid}
+                  img={item.image}
+                  title={item.name}
+                  description={item.tags}
+                  price={item.price}
+                  active={true}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -77,8 +77,8 @@ function Card(props) {
       },
       method: "POST",
       mode: "cors",
-      body: JSON.stringify({"item": props.prod_id})
-    })
+      body: JSON.stringify({ item: props.prod_id }),
+    });
     setIsActive((current) => !current);
   };
 

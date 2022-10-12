@@ -9,11 +9,11 @@
     "myfav-title"
     "like-items";
   grid-gap: 40px;
-  padding:5%;
+  padding: 5%;
 }
 
 .itemhead {
-  top:0;
+  top: 0;
   width: 50%;
   position: fixed;
   z-index: -1;

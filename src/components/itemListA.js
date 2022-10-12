@@ -3,7 +3,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 export default function ItemList(props) {
   const items = props.data.map((item) => item.image);
-  console.log(items);
   // console.log(props);
   // console.log(links);
   return (
@@ -12,7 +11,7 @@ export default function ItemList(props) {
         <CircularProgress className="wrapper" />
       ) : (
         <div className="wrapper">
-          {items.map((item) => (
+          {props.data.map((item) => (
             <div key={item.uuid}>
               <Card
                 prod_id={item.uuid}

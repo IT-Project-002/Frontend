@@ -3,13 +3,12 @@ import backgroundTop from "../image/background/myfav1.png";
 import backgroundBottom from "../image/background/myfav2.png";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 export default function MyFav() {
   const userID = sessionStorage.getItem("id");
   const access_token = sessionStorage.getItem("access_token");
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  
   useEffect(() => {
     fetch("/users/myfav", {
       headers: {
@@ -32,7 +31,6 @@ export default function MyFav() {
       .then((dat) => {
         console.log(dat);
         setItems(dat);
-        setLoading(false);
       });
   }, [access_token, userID]);
   return (
@@ -43,7 +41,7 @@ export default function MyFav() {
         </div>
         <div className="myfav-items-container">
           <div className="wrapper">
-            {items.map((item, index) => (
+            {items.map((item) => (
               <div key={item.uuid}>
                 <Card
                   prod_id={item.uuid}

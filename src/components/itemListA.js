@@ -2,11 +2,7 @@ import React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export default function ItemList(props) {
-  const items = props.data.name;
-  const links = props.data.img;
-  const prices = props.data.price;
-  const tags = props.data.tags;
-  const prodId = props.data.uuid;
+  const items = props.data.map((item) => item.image)
   // console.log(props);
   // console.log(links);
   return (
@@ -15,17 +11,17 @@ export default function ItemList(props) {
         <CircularProgress className="wrapper" />
       ) : (
         <div className="wrapper">
-          {items.map((item, index) => (
-            <div key={prodId[index]}>
-              <Card
-                prod_id={prodId[index]}
-                img={links[index][0]}
-                title={item}
-                description={tags[index]}
-                price={prices[index]}
-              />
-            </div>
-          ))}
+          {props.data.map((item) => (
+              <div key={item.uuid}>
+                <Card
+                  prod_id={item.uuid}
+                  img={item.img}
+                  title={item.name}
+                  description={item.tags}
+                  price={item.price}
+                />
+              </div>
+            ))}
         </div>
       )}
     </>

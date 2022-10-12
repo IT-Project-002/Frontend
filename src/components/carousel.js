@@ -11,13 +11,13 @@ class Gallery extends React.Component {
             <div className="carousel">
                 <Carousel autoPlay={false} interval="5000" transitionTime="3000" infiniteLoop>
                     <div>
-                        <img src={image1} alt="" />
+                        <img src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/landingSlider1.png" alt="" />
                     </div>
                     <div>
-                        <img src={image2} alt="" />
+                        <img src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/landingSlider2.png" alt="" />
                     </div>
                     <div>
-                        <img src="https://uptoncountrypark.com/wp-content/uploads/2018/02/1300-x-400-IMG_95954.jpg" alt="" />
+                        <img src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/landingSlider3.png" alt="" />
                     </div>
                 </Carousel>
             </div>

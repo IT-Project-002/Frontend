@@ -150,9 +150,15 @@
 
 /* copy notice */
 .notice {
+  display: flex;
+  align-items: center;
+  background-color: #3d3b3773;
+  position: absolute;
   margin: 0;
   top: 5px;
+  left: 70%;
+  height: 24px;
+  font-size: smaller;
   padding: 2px;
-  position: absolute;
-  background-color: #3d3b3773;
+  /* border-radius: 5px; */
 }

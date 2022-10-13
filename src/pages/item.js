@@ -27,8 +27,9 @@ export default function Item() {
       method: "POST",
       mode: "cors",
       body: JSON.stringify({ item: itemId }),
+    }).then((res) => {
+      setIsActive((current) => !current);
     });
-    setIsActive((current) => !current);
   };
 
   const handleLeave = () => {

@@ -92,8 +92,9 @@ function Card(props) {
       method: "POST",
       mode: "cors",
       body: JSON.stringify({ item: props.prod_id }),
+    }).then((res) => {
+      setIsActive((current) => !current);
     });
-    setIsActive((current) => !current);
   };
 
   return (

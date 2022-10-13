@@ -115,6 +115,8 @@
   .item-desc {
     grid-area: item-desc;
     height: 15vh;
+    text-align: justify;
+    line-height: 18px;
   }
 }
 
@@ -144,4 +146,13 @@
 .loading svg {
   width: 40px;
   height: 40px;
+}
+
+/* copy notice */
+.notice {
+  margin: 0;
+  top: 5px;
+  padding: 2px;
+  position: absolute;
+  background-color: #3d3b3773;
 }

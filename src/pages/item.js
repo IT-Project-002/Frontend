@@ -12,6 +12,10 @@ export default function Item() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [isActive, setIsActive] = useState(false);
+  // Notification
+  const [show, setShow] = useState(false);
+  const [isCopy, setIsCopy] = useState(false);
+  console.log(show);
 
   const toggleButton = () => {
     fetch("/users/like", {
@@ -25,6 +29,11 @@ export default function Item() {
       body: JSON.stringify({ item: itemId }),
     });
     setIsActive((current) => !current);
+  };
+
+  const handleLeave = () => {
+    setShow(false);
+    setIsCopy(false);
   };
 
   useEffect(() => {
@@ -81,7 +90,7 @@ export default function Item() {
               />
             </div>
             <h1 className="item-price">AU${data["prod_price"]}</h1>
-            <p className="item-desc">{data["prod_desc"]}</p>
+            <p className="item-desc" style={{whiteSpace: "pre-line"}}>{data["prod_desc"]}</p>
             <a
               href={`/user/market/${data["user_id"]}`}
               style={{ textDecoration: "none" }}
@@ -91,26 +100,26 @@ export default function Item() {
             {!data["user_hide_email"] ? (
               <>
                 {/* <p className="item-contact">{data["user_email"]}</p> */}
-                <div>
+                <div
+                  className="item-contact"
+                  onMouseOver={() => setShow(true)}
+                  onMouseLeave={handleLeave}
+                  style={{ position: "relative" }}
+                >
                   <CopyToClipboard
                     text={data["user_email"]}
                     onCopy={() => {
-                      alert("Successfully copied");
-                      // setCopy("Successfully copied");
+                      setIsCopy(true);
                     }}
                   >
-                    <p className="item-contact">{data["user_email"]}</p>
+                    <div className="item-contact">{data["user_email"]}</div>
                   </CopyToClipboard>
-                  {/* {copy ? (
-                    <p
-                      style={{
-                        display: "table",
-                        margin: "auto",
-                      }}
-                    >
-                      {copy}
-                    </p>
-                  ) : null} */}
+                  <>
+                    {show & !isCopy ? (
+                      <p className="notice">Click to copy</p>
+                    ) : null}
+                    {show & isCopy ? <p className="notice">Copied!</p> : null}
+                  </>
                 </div>
               </>
             ) : (

@@ -52,6 +52,7 @@ function Forget() {
         if (response.status === 600) {
           //这边是email不存在
           setError("Email not exist");
+          setIsSubmmit(false);
         }
         console.log(response);
         return response.json();
@@ -84,6 +85,7 @@ function Forget() {
         if (response.status === 601) {
           //这边是验证码不通过
           setError("Incorrect code");
+          setIsSubmmit(false);
         }
         console.log(response);
         return response.json();

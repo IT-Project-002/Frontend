@@ -1,6 +1,7 @@
 import "../css/myFav.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export default function MyFav() {
   const userID = sessionStorage.getItem("id");
@@ -34,13 +35,13 @@ export default function MyFav() {
   }, [access_token, userID]);
   return (
     <div>
-      <div className="layout-like">
-        <div className="myfav-title">
-          <h1>My Favourite</h1>
-        </div>
-        <div className="myfav-items-container">
-          <div className="wrapper">
-            {items.map((item) => (
+    <div className="layout-like">
+      <div className="myfav-title">
+        <h1>My Favourite</h1>
+      </div>
+      <div className="myfav-items-container">
+        <div className="wrapper">
+          {items.map((item, index) => (
               <div key={item.uuid}>
                 <Card
                   prod_id={item.uuid}
@@ -52,19 +53,11 @@ export default function MyFav() {
                 />
               </div>
             ))}
-          </div>
         </div>
       </div>
-      <img
-        className="itemhead"
-        src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav1.png"
-        alt="item1"
-      ></img>
-      <img
-        className="itemfoot"
-        src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav2.png"
-        alt="item2"
-      ></img>
+    </div>
+      <img className="itemhead" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav1.png" alt="item1"></img>
+      <img className="itemfoot" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav2.png" alt="item2"></img>
     </div>
   );
 }
@@ -82,8 +75,8 @@ function Card(props) {
       },
       method: "POST",
       mode: "cors",
-      body: JSON.stringify({ item: props.prod_id }),
-    });
+      body: JSON.stringify({"item": props.prod_id})
+    })
     setIsActive((current) => !current);
   };
 

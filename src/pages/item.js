@@ -12,10 +12,6 @@ export default function Item() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [isActive, setIsActive] = useState(false);
-  // Notification
-  const [show, setShow] = useState(false);
-  const [isCopy, setIsCopy] = useState(false);
-  console.log(show);
 
   const toggleButton = () => {
     fetch("/users/like", {
@@ -29,11 +25,6 @@ export default function Item() {
       body: JSON.stringify({ item: itemId }),
     });
     setIsActive((current) => !current);
-  };
-
-  const handleLeave = () => {
-    setShow(false);
-    setIsCopy(false);
   };
 
   useEffect(() => {

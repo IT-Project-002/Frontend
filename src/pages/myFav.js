@@ -1,5 +1,6 @@
 import "../css/myFav.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import CircularProgress from "@mui/material/CircularProgress";
 import React, { useState, useEffect } from "react";
 
 export default function MyFav() {
@@ -7,6 +8,7 @@ export default function MyFav() {
   const access_token = sessionStorage.getItem("access_token");
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch("/users/favourite", {
       headers: {
@@ -32,40 +34,47 @@ export default function MyFav() {
         setLoading(false);
       });
   }, [access_token, userID]);
+
   return (
-    <div>
-      <div className="layout-like">
-        <div className="myfav-title">
-          <h1>My Favourite</h1>
-        </div>
-        <div className="myfav-items-container">
-          <div className="wrapper">
-            {items.map((item) => (
-              <div key={item.uuid}>
-                <Card
-                  prod_id={item.uuid}
-                  img={item.image}
-                  title={item.name}
-                  description={item.tags}
-                  price={item.price}
-                  active={true}
-                />
+    <>
+      {loading ? (
+        <CircularProgress className="loading" />
+      ) : (
+        <div>
+          <div className="layout-like">
+            <div className="myfav-title">
+              <h1>My Favourite</h1>
+            </div>
+            <div className="myfav-items-container">
+              <div className="wrapper">
+                {items.map((item) => (
+                  <div key={item.uuid}>
+                    <Card
+                      prod_id={item.uuid}
+                      img={item.image}
+                      title={item.name}
+                      description={item.tags}
+                      price={item.price}
+                      active={true}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
+          <img
+            className="itemhead"
+            src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav1.png"
+            alt="item1"
+          ></img>
+          <img
+            className="itemfoot"
+            src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav2.png"
+            alt="item2"
+          ></img>
         </div>
-      </div>
-      <img
-        className="itemhead"
-        src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav1.png"
-        alt="item1"
-      ></img>
-      <img
-        className="itemfoot"
-        src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav2.png"
-        alt="item2"
-      ></img>
-    </div>
+      )}
+    </>
   );
 }
 

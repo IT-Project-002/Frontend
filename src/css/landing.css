@@ -22,8 +22,8 @@
   margin-top: 5px;
   margin-left: 5%;
   margin-right: 5%;
-  padding-left:10px;
-  padding-left:10px;
+  padding-left: 10px;
+  padding-left: 10px;
 }
 
 .layout-landing .thumbs-wrapper {
@@ -43,8 +43,6 @@
   display: none;
 }
 
-
-
 /* ===================================================== */
 /* Browse Items */
 .browse-gird-container {
@@ -57,14 +55,13 @@
     grid-area: main;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-areas: 
+    grid-template-areas:
       "slider"
       "browse";
-    gap:0;
+    gap: 0;
   }
 
   .slider-container {
     display: none;
   }
-
 }

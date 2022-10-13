@@ -91,26 +91,26 @@ export default function Item() {
             {!data["user_hide_email"] ? (
               <>
                 {/* <p className="item-contact">{data["user_email"]}</p> */}
-                <div
-                  className="item-contact"
-                  onMouseOver={() => setShow(true)}
-                  onMouseLeave={handleLeave}
-                  style={{ position: "relative" }}
-                >
+                <div>
                   <CopyToClipboard
                     text={data["user_email"]}
                     onCopy={() => {
-                      setIsCopy(true);
+                      alert("Successfully copied");
+                      // setCopy("Successfully copied");
                     }}
                   >
-                    <div className="item-contact">{data["user_email"]}</div>
+                    <p className="item-contact">{data["user_email"]}</p>
                   </CopyToClipboard>
-                  <>
-                    {show & !isCopy ? (
-                      <p className="notice">Click to copy</p>
-                    ) : null}
-                    {show & isCopy ? <p className="notice">Copied!</p> : null}
-                  </>
+                  {/* {copy ? (
+                    <p
+                      style={{
+                        display: "table",
+                        margin: "auto",
+                      }}
+                    >
+                      {copy}
+                    </p>
+                  ) : null} */}
                 </div>
               </>
             ) : (

@@ -6,8 +6,7 @@ import Gallery from "../components/carousel";
 import Cards from "../components/itemListA";
 import React, { useEffect, useState } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
-import IconButton from "@mui/material/IconButton";
-import { TextField } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Landing() {
   const token = sessionStorage.getItem("access_token");
@@ -16,6 +15,7 @@ function Landing() {
   const [displaySearch, setDisplaySearch] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -71,38 +71,45 @@ function Landing() {
       })
       .then((dat) => {
         setData(dat);
+        setLoading(false);
         console.log(dat);
       });
   }, []);
 
   return (
-    <div className="layout-landing">
-      {/* Search */}
-      <form onSubmit={onSubmit}>
-        <div className="search-wrapper">
-          <div className="input-wrapper">
-            <input
-              type="text"
-              name="text"
-              placeholder="  Search items..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            ></input>
-            {search ? <ClearIcon onClick={handleClick} /> : null}
+    <>
+      {loading ? (
+        <CircularProgress className="loading" />
+      ) : (
+        <div className="layout-landing">
+          {/* Search */}
+          <form onSubmit={onSubmit}>
+            <div className="search-wrapper">
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  name="text"
+                  placeholder="  Search items..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                ></input>
+                {search ? <ClearIcon onClick={handleClick} /> : null}
+              </div>
+              <button type="submit" className="search-button">
+                Search
+              </button>
+            </div>
+          </form>
+          <div className="slider-container">
+            <Gallery autoPlay={false} />
           </div>
-          <button type="submit" className="search-button">
-            Search
-          </button>
+          <div className="browse-gird-container">
+            <Cards data={displaySearch ? result : data} />
+          </div>
+          {!token && showModal && <Modal className="pop-up" close={Toggle} />}
         </div>
-      </form>
-      <div className="slider-container">
-        <Gallery autoPlay={false} />
-      </div>
-      <div className="browse-gird-container">
-        <Cards data={displaySearch ? result : data} />
-      </div>
-      {!token && showModal && <Modal className="pop-up" close={Toggle} />}
-    </div>
+      )}
+    </>
   );
 }
 

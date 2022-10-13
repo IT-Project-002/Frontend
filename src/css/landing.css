@@ -17,6 +17,7 @@
 /* Search box */
 
 .search-wrapper {
+  grid-area: search;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -107,7 +108,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
-      "slider"
+      "search"
       "browse";
     gap: 0;
   }

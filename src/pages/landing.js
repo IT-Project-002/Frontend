@@ -41,7 +41,7 @@ function Landing() {
 
   const handleClick = () => {
     setSearch("");
-    setDisplaySearch("");
+    setDisplaySearch(false);
   };
 
   /* appear after 30 seconds */

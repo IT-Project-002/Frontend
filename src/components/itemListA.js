@@ -8,10 +8,7 @@ export default function ItemList(props) {
   return (
     <>
       {!items ? (
-        <CircularProgress
-          className="wrapper"
-          style={{ margin: "auto", marginTop: "-10px" }}
-        />
+        <CircularProgress className="wrapper" />
       ) : (
         <div className="wrapper">
           {props.data.map((item) => (

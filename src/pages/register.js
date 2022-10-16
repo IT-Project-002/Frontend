@@ -1,99 +1,99 @@
-import "../css/register.css";
-import "../css/form.css";
-import React, { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import PersonIcon from "@mui/icons-material/Person";
-import EmailIcon from "@mui/icons-material/Email";
-import LockIcon from "@mui/icons-material/Lock";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import Alert from "@mui/material/Alert";
-import female1 from "../image/avatar/female1.png";
-import female2 from "../image/avatar/female2.png";
-import female3 from "../image/avatar/female3.png";
-import male1 from "../image/avatar/male1.png";
-import male2 from "../image/avatar/male2.png";
-import male3 from "../image/avatar/male3.png";
+import '../css/register.css'
+import '../css/form.css'
+import React, { useRef, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import PersonIcon from '@mui/icons-material/Person'
+import EmailIcon from '@mui/icons-material/Email'
+import LockIcon from '@mui/icons-material/Lock'
+import BorderColorIcon from '@mui/icons-material/BorderColor'
+import Alert from '@mui/material/Alert'
+import female1 from '../image/avatar/female1.png'
+import female2 from '../image/avatar/female2.png'
+import female3 from '../image/avatar/female3.png'
+import male1 from '../image/avatar/male1.png'
+import male2 from '../image/avatar/male2.png'
+import male3 from '../image/avatar/male3.png'
 
-const NAME_REG = new RegExp(/^[A-Z0-9][A-z0-9-_]{3,14}$/i);
-const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
-const PWD_REG = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/i);
-export const validName = (str = "") => NAME_REG.test(str);
-export const validEmail = (str = "") => EMAIL_REG.test(str);
-export const validPwd = (str = "") => PWD_REG.test(str);
-export const validMatch = (str1 = "", str2 = "") => str1 === str2;
+const NAME_REG = /^[A-Z0-9][A-z0-9-_]{3,14}$/i
+const EMAIL_REG = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+const PWD_REG = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/i
+export const validName = (str = '') => NAME_REG.test(str)
+export const validEmail = (str = '') => EMAIL_REG.test(str)
+export const validPwd = (str = '') => PWD_REG.test(str)
+export const validMatch = (str1 = '', str2 = '') => str1 === str2
 
-function Registration() {
-  const userRef = useRef();
+function Registration () {
+  const userRef = useRef()
   // const errRef = useRef();
-  const history = useNavigate();
-  const [username, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [matchPwd, setMatchPwd] = useState("");
-  const [bio, setBio] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [isActive, setIsActive] = useState(false);
-  const [warning, setWarning] = useState("");
-  const [avatarWarning, setAvatarWarning] = useState("");
+  const history = useNavigate()
+  const [username, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [matchPwd, setMatchPwd] = useState('')
+  const [bio, setBio] = useState('')
+  const [avatar, setAvatar] = useState('')
+  const [isActive, setIsActive] = useState(false)
+  const [warning, setWarning] = useState('')
+  const [avatarWarning, setAvatarWarning] = useState('')
 
   // setting a focus on username input when the component loads
   useEffect(() => {
-    userRef.current.focus();
-  }, []);
+    userRef.current.focus()
+  }, [])
 
   // Avatar selection
   const handleClick = (event) => {
-    setAvatar(event.target.alt);
-  };
+    setAvatar(event.target.alt)
+  }
 
   const toggleButton = () => {
-    setIsActive((current) => !current);
-  };
+    setIsActive((current) => !current)
+  }
 
   const handleSubmit = (e) => {
     // prevent page being refresh
-    e.preventDefault();
+    e.preventDefault()
 
     // check form validation
     if (validName && validEmail && validPwd && validPwd && avatar) {
-      const userInfo = { username, email, password, matchPwd, bio, avatar };
-      console.log(userInfo);
-      history("/user/login");
-      fetch("/users/register", {
+      const userInfo = { username, email, password, matchPwd, bio, avatar }
+      console.log(userInfo)
+      history('/user/login')
+      fetch('/users/register', {
         headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
         },
-        method: "POST",
-        mode: "cors",
-        body: JSON.stringify(userInfo),
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(userInfo)
       })
         .then((response) => {
-          console.log("hi:", response);
+          console.log('hi:', response)
           if (response.status !== 200) {
-            //这里写弹窗？
-            setWarning("Email has already been registered");
-            console.log("出错了");
+            // 这里写弹窗？
+            setWarning('Email has already been registered')
+            console.log('出错了')
             // } else {
             //   history("/user/login");
           }
         })
         .then((userInfo) => {
-          console.log("Form Contains:", userInfo);
+          console.log('Form Contains:', userInfo)
         })
         .catch((error) => {
-          console.error("Error:", error);
-        });
+          console.error('Error:', error)
+        })
     } else {
-      setAvatarWarning("Must pick profile picture");
+      setAvatarWarning('Must pick profile picture')
     }
-  };
+  }
 
   return (
     <div className="layout-register">
       <div className="register-container">
         <h1>New to this site?</h1>
-        <h1>Let's get you started!</h1>
+        <h1>Let&apos;s get you started!</h1>
         <form method="post" onSubmit={handleSubmit}>
           {/* Username */}
           <div className="input-container">
@@ -109,7 +109,8 @@ function Registration() {
               required
             />
           </div>
-          {username && !validName(username) ? (
+          {username && !validName(username)
+            ? (
             <Alert
               className="register-alert"
               severity="warning"
@@ -118,7 +119,8 @@ function Registration() {
               3 to 14 characters. Letters, numbers, underscores, hyphens
               allowed.
             </Alert>
-          ) : null}
+              )
+            : null}
 
           {/* Email */}
           <div className="input-container">
@@ -133,7 +135,8 @@ function Registration() {
               required
             />
           </div>
-          {email && !validEmail(email) ? (
+          {email && !validEmail(email)
+            ? (
             <Alert
               className="register-alert"
               severity="warning"
@@ -141,7 +144,8 @@ function Registration() {
             >
               Valid email prefixes: example@mail.com
             </Alert>
-          ) : null}
+              )
+            : null}
 
           {/* Password */}
           <div className="input-container">
@@ -156,7 +160,8 @@ function Registration() {
               required
             />
           </div>
-          {password && !validPwd(password) ? (
+          {password && !validPwd(password)
+            ? (
             <Alert
               className="register-alert"
               severity="warning"
@@ -165,7 +170,8 @@ function Registration() {
               8 to 24 characters. Must include uppercase, lowercase letters and
               a number.
             </Alert>
-          ) : null}
+              )
+            : null}
 
           {/* Confirm Password */}
           <div className="input-container">
@@ -180,7 +186,8 @@ function Registration() {
               required
             />
           </div>
-          {password && !validMatch(password, matchPwd) ? (
+          {password && !validMatch(password, matchPwd)
+            ? (
             <Alert
               className="register-alert"
               severity="warning"
@@ -188,7 +195,8 @@ function Registration() {
             >
               Passwords did not match
             </Alert>
-          ) : null}
+              )
+            : null}
 
           {/* Bio */}
           <div className="input-container">
@@ -202,7 +210,8 @@ function Registration() {
               onChange={(e) => setBio(e.target.value)}
             />
           </div>
-          {warning ? (
+          {warning
+            ? (
             <Alert
               className="register-alert"
               severity="warning"
@@ -210,12 +219,13 @@ function Registration() {
             >
               {warning}
             </Alert>
-          ) : null}
+              )
+            : null}
           <button
             className="register-button"
             type="submit"
             style={{
-              backgroundColor: isActive ? "#c5c1a4" : "",
+              backgroundColor: isActive ? '#c5c1a4' : ''
             }}
             onClick={toggleButton}
           >
@@ -230,11 +240,13 @@ function Registration() {
       {/* Avatar */}
       <div className="bubble-container">
         <h2 className="avatar-remindar">Pick your profile picture…</h2>
-        {avatarWarning ? (
+        {avatarWarning
+          ? (
           <Alert className="avatar-alert" severity="warning" variant="outlined">
             {avatarWarning}
           </Alert>
-        ) : null}
+            )
+          : null}
         <img
           id="female1"
           src={female1}
@@ -242,7 +254,7 @@ function Registration() {
           className="avatar2"
           onClick={handleClick}
           style={{
-            backgroundColor: avatar === "female1" ? "#bcb4a7" : "",
+            backgroundColor: avatar === 'female1' ? '#bcb4a7' : ''
           }}
         ></img>
         <img
@@ -252,7 +264,7 @@ function Registration() {
           className="avatar1"
           onClick={handleClick}
           style={{
-            backgroundColor: avatar === "female2" ? "#bcb4a7" : "",
+            backgroundColor: avatar === 'female2' ? '#bcb4a7' : ''
           }}
         ></img>
         <img
@@ -262,7 +274,7 @@ function Registration() {
           className="avatar2"
           onClick={handleClick}
           style={{
-            backgroundColor: avatar === "female3" ? "#bcb4a7" : "",
+            backgroundColor: avatar === 'female3' ? '#bcb4a7' : ''
           }}
         ></img>
         <img
@@ -272,7 +284,7 @@ function Registration() {
           className="avatar1"
           onClick={handleClick}
           style={{
-            backgroundColor: avatar === "male1" ? "#bcb4a7" : "",
+            backgroundColor: avatar === 'male1' ? '#bcb4a7' : ''
           }}
         ></img>
         <img
@@ -282,7 +294,7 @@ function Registration() {
           className="avatar2"
           onClick={handleClick}
           style={{
-            backgroundColor: avatar === "male2" ? "#bcb4a7" : "",
+            backgroundColor: avatar === 'male2' ? '#bcb4a7' : ''
           }}
         ></img>
         <img
@@ -292,15 +304,15 @@ function Registration() {
           className="avatar1"
           onClick={handleClick}
           style={{
-            backgroundColor: avatar === "male3" ? "#bcb4a7" : "",
+            backgroundColor: avatar === 'male3' ? '#bcb4a7' : ''
           }}
         ></img>
-        <h2 className="avatar-setup-msg">Now…Let's set up your own space!</h2>
+        <h2 className="avatar-setup-msg">Now…Let&apos;s set up your own space!</h2>
       </div>
 
       <img className="login-background" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/login.png" alt=""></img>
     </div>
-  );
+  )
 }
 
-export default Registration;
+export default Registration

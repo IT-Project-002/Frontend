@@ -1,11 +1,10 @@
-import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-
+import React from 'react'
+import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
+import { Carousel } from 'react-responsive-carousel'
 
 class Gallery extends React.Component {
-    render() {
-        return (
+  render () {
+    return (
             <div className="carousel">
                 <Carousel autoPlay={false} interval="5000" transitionTime="3000" infiniteLoop>
                     <div>
@@ -19,7 +18,7 @@ class Gallery extends React.Component {
                     </div>
                 </Carousel>
             </div>
-        )
-    };
+    )
+  };
 }
 export default Gallery

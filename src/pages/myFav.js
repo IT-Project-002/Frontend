@@ -1,45 +1,47 @@
-import "../css/myFav.css";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import CircularProgress from "@mui/material/CircularProgress";
-import React, { useState, useEffect } from "react";
+import '../css/myFav.css'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import CircularProgress from '@mui/material/CircularProgress'
+import React, { useState, useEffect } from 'react'
 
-export default function MyFav() {
-  const userID = sessionStorage.getItem("id");
-  const access_token = sessionStorage.getItem("access_token");
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+export default function MyFav () {
+  const userID = sessionStorage.getItem('id')
+  const accessToken = sessionStorage.getItem('access_token')
+  const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("/users/favourite", {
+    fetch('/users/favourite', {
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        Authorization: "Bearer " + access_token,
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        Authorization: 'Bearer ' + accessToken
       },
-      method: "GET",
-      mode: "cors",
+      method: 'GET',
+      mode: 'cors'
     })
       .then((res) => {
         // console.log({res});
         if (res.status === 401) {
-          sessionStorage.removeItem("access_token");
-          window.location.href = window.location.origin + "/user/login";
+          sessionStorage.removeItem('access_token')
+          window.location.href = window.location.origin + '/user/login'
         } else {
-          return res.json();
+          return res.json()
         }
       })
       .then((dat) => {
-        console.log(dat);
-        setItems(dat.out);
-        setLoading(false);
-      });
-  }, [access_token, userID]);
+        console.log(dat)
+        setItems(dat.out)
+        setLoading(false)
+      })
+  }, [accessToken, userID])
 
   return (
     <>
-      {loading ? (
+      {loading
+        ? (
         <CircularProgress className="loading" />
-      ) : (
+          )
+        : (
         <div>
           <div className="layout-like">
             <div className="myfav-title">
@@ -73,29 +75,29 @@ export default function MyFav() {
             alt="item2"
           ></img>
         </div>
-      )}
+          )}
     </>
-  );
+  )
 }
 
-function Card(props) {
-  const [isActive, setIsActive] = useState(props.active);
-  const access_token = sessionStorage.getItem("access_token");
+function Card (props) {
+  const [isActive, setIsActive] = useState(props.active)
+  const accessToken = sessionStorage.getItem('access_token')
 
   const toggleButton = () => {
-    fetch("/users/like", {
+    fetch('/users/like', {
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        Authorization: "Bearer " + access_token,
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        Authorization: 'Bearer ' + accessToken
       },
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify({ item: props.prod_id }),
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify({ item: props.prod_id })
     }).then((res) => {
-      setIsActive((current) => !current);
-    });
-  };
+      setIsActive((current) => !current)
+    })
+  }
 
   return (
     <div className="card">
@@ -108,12 +110,12 @@ function Card(props) {
           <FavoriteBorderIcon
             onClick={toggleButton}
             style={{
-              backgroundColor: isActive ? "#f48b8b" : "#bcb4a7",
+              backgroundColor: isActive ? '#f48b8b' : '#bcb4a7'
             }}
           />
         </div>
         <h3 className="card-price">{props.price}</h3>
       </div>
     </div>
-  );
+  )
 }

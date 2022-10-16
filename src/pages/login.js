@@ -1,78 +1,77 @@
-import { useState, useRef } from "react";
-import { Navigate } from "react-router-dom";
-import "../css/login.css";
-import "../css/form.css";
-import { AiFillEyeInvisible, AiFillEye, AiTwotoneMail } from "react-icons/ai";
-import React from "react";
-import Alert from "@mui/material/Alert";
+import React, { useState, useRef } from 'react'
+import { Navigate } from 'react-router-dom'
+import '../css/login.css'
+import '../css/form.css'
+import { AiFillEyeInvisible, AiFillEye, AiTwotoneMail } from 'react-icons/ai'
+import Alert from '@mui/material/Alert'
 
-const EMAIL_REG = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
-export const validateEmailInput = (str = "") => EMAIL_REG.test(str);
+const EMAIL_REG = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+export const validateEmailInput = (str = '') => EMAIL_REG.test(str)
 
-function Login() {
-  const userRef = useRef();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isShown, setIsSHown] = useState(false);
-  const [loginError, setLoginError] = useState("");
-  const [isActive, setIsActive] = useState(false);
-  const [isSubmmit, setIsSubmmit] = useState(false);
-  const token = sessionStorage.getItem("access_token");
+function Login () {
+  const userRef = useRef()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isShown, setIsSHown] = useState(false)
+  const [loginError, setLoginError] = useState('')
+  const [isActive, setIsActive] = useState(false)
+  const [isSubmmit, setIsSubmmit] = useState(false)
+  const token = sessionStorage.getItem('access_token')
 
   const toggleButton = () => {
-    setIsActive((current) => !current);
-  };
+    setIsActive((current) => !current)
+  }
 
   // show password or not
   const togglePassword = () => {
-    setIsSHown((isShown) => !isShown);
-  };
+    setIsSHown((isShown) => !isShown)
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmmit(true);
-    const userInfo = { email, password };
-    console.log(userInfo);
+    e.preventDefault()
+    setIsSubmmit(true)
+    const userInfo = { email, password }
+    console.log(userInfo)
 
-    fetch("/users/login", {
+    fetch('/users/login', {
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       },
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify(userInfo),
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(userInfo)
     })
       .then((response) => {
-        console.log(response);
-        return response.json();
+        console.log(response)
+        return response.json()
       })
       .then((data) => {
         if (data.access_token) {
-          sessionStorage.setItem("access_token", data.access_token);
-          console.log("access_token exist");
-          sessionStorage.setItem("id", data.uuid);
+          sessionStorage.setItem('access_token', data.access_token)
+          console.log('access_token exist')
+          sessionStorage.setItem('id', data.uuid)
           window.location.href =
-            window.location.origin + "/user/market/" + data.uuid;
-          return data.access_token;
+            window.location.origin + '/user/market/' + data.uuid
+          return data.access_token
         } else {
-          setLoginError("Check out your Account/Password again");
-          setIsSubmmit(false);
+          setLoginError('Check out your Account/Password again')
+          setIsSubmmit(false)
         }
       })
       .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
+        console.error('Error:', error)
+      })
+  }
 
-  if (token && token !== "" && token !== undefined) {
-    return <Navigate replace to="/user/market" />;
+  if (token && token !== '' && token !== undefined) {
+    return <Navigate replace to="/user/market" />
   } else {
     return (
       <div className="layout-login" id="login-page">
         <div className="login-container">
           <h1>Welcome</h1>
-          <h3 style={{ marginTop: "-5px" }}>Login to unlock more features!</h3>
+          <h3 style={{ marginTop: '-5px' }}>Login to unlock more features!</h3>
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <AiTwotoneMail />
@@ -85,7 +84,8 @@ function Login() {
                 required
               />
             </div>
-            {email && !validateEmailInput(email) ? (
+            {email && !validateEmailInput(email)
+              ? (
               <Alert
                 className="login-alert"
                 severity="warning"
@@ -93,24 +93,28 @@ function Login() {
               >
                 Email not valid
               </Alert>
-            ) : null}
+                )
+              : null}
             <div className="input-container">
               <label className="login-icon">
-                {!isShown ? (
+                {!isShown
+                  ? (
                   <AiFillEye onClick={togglePassword} />
-                ) : (
+                    )
+                  : (
                   <AiFillEyeInvisible onClick={togglePassword} />
-                )}
+                    )}
               </label>
               <input
-                type={isShown ? "text" : "password"}
+                type={isShown ? 'text' : 'password'}
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
-            {loginError ? (
+            {loginError
+              ? (
               <Alert
                 className="login-alert"
                 severity="warning"
@@ -118,12 +122,13 @@ function Login() {
               >
                 {loginError}
               </Alert>
-            ) : null}
+                )
+              : null}
             <div
               style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                width: "85%",
+                display: 'flex',
+                justifyContent: 'flex-end',
+                width: '85%'
               }}
             >
               <a className="password-link" href="/user/forgetPwd">
@@ -134,7 +139,7 @@ function Login() {
               <button
                 type="submit"
                 style={{
-                  backgroundColor: isActive ? "#c5c1a4" : "",
+                  backgroundColor: isActive ? '#c5c1a4' : ''
                 }}
                 onClick={toggleButton}
                 disabled={isSubmmit}
@@ -164,8 +169,8 @@ function Login() {
           alt=""
         ></img>
       </div>
-    );
+    )
   }
 }
 
-export default Login;
+export default Login

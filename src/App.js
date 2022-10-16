@@ -1,21 +1,21 @@
-import "../src/css/style.css";
-import Register from "../src/pages/register";
-import Landing from "../src/pages/landing";
-import Login from "../src/pages/login";
-import Profile from "./pages/profile";
-import MyFav from "./pages/myFav";
-import Market from "./pages/market";
-import Upload from "./pages/upload";
-import Navbar from "./components/nav";
-import Footer from "./components/footer";
-import Item from "./pages/item";
-import About from "./pages/about";
-import Edit from "./pages/edit";
-import ForgetPassword from "./pages/forgetPassword";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React from "react";
+import '../src/css/style.css'
+import Register from '../src/pages/register'
+import Landing from '../src/pages/landing'
+import Login from '../src/pages/login'
+import Profile from './pages/profile'
+import MyFav from './pages/myFav'
+import Market from './pages/market'
+import Upload from './pages/upload'
+import Navbar from './components/nav'
+import Footer from './components/footer'
+import Item from './pages/item'
+import About from './pages/about'
+import Edit from './pages/edit'
+import ForgetPassword from './pages/forgetPassword'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import React from 'react'
 
-function App() {
+function App () {
   // window.onload = function(){
   //   var ab =document.getElementById('a')
   //   var bod = document.getElementsByTagName('body')[0]
@@ -44,7 +44,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

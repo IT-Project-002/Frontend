@@ -1,12 +1,12 @@
-import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+import React from 'react'
+import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
+import { Carousel } from 'react-responsive-carousel'
 // import sample from "../image/items/item1.png";
-import "../css/slider.css";
+import '../css/slider.css'
 
 class Gallery extends React.Component {
-  render() {
-    const image = this.props.image;
+  render () {
+    const image = this.props.image
     // console.log(image);
     return (
       <div>
@@ -21,11 +21,11 @@ class Gallery extends React.Component {
               <div key={image}>
                 <img src={item} alt="file" />
               </div>
-            );
+            )
           })}
         </Carousel>
       </div>
-    );
+    )
   }
 }
-export default Gallery;
+export default Gallery

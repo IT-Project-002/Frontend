@@ -212,11 +212,10 @@
   .layout-profile {
     grid-area: main;
     margin-top: 60px;
-    padding: 1.5vh;
     display: grid;
     background-color: #fcf9f4;
     grid-template-columns: 1fr;
-    grid-template-rows: 0.25fr 0.4fr;
+    grid-template-rows: 0.25fr 0.01fr;
     grid-template-areas:
       "profile-photo"
       "edit";

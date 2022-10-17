@@ -16,16 +16,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import React from 'react'
 
 function App () {
-  // window.onload = function(){
-  //   var ab =document.getElementById('a')
-  //   var bod = document.getElementsByTagName('body')[0]
-  //   console.log(bod)
-  //   if(ab == null){
-  //       bod.style.backgroundImage="url(../src/image/background/login.png)"
-  //   }else{
-  //       bod.style.background='blue'
-  //   }}
-
   return (
     <Router>
       <Navbar />

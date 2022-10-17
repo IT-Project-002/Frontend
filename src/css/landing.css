@@ -2,7 +2,7 @@
 /* Grid template */
 
 .layout-landing {
-  margin: 3%;
+  margin: 5vh 3vw;
   grid-area: main;
   display: grid;
   grid-template-columns: 1fr;
@@ -10,7 +10,7 @@
     "search"
     "slider"
     "browse";
-  gap: 50px;
+  grid-gap: 1vw;
 }
 
 /* ===================================================== */
@@ -115,5 +115,10 @@
 
   .slider-container {
     display: none;
+  }
+
+  .search-wrapper {
+    width: 90%;
+    margin-left:5%;
   }
 }

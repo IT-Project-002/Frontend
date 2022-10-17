@@ -5,11 +5,11 @@
   margin-top: 40px;
   grid-area: main;
   display: grid;
+  margin: 5vh 3vw;
   grid-template-columns: 1fr;
   grid-template-areas:
     "myfav-title"
     "like-items";
-  padding: 5%;
 }
 
 .itemhead {
@@ -33,7 +33,7 @@
 
 .myfav-title {
   grid-area: myfav-title;
-  margin-top:-80px;
+  margin-top:-40px;
   margin-bottom: 70px;
 }
 
@@ -140,8 +140,9 @@
 
   .myfav-title {
     grid-area: myfav-title;
+    margin-top:-10px;
+    margin-bottom: 100px;
   }
-
   .myfav-title h1 {
     font-weight: 500;
     position: absolute;

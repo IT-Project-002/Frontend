@@ -16,6 +16,9 @@ class Gallery extends React.Component {
                     <div>
                         <img src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/landingSlider3.png" alt="" />
                     </div>
+                    <div>
+                        <img src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/landingSlider3.png" alt="" />
+                    </div>
                 </Carousel>
             </div>
     )

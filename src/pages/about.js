@@ -1,14 +1,11 @@
 import '../css/about.css'
-import item1 from '../image/pages/about1.png'
-import item2 from '../image/pages/about2.png'
-import item6 from '../image/pages/aboutUs1.png'
 import React from 'react'
 
 export default function About () {
   return (
     <div className="layout-about">
       <div className="about-web-container">
-        <img className="item1" src={item1} alt="item1"></img>
+        <img className="item1" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/pages/about1.png" alt="item1"></img>
         <h1 className="aboutThisWebsiteHeading">About this Website</h1>
         <p className="aboutThisWebsiteContent">
           Our website is a welcoming community for anyone who wants to share,
@@ -19,7 +16,7 @@ export default function About () {
           to provide a platform for people to sell the things that no longer
           needed but too good to be thrown away.
         </p>
-        <img className="item2" src={item2} alt="item2"></img>
+        <img className="item2" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/pages/about2.png" alt="item2"></img>
         <h1 className="whyThisWebsiteHeading">Why this Website</h1>
         <p className="whyThisWebsiteContent">
           Nowadays, everything is always fast-paced and commercial. Our team
@@ -31,12 +28,12 @@ export default function About () {
         </p>
       </div>
       <div className="about-us-container">
-        <img className="item3" src={item6} alt="item3"></img>
-        <img className="item4" src={item6} alt="item4"></img>
-        <img className="item5" src={item6} alt="item5"></img>
-        <img className="item6" src={item6} alt="item6"></img>
-        <img className="item7" src={item6} alt="item7"></img>
-        <img className="item8" src={item6} alt="item8"></img>
+        <img className="item3" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/groupPhoto/hailin.png" alt="hailin"></img>
+        <img className="item4" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/groupPhoto/ashley.png" alt="ashley"></img>
+        <img className="item5" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/groupPhoto/lina.png" alt="lina"></img>
+        <img className="item6" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/groupPhoto/lily.png" alt="lily"></img>
+        <img className="item7" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/groupPhoto/di.png" alt="di"></img>
+        <img className="item8" src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/unimelb.png" alt="item8"></img>
         <h1 className="aboutUsHeading">About Us</h1>
         <div className="aboutUsContent">
           <p>Da-dum-da-dum…!</p>
@@ -46,7 +43,7 @@ export default function About () {
           <p>
             We are a group of students studying at University of Melbourne,
             majoring in Computing and Software Systems. This website is a final
-            product of a semester-long project from the subject IT PROJECT.{' '}
+            product of a semester-long project from the subject IT Project.{' '}
           </p>
           <p>
             Hailin Jiang, our scrum master and front-end developer, manages
@@ -61,7 +58,7 @@ export default function About () {
             interface and improve user experience.
           </p>
           <p>
-            Lily Li, our back-end developer,writes functionalities and deals
+            Lily Li, our back-end developer, writes functionalities and deals
             with data.
           </p>
           <p>

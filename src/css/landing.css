@@ -10,7 +10,7 @@
     "search"
     "slider"
     "browse";
-  grid-gap: 1vw;
+  grid-gap: 10px;
 }
 
 /* ===================================================== */
@@ -71,7 +71,7 @@
   grid-area: slider;
   display: grid;
   width: 90%;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-left: 5%;
   margin-right: 5%;
   padding-left: 10px;

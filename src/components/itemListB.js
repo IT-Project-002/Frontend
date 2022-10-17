@@ -1,23 +1,25 @@
-import React from "react";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import CircularProgress from "@mui/material/CircularProgress";
+import React from 'react'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
+import CircularProgress from '@mui/material/CircularProgress'
 
-export default function ItemList(props) {
+export default function ItemList (props) {
   // console.log(props);
   // console.log(props.data.item_names);
-  const items = props.data.item_names;
-  const links = props.data.item_links;
-  const prices = props.data.item_price;
-  const tags = props.data.item_tags;
-  const prodId = props.data.item_id;
-  const ownerID = props.data.userID;
+  const items = props.data.item_names
+  const links = props.data.item_links
+  const prices = props.data.item_price
+  const tags = props.data.item_tags
+  const prodId = props.data.item_id
+  const ownerID = props.data.userID
   // const access_token = sessionStorage.getItem("access_token");
   return (
     <>
-      {!items ? (
+      {!items
+        ? (
         <CircularProgress className="wrapper" />
-      ) : (
+          )
+        : (
         <div className="wrapper">
           {items.map((item, index) => (
             <div key={prodId[index]}>
@@ -32,34 +34,34 @@ export default function ItemList(props) {
             </div>
           ))}
         </div>
-      )}
+          )}
     </>
-  );
+  )
 }
 
-function Card(props) {
-  const myID = sessionStorage.getItem("id");
-  const ownerID = props.owner_id;
-  const access_token = sessionStorage.getItem("access_token");
+function Card (props) {
+  const myID = sessionStorage.getItem('id')
+  const ownerID = props.owner_id
+  const accessToken = sessionStorage.getItem('access_token')
 
   const deleteItem = (item) => {
-    console.log(access_token);
-    console.log(props);
-    console.log({ aaa: item });
-    fetch("/users/delete", {
+    console.log(accessToken)
+    console.log(props)
+    console.log({ aaa: item })
+    fetch('/users/delete', {
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        Authorization: "Bearer " + access_token,
+        'Access-Control-Allow-Origin': '*',
+        Authorization: 'Bearer ' + accessToken
       },
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify(props),
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(props)
     }).then((res) => {
       if (res.status === 200) {
-        window.location.reload();
+        window.location.reload()
       }
-    });
-  };
+    })
+  }
 
   return (
     <div className="card">
@@ -70,7 +72,8 @@ function Card(props) {
       <div className="card-body">
         <h2 className="card-title">{props.title}</h2>
         <h3 className="card-price">{props.price}</h3>
-        {myID === ownerID ? (
+        {myID === ownerID
+          ? (
           <div className="icon-container">
             <a href={`/user/item/edit/${props.prod_id}`}>
               <EditIcon className="edit-icon" />
@@ -80,8 +83,9 @@ function Card(props) {
               onClick={() => deleteItem(props)}
             />
           </div>
-        ) : null}
+            )
+          : null}
       </div>
     </div>
-  );
+  )
 }

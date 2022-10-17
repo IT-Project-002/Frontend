@@ -66,9 +66,11 @@ export default function Item () {
 
   return (
     <>
-      {loading ? (
+      {loading
+        ? (
         <CircularProgress className='loading' />
-      ) : (
+          )
+        : (
         <div className='layout-item'>
           <div className='item-img'>
             <Slider image={data.prod_images} />
@@ -99,7 +101,8 @@ export default function Item () {
               style={{ textDecoration: 'none' }}>
               <p className='item-owner'>{data.user_name}&apos;s Marketplace</p>
             </a>
-            {!data.user_hide_email ? (
+            {!data.user_hide_email
+              ? (
               <>
                 {/* <p className='item-contact'>{data['user_email']}</p> */}
                 <div
@@ -115,19 +118,22 @@ export default function Item () {
                     <div className='item-contact'>{data.user_email}</div>
                   </CopyToClipboard>
                   <>
-                    {show & !isCopy ? (
+                    {show & !isCopy
+                      ? (
                       <p className='notice'>Click to copy</p>
-                    ) : null}
+                        )
+                      : null}
                     {show & isCopy ? <p className='notice'>Copied!</p> : null}
                   </>
                 </div>
               </>
-            ) : (
+                )
+              : (
               <p className='item-contact'>No public contact information</p>
-            )}
+                )}
           </div>
         </div>
-      )}
+          )}
     </>
   )
 }

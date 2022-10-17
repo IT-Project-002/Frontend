@@ -78,9 +78,11 @@ function Landing () {
 
   return (
     <>
-      {loading ? (
+      {loading
+        ? (
         <CircularProgress className="loading" />
-      ) : (
+          )
+        : (
         <div className="layout-landing">
           {/* Search */}
           <form onSubmit={onSubmit}>
@@ -108,7 +110,7 @@ function Landing () {
           </div>
           {!token && showModal && <Modal className="pop-up" close={Toggle} />}
         </div>
-      )}
+          )}
     </>
   )
 }

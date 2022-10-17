@@ -63,14 +63,16 @@ export default function Navbar () {
           : (
               ''
             )}
-        {token && token !== '' && token !== undefined ? (
+        {token && token !== '' && token !== undefined
+          ? (
           // <CustomLink to="/user/market">
           <CustomLink to={`/user/market/${id}`}>
             <StorefrontOutlinedIcon />
           </CustomLink>
-        ) : (
-          ''
-        )}
+            )
+          : (
+              ''
+            )}
 
         {token && token !== '' && token !== undefined
           ? (

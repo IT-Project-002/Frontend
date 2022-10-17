@@ -6,6 +6,7 @@
     },
     "extends": [
         "plugin:react/recommended",
+        "plugin:css/recommended",
         "standard-with-typescript"
     ],
     "overrides": [
@@ -15,10 +16,10 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "css"
     ],
     "rules": {
-        "react/prop-types": "off",
-        "multiline-ternary": "off"
+        "react/prop-types": "off"
     }
 }

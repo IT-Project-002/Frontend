@@ -48,9 +48,11 @@ export default function Market () {
 
   return (
     <>
-      {loading ? (
+      {loading
+        ? (
         <CircularProgress className="loading" />
-      ) : (
+          )
+        : (
         <div className="layout-market">
           {/* Aavatar matching */}
           <div className="user-avatar-container">
@@ -115,7 +117,7 @@ export default function Market () {
             <Cards data={data} />
           </div>
         </div>
-      )}
+          )}
     </>
   )
 }

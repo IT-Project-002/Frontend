@@ -93,9 +93,11 @@ export default function Profile () {
 
   return (
     <>
-      {loading ? (
+      {loading
+        ? (
         <CircularProgress className="loading" />
-      ) : (
+          )
+        : (
         <form onSubmit={handleSubmit}>
           <div className="layout-profile">
             <div className="edit-container">
@@ -243,7 +245,7 @@ export default function Profile () {
             </div>
           </div>
         </form>
-      )}
+          )}
     </>
   )
 }

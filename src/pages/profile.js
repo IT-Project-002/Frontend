@@ -98,8 +98,8 @@ export default function Profile () {
         <CircularProgress className="loading" />
           )
         : (
+        <div className="layout-profile">
         <form onSubmit={handleSubmit}>
-          <div className="layout-profile">
             <div className="edit-container">
               {/* Aavatar matching */}
               <>
@@ -243,8 +243,8 @@ export default function Profile () {
                 <button type="submit">Save Changes</button>
               </div>
             </div>
-          </div>
         </form>
+        </div>
           )}
     </>
   )

@@ -42,7 +42,6 @@ export default function MyFav () {
         <CircularProgress className="loading" />
           )
         : (
-        <div>
           <div className="layout-like">
             <div className="myfav-title">
               <h1>My Favourite</h1>
@@ -63,18 +62,17 @@ export default function MyFav () {
                 ))}
               </div>
             </div>
+            <img
+              className="itemhead"
+              src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav1.png"
+              alt="item1"
+            ></img>
+            <img
+              className="itemfoot"
+              src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav2.png"
+              alt="item2"
+            ></img>
           </div>
-          <img
-            className="itemhead"
-            src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav1.png"
-            alt="item1"
-          ></img>
-          <img
-            className="itemfoot"
-            src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/image/background/myfav2.png"
-            alt="item2"
-          ></img>
-        </div>
           )}
     </>
   )

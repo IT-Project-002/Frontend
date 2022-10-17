@@ -13,6 +13,7 @@
 }
 
 .itemhead {
+  left:0;
   top: 0;
   width: 50%;
   position: fixed;
@@ -20,6 +21,7 @@
 }
 
 .itemfoot {
+  left:0;
   bottom: 0;
   width: 100%;
   position: fixed;
@@ -31,6 +33,7 @@
 
 .myfav-title {
   grid-area: myfav-title;
+  margin-top:-80px;
   margin-bottom: 70px;
 }
 

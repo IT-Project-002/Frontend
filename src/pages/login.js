@@ -144,7 +144,7 @@ function Login () {
                 onClick={toggleButton}
                 disabled={isSubmmit}
               >
-                Log in
+                Log In
               </button>
             </div>
             <div>

@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
 import '../css/login.css'
 import '../css/form.css'
-import { AiFillEyeInvisible, AiFillEye, AiTwotoneMail } from 'react-icons/ai'
+import { AiTwotoneMail } from 'react-icons/ai'
+import LockIcon from '@mui/icons-material/Lock'
 import Alert from '@mui/material/Alert'
 
 const EMAIL_REG = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
@@ -12,7 +13,6 @@ function Forget () {
   const [email, setEmail] = useState('')
   const [emailVerify, setEmailVerify] = useState('')
   const [password, setPassword] = useState('')
-  const [isShown, setIsSHown] = useState(false)
   const [error, setError] = useState('')
   const [isActive, setIsActive] = useState(false)
   const [isActive1, setIsActive1] = useState(false)
@@ -25,11 +25,6 @@ function Forget () {
 
   const toggleButton1 = () => {
     setIsActive1((current) => !current)
-  }
-
-  // show password or not
-  const togglePassword = () => {
-    setIsSHown((isShown) => !isShown)
   }
 
   const handleSubmit = (e) => {
@@ -137,16 +132,10 @@ function Forget () {
           <form onSubmit={handleVerificationCode}>
             <div className="input-container">
               <label className="login-icon">
-                {!isShown
-                  ? (
-                  <AiFillEye onClick={togglePassword} />
-                    )
-                  : (
-                  <AiFillEyeInvisible onClick={togglePassword} />
-                    )}
+                <LockIcon/>
               </label>
               <input
-                type={isShown ? 'text' : 'password'}
+                type='text'
                 placeholder="Verification Code"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -159,7 +148,7 @@ function Forget () {
                 }}
                 onClick={toggleButton1}
               >
-                LogIn
+                Log In
               </button>
             </div>
           </form>

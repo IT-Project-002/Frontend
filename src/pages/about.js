@@ -38,6 +38,8 @@ export default function About () {
         <img className="item4" src={item4} alt="item4"></img>
         <img className="item5" src={item5} alt="item5"></img>
         <img className="item6" src={item6} alt="item6"></img>
+        <img className="item7" src={item6} alt="item6"></img>
+        <img className="item8" src={item6} alt="item6"></img>
         <h1 className="aboutUsHeading">About Us</h1>
         <div className="aboutUsContent">
           <p>Da-dum-da-dum…!</p>

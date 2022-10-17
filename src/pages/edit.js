@@ -42,7 +42,7 @@ export default function Edit () {
   ]
   /* Image */
   const [selectedImages, setSelectedImages] = useState([])
-  const [filesDict, setFileDict] = useState({})
+  const [filesDict] = useState({})
   const formRef = useRef()
   const { itemId } = useParams()
 
@@ -75,6 +75,7 @@ export default function Edit () {
         // make tags array of objects
         const list = []
         console.log(dat.prod_tags.map((value) => value))
+        // eslint-disable-next-line array-callback-return
         dat.prod_tags?.map((value) => {
           const tags = {
             value,

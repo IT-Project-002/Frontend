@@ -43,7 +43,7 @@ export default function Upload () {
 
   /* Image */
   const [selectedImages, setSelectedImages] = useState([])
-  const [filesDict, setFileDict] = useState({})
+  const [filesDict] = useState({})
   const formRef = useRef()
 
   const toggleButton = () => {

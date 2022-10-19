@@ -14,7 +14,7 @@ class Gallery extends React.Component {
                         <img src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/landingSlider2.png" alt="" />
                     </div>
                     <div>
-                        <img src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/landingSlider3.png" alt="" />
+                        <img src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/landingSlider4.png" alt="" />
                     </div>
                     <div>
                         <img src="https://it-project-002.s3.ap-southeast-2.amazonaws.com/admin/landingSlider3.png" alt="" />
